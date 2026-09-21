@@ -1,0 +1,64 @@
+# Project Charter
+
+## Project Name
+
+MediCare Health Australia — Enterprise Cybersecurity Resilience
+& Patient Data Protection Program
+
+## Organisation
+
+MediCare Health Australia (Fictional)
+
+## Project Type
+
+Enterprise Cybersecurity / GRC / Security Engineering /
+Incident Response Portfolio Project
+
+## Business Problem
+
+MediCare Health Australia has expanded its healthcare operations
+while its cybersecurity capabilities have developed inconsistently.
+
+Management is concerned that compromised user accounts, excessive
+privileges, security-control weaknesses, inadequate vulnerability
+management and insufficient monitoring could result in unauthorised
+access to sensitive patient information or disruption to critical
+clinical services.
+
+Management also requires evidence that implemented cybersecurity
+controls are operating effectively.
+
+## Project Objective
+
+Assess the organisation's cybersecurity risks, design and implement
+representative security controls, test their effectiveness, simulate
+a cybersecurity incident, evaluate recovery capability and produce
+a prioritised remediation roadmap.
+
+## Primary Security Objectives
+
+1. Protect sensitive patient information.
+2. Reduce identity and privilege-related risk.
+3. Reduce vulnerability and ransomware exposure.
+4. Improve detection and incident-response capability.
+5. Demonstrate recoverability of critical information.
+6. Produce evidence that implemented controls operate effectively.
+7. Maintain consideration for clinical availability and patient safety.
+
+## Project Environment
+
+The enterprise organisation is fictional.
+
+Selected systems and security controls will be implemented within
+a representative student laboratory using synthetic data.
+
+The laboratory does not represent the complete infrastructure of
+a real healthcare organisation.
+
+## Project Owner
+
+Student Cybersecurity Analyst
+
+## Project Status
+
+In Development

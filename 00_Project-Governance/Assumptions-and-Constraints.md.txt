@@ -1,0 +1,258 @@
+# Assumptions and Constraints
+
+## Purpose
+
+This document records the assumptions, limitations and constraints
+that affect the MediCare Health Australia cybersecurity project.
+
+Documenting these factors ensures that project findings and security
+claims are interpreted within the correct context.
+
+---
+
+# Assumptions
+
+## A-001 — Fictional Healthcare Organisation
+
+MediCare Health Australia is a fictional healthcare organisation
+created for this cybersecurity project.
+
+The organisation is assumed to operate:
+
+- one private hospital
+- two outpatient clinics
+- pathology services
+- pharmacy services
+- telehealth services
+- approximately 650 employees
+- approximately 100 contractors
+- approximately 400 endpoints
+- 24/7 clinical operations
+
+These figures define the enterprise scenario only.
+
+The student laboratory will represent selected critical components
+rather than reproducing the organisation at full scale.
+
+---
+
+## A-002 — Synthetic Patient Information
+
+All patient information used in the project will be fictional and
+synthetically generated.
+
+No real patient records, medical information or personally
+identifiable healthcare information will be used.
+
+---
+
+## A-003 — Representative Enterprise Architecture
+
+The enterprise architecture represents a realistic fictional
+healthcare technology environment.
+
+It may include:
+
+- Active Directory
+- Microsoft 365 / cloud services
+- clinical systems
+- patient administration systems
+- pathology systems
+- pharmacy systems
+- file services
+- endpoints
+- security monitoring
+- backup infrastructure
+- cloud infrastructure
+- medical and IoT devices
+
+Not every enterprise component will be technically implemented in
+the student laboratory.
+
+---
+
+## A-004 — Controlled Security Testing
+
+All technical security testing will occur only against systems owned,
+created or explicitly authorised for this project.
+
+Testing will not target real healthcare organisations or
+unauthorised external infrastructure.
+
+---
+
+# Constraints
+
+## C-001 — Representative Student Laboratory
+
+### Constraint
+
+A student laboratory cannot reproduce the scale, technology,
+staffing or operational complexity of a real healthcare enterprise.
+
+### Impact
+
+Only selected enterprise systems and cybersecurity controls can be
+implemented practically.
+
+### Treatment
+
+Representative sampling will be used.
+
+Controls implemented in the laboratory will be tested directly.
+
+Controls that cannot reasonably be implemented will be documented as:
+
+- Design Only
+- Simulated
+- Configuration Reviewed
+- Not Assessed
+
+### Residual Limitation
+
+Results demonstrate cybersecurity methodology and control testing
+within a representative laboratory and must not be interpreted as
+assurance over a real healthcare organisation.
+
+---
+
+## C-002 — Budget
+
+### Constraint
+
+The project is designed to use primarily free, open-source,
+evaluation or student-access technologies.
+
+### Impact
+
+Some commercial enterprise security platforms cannot be implemented
+in their production form.
+
+### Treatment
+
+Where appropriate, free technologies will demonstrate the underlying
+security capability.
+
+Commercial enterprise equivalents may be documented for comparison
+but will not be claimed as implemented unless they are actually used.
+
+---
+
+## C-003 — AWS Student Access
+
+### Constraint
+
+AWS student access is time-limited and may have service, credit or
+usage restrictions.
+
+### Impact
+
+Cloud-security activities must be completed while authorised student
+access remains available.
+
+### Treatment
+
+AWS activities will be prioritised during the project.
+
+Configuration evidence, logs and project documentation will be
+retained before temporary cloud resources are removed.
+
+AWS resources will be monitored to avoid unintended charges.
+
+---
+
+## C-004 — Single Project Operator
+
+### Constraint
+
+One student performs multiple project roles including security
+analysis, implementation, testing and documentation.
+
+### Impact
+
+The project cannot provide truly independent security assurance or
+enterprise segregation of duties.
+
+### Treatment
+
+Implementation and testing activities will be documented separately.
+
+Expected results will be defined before control testing.
+
+Evidence will be retained for both successful and failed tests.
+
+### Residual Limitation
+
+Control testing represents self-assessed control assurance rather
+than an independent security audit.
+
+---
+
+## C-005 — Healthcare Availability
+
+### Constraint
+
+Real healthcare organisations operate critical services that may
+require continuous availability.
+
+### Impact
+
+Some security actions that are technically desirable may not be
+appropriate during clinical operations.
+
+Examples include:
+
+- immediate server rebooting
+- aggressive vulnerability scanning
+- emergency patch installation
+- disabling critical accounts
+- blocking legacy applications
+
+### Treatment
+
+Security decisions will consider confidentiality, integrity,
+availability and potential clinical impact.
+
+Where immediate remediation would create unacceptable operational
+risk, the project will consider:
+
+- maintenance windows
+- compensating controls
+- monitoring
+- temporary exceptions
+- formal risk acceptance
+- scheduled remediation
+
+---
+
+## C-006 — No Real Medical Devices
+
+### Constraint
+
+The student laboratory does not contain production medical or
+biomedical devices.
+
+### Treatment
+
+Medical-device security will be represented through architecture,
+risk assessment, segmentation design and documented security
+requirements.
+
+It will be classified as Design Only unless an appropriate safe
+simulation is created.
+
+---
+
+# Project Principle
+
+A limitation must never be hidden simply to make the project appear
+more capable.
+
+Where something cannot be implemented or tested, the project will
+state:
+
+1. what could not be performed;
+2. why it could not be performed;
+3. what risk the limitation creates;
+4. what an enterprise organisation would normally do; and
+5. whether an alternative or compensating control can be demonstrated.

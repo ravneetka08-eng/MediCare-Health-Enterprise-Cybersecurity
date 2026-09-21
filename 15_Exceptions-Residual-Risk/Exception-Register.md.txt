@@ -1,0 +1,82 @@
+# Security Exception Register
+
+## Purpose
+
+This register records situations where a required cybersecurity
+control cannot be fully implemented or where an approved deviation
+from the expected security state exists.
+
+Security exceptions must not become permanent undocumented
+workarounds.
+
+Each exception should identify:
+
+- the affected control;
+- the reason for the exception;
+- the resulting risk;
+- compensating controls;
+- the risk owner;
+- approval requirements;
+- review or expiry date;
+- remediation or exit plan.
+
+---
+
+# EX-001 — Student Performs Multiple Security Roles
+
+## Control Requirement
+
+Enterprise cybersecurity normally separates control ownership,
+implementation, operation and independent assurance.
+
+## Exception
+
+This project is completed by one student who performs multiple roles.
+
+## Reason
+
+The project does not have an enterprise security team available to
+provide independent implementation and assurance functions.
+
+## Risk
+
+The person implementing a security control is also responsible for
+testing that control.
+
+This reduces the independence of the assurance process.
+
+## Compensating Measures
+
+- Define expected results before testing.
+- Use repeatable test procedures.
+- Preserve timestamped evidence.
+- Record failed tests.
+- Separate implementation records from test results.
+- Document testing limitations.
+- Retest controls after remediation.
+
+## Risk Owner
+
+Student Cybersecurity Analyst / Project Owner
+
+## Status
+
+Accepted for project environment
+
+## Review
+
+Review throughout the project.
+
+## Exit Plan
+
+Not applicable within the single-student project.
+
+In a real enterprise environment, independent control assurance,
+internal audit or another appropriately separated function would
+provide additional assurance.
+
+## Residual Limitation
+
+Testing within this project represents self-assessed control
+assurance and must not be described as an independent cybersecurity
+audit.

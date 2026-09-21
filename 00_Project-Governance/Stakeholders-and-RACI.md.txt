@@ -1,0 +1,218 @@
+# Stakeholders and RACI
+
+## Purpose
+
+Cybersecurity is not solely the responsibility of the security team.
+
+Security risks, incidents and remediation activities often require
+coordination between technical teams, business owners, management,
+privacy, legal and other organisational stakeholders.
+
+This document identifies the primary stakeholders involved in the
+MediCare Health Australia cybersecurity program and defines their
+representative responsibilities.
+
+---
+
+# Key Stakeholders
+
+## Board and Executive Management
+
+Responsibilities:
+
+- provide organisational oversight;
+- understand significant cyber risks;
+- approve strategic priorities and funding;
+- review major cybersecurity risks and incidents;
+- consider cybersecurity in business decision-making.
+
+---
+
+## Chief Information Security Officer / Security Manager
+
+Responsibilities:
+
+- lead the cybersecurity program;
+- establish security strategy;
+- oversee cyber risk management;
+- approve security standards;
+- coordinate major incident response;
+- report significant cyber risks to management;
+- oversee security improvement activities.
+
+---
+
+## Cybersecurity Analyst
+
+Responsibilities:
+
+- perform security assessments;
+- analyse security risks;
+- review security configurations;
+- investigate alerts;
+- support vulnerability management;
+- perform control testing;
+- collect technical evidence;
+- support incident response;
+- document findings and remediation.
+
+For this project, the student primarily performs this role.
+
+---
+
+## Security Operations Centre
+
+Responsibilities:
+
+- monitor security events;
+- triage alerts;
+- investigate suspicious activity;
+- escalate confirmed or high-risk events;
+- maintain detection rules;
+- support incident response.
+
+The SOC function will be represented in the laboratory using
+centralised logging, detection rules and controlled security events.
+
+---
+
+## IT Infrastructure Team
+
+Responsibilities:
+
+- manage servers and endpoints;
+- manage Active Directory;
+- implement approved configuration changes;
+- deploy patches;
+- maintain infrastructure;
+- support backup and recovery;
+- remediate technical findings.
+
+---
+
+## Clinical Systems Team
+
+Responsibilities:
+
+- manage clinical applications;
+- understand clinical system dependencies;
+- coordinate security changes affecting clinical services;
+- assist with testing and remediation;
+- protect system availability and patient-care workflows.
+
+---
+
+## Privacy Officer
+
+Responsibilities:
+
+- assess privacy implications of security incidents;
+- coordinate privacy-related investigation;
+- assess potential data-breach impacts;
+- support regulatory notification assessment;
+- maintain privacy governance.
+
+---
+
+## Human Resources
+
+Responsibilities:
+
+- notify relevant teams of employee lifecycle changes;
+- support Joiner, Mover and Leaver processes;
+- coordinate access changes associated with employment changes;
+- support security awareness activities.
+
+---
+
+## Service Desk
+
+Responsibilities:
+
+- support user access requests;
+- perform authorised password resets;
+- escalate suspicious account activity;
+- assist with endpoint support;
+- follow identity-verification procedures.
+
+---
+
+## System and Data Owners
+
+Responsibilities:
+
+- determine business requirements;
+- approve appropriate access;
+- understand information sensitivity;
+- participate in risk decisions;
+- approve or reject relevant risk treatments;
+- support periodic access reviews.
+
+---
+
+## Internal Audit / Independent Assurance
+
+Responsibilities:
+
+- independently assess governance and control effectiveness;
+- review evidence;
+- identify control weaknesses;
+- report assurance findings.
+
+This function will not be independently performed in this student
+project.
+
+Project testing will therefore be described as self-assessed control
+assurance.
+
+---
+
+# RACI Model
+
+RACI means:
+
+- **R — Responsible:** performs the work.
+- **A — Accountable:** ultimately owns the outcome.
+- **C — Consulted:** provides input before or during the activity.
+- **I — Informed:** receives relevant information about the activity.
+
+---
+
+# Representative Cybersecurity RACI
+
+| Activity | CISO / Security Manager | Cybersecurity Analyst | IT Infrastructure | SOC | System Owner | Privacy Officer | Executive Management |
+|---|---|---|---|---|---|---|---|
+| Cyber Risk Assessment | A | R | C | C | C | C | I |
+| Vulnerability Assessment | A | R | C | C | I | I | I |
+| Vulnerability Remediation | C | C | R | I | A | I | I |
+| IAM Control Testing | A | R | C | C | C | I | I |
+| Security Monitoring | A | C | C | R | I | I | I |
+| Detection Engineering | A | R | C | R | I | I | I |
+| Incident Investigation | A | R | C | R | C | C | I |
+| Incident Containment | A | R | R | R | C | C | I |
+| Privacy Breach Assessment | C | C | I | C | C | A/R | I |
+| Backup Restore Testing | C | C | R | I | A | I | I |
+| Security Exception Review | A | R | C | C | A/C | C | I |
+| Executive Cyber Reporting | R | C | I | C | I | C | A |
+
+---
+
+# Project Role Limitation
+
+Because this is a single-student project, the student will simulate
+several enterprise cybersecurity responsibilities.
+
+This does not mean that these responsibilities would normally belong
+to one person in a real healthcare organisation.
+
+Where practical, the project will separate:
+
+1. control implementation;
+2. control testing;
+3. evidence collection;
+4. finding documentation;
+5. remediation; and
+6. retesting.
+
+This separation improves the reliability and transparency of the
+project evidence even though independent assurance cannot be achieved.

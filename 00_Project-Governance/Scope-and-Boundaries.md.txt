@@ -1,0 +1,220 @@
+# Project Scope and Boundaries
+
+## Purpose
+
+This document defines what is included and excluded from the MediCare Health Australia cybersecurity project.
+
+The purpose of defining scope is to ensure that security activities are authorised, controlled, measurable and appropriate for the project environment.
+
+---
+
+## In Scope
+
+The following areas are included within the project:
+
+### Identity and Access Management
+
+- Active Directory users and groups
+- Role-Based Access Control (RBAC)
+- Least privilege
+- Privileged account separation
+- Authentication controls
+- Selected MFA controls where available
+- Joiner, Mover and Leaver concepts
+
+### Windows Security
+
+- Windows Server
+- Representative Windows endpoints
+- Group Policy
+- Windows security configuration
+- Microsoft Defender where available
+- Windows Event Logs
+- Sysmon where implemented
+
+### Vulnerability Management
+
+- Authorised vulnerability scanning
+- Vulnerability validation
+- Risk-based prioritisation
+- Remediation tracking
+- Patch management
+- Rescanning
+- Verification of remediation
+
+### Essential Eight
+
+Selected Essential Eight controls will be assessed and tested within the representative laboratory environment.
+
+Testing will focus on controls that can reasonably be demonstrated within the student lab.
+
+### Security Monitoring and Detection
+
+- Centralised security logging
+- Wazuh or equivalent lab SIEM
+- Authentication monitoring
+- Privileged activity monitoring
+- Selected detection rules
+- Alert investigation
+- Detection testing
+
+### Incident Response
+
+A controlled cybersecurity incident will be simulated within the authorised laboratory environment.
+
+The exercise may include:
+
+- simulated credential compromise
+- suspicious authentication activity
+- synthetic patient information access
+- security alert generation
+- investigation
+- containment
+- recovery
+- lessons learned
+
+### Digital Forensics
+
+Selected forensic evidence may include:
+
+- Windows Event Logs
+- authentication logs
+- browser artefacts
+- file metadata
+- PowerShell activity
+- hashes
+- security alerts
+- incident timeline information
+
+### Cloud Security
+
+A representative AWS student environment may be used for selected cloud-security activities, subject to account availability, credit limits and project requirements.
+
+Potential activities include:
+
+- AWS IAM
+- least privilege
+- EC2
+- S3
+- VPC
+- Security Groups
+- CloudTrail
+- CloudWatch
+- encryption concepts
+- cloud security monitoring
+- controlled configuration assessment
+
+### Backup and Recovery
+
+- representative backup configuration
+- backup verification
+- controlled restore testing
+- documentation of recovery results
+
+### Governance, Risk and Compliance
+
+- cybersecurity risk assessment
+- risk register
+- ISO 27001-aligned governance concepts
+- Essential Eight control assurance
+- security exceptions
+- residual risk
+- privacy and breach assessment
+- metrics and reporting
+
+### Data
+
+Only fictional and synthetic information will be used.
+
+No real patient information will be stored or processed.
+
+---
+
+## Out of Scope
+
+The following activities are explicitly excluded:
+
+- real healthcare production systems
+- real patient information
+- real hospital infrastructure
+- real medical devices
+- unauthorised penetration testing
+- scanning public systems without permission
+- real phishing campaigns
+- malware deployment
+- disruption of external services
+- production AWS environments
+- destructive security testing
+- actual ISO 27001 certification
+- independent cybersecurity audit
+- legal advice
+- actual regulatory breach determination
+- full enterprise disaster recovery
+- full production Security Operations Centre
+
+---
+
+## Design or Simulation Only
+
+Some enterprise technologies cannot reasonably be reproduced within a student laboratory.
+
+These may be represented through architecture, documentation or controlled simulation rather than direct implementation.
+
+Examples include:
+
+- enterprise Privileged Access Management platforms
+- large-scale EDR/XDR platforms
+- commercial enterprise SIEM platforms
+- production Electronic Medical Record systems
+- production Patient Administration Systems
+- medical IoT infrastructure
+- large multi-site healthcare networks
+- enterprise WAN/SD-WAN
+- large-scale disaster recovery environments
+- full 24/7 SOC operations
+
+Where a technology is not directly implemented, the project will clearly identify it as design-only or simulated.
+
+---
+
+## Project Implementation Status Categories
+
+Project components will be classified using the following status labels:
+
+### Implemented and Tested
+
+The control or technology was configured in the laboratory and its effectiveness was tested.
+
+### Configuration Reviewed
+
+The configuration was examined but the control was not fully tested.
+
+### Simulated
+
+The process or security event was reproduced in a controlled educational scenario.
+
+### Design Only
+
+The technology or control is represented through architecture or documentation but was not implemented.
+
+### Not Assessed
+
+The project does not have sufficient access, evidence or capability to assess the control.
+
+---
+
+## Safety Boundary
+
+All cybersecurity activities must remain within systems owned or authorised for use by the student.
+
+No testing will target real healthcare organisations, external businesses, public infrastructure or systems without explicit authorisation.
+
+All patient information used in this project will be synthetic.
+
+---
+
+## Scope Limitation
+
+This project demonstrates enterprise cybersecurity methodology using a representative student laboratory.
+
+The results must not be interpreted as a security assessment, audit or assurance opinion concerning any real healthcare organisation.
