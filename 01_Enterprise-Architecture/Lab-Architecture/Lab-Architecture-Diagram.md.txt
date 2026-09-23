@@ -1,0 +1,127 @@
+# Laboratory Architecture Diagram Specification
+
+## Purpose
+
+This document defines the requirements for the technical lab
+architecture diagram.
+
+The final diagram will be created using a dedicated diagramming tool
+rather than treated as an ASCII diagram in project documentation.
+
+---
+
+# Required Components
+
+The diagram should eventually show:
+
+## Host / Virtualisation Layer
+
+Physical Student Workstation
+
+↓
+
+Virtualisation Platform
+
+---
+
+## Identity Infrastructure
+
+DC01
+
+- Active Directory
+- DNS
+- Group Policy
+
+---
+
+## Enterprise Endpoints
+
+WIN-REC01
+
+- Reception persona
+- Windows endpoint
+
+WIN-CLIN01
+
+- Clinical persona
+- Windows endpoint
+
+---
+
+## Security Infrastructure
+
+SEC-MON01
+
+- Wazuh
+
+VULN01
+
+- Vulnerability Management
+
+---
+
+## Cloud Environment
+
+AWS
+
+- IAM
+- Security Groups
+- CloudTrail
+- selected project resources
+
+---
+
+# Required Relationships
+
+Diagram should demonstrate:
+
+DC01
+   |
+   +---- WIN-REC01
+   |
+   +---- WIN-CLIN01
+
+WIN-REC01 --------+
+                  |
+WIN-CLIN01 -------+----> SEC-MON01 / Wazuh
+                  |
+DC01 -------------+
+
+VULN01
+   |
+   +---- authorised scanning ----> Lab Systems
+
+Local Lab
+   |
+   +---- controlled relationship ----> AWS
+
+---
+
+# Diagram Requirements
+
+The final diagram should include:
+
+- security boundaries;
+- network/subnet labels;
+- system hostnames;
+- system roles;
+- major communication relationships;
+- local/cloud distinction;
+- legend;
+- title;
+- version/date.
+
+The diagram must distinguish:
+
+- implemented components;
+- planned components;
+- cloud components.
+
+---
+
+# Evidence
+
+The final exported architecture diagram will be stored within the
+repository in an appropriate documentation/diagram format.
+
+The editable source should also be retained where practical.

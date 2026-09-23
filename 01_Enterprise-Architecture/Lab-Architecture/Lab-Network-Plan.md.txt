@@ -1,0 +1,120 @@
+# Enterprise Cybersecurity Laboratory Network Plan
+
+## 1. Purpose
+
+This document defines the initial logical network design for the
+laboratory.
+
+The design uses private laboratory addressing and must not be
+interpreted as the network design of a real healthcare organisation.
+
+---
+
+# 2. Enterprise Concept
+
+The enterprise architecture includes logically separated security
+zones such as:
+
+- user networks;
+- clinical systems;
+- server infrastructure;
+- security-management systems;
+- medical / IoT systems;
+- cloud services;
+- external services.
+
+The student laboratory will initially implement only the network
+segments required to support practical testing.
+
+Additional segmentation may be introduced during later security
+engineering phases.
+
+---
+
+# 3. Initial Lab Network
+
+Initial representative subnet:
+
+10.20.10.0/24
+
+Example addressing plan:
+
+| System | Address |
+|---|---|
+| DC01 | 10.20.10.10 |
+| SEC-MON01 | 10.20.10.20 |
+| VULN01 | 10.20.10.30 |
+| WIN-REC01 | 10.20.10.101 |
+| WIN-CLIN01 | 10.20.10.102 |
+
+Addresses are reserved for the isolated/private project laboratory.
+
+Final virtual-network configuration will be determined when the
+virtualisation platform is selected.
+
+---
+
+# 4. DNS
+
+Domain-joined Windows clients should use:
+
+DC01
+10.20.10.10
+
+as their lab DNS service after Active Directory DNS is implemented.
+
+This is important because Active Directory relies heavily on DNS for
+service discovery.
+
+---
+
+# 5. Internet Connectivity
+
+Some systems may temporarily require Internet connectivity for:
+
+- operating-system updates;
+- package installation;
+- Wazuh installation;
+- vulnerability-feed updates;
+- authorised software downloads.
+
+Internet connectivity should be controlled according to the
+requirements of each lab phase.
+
+Deliberately vulnerable systems should not be directly exposed to the
+public Internet.
+
+---
+
+# 6. Future Segmentation
+
+Later project phases may introduce representative zones such as:
+
+10.20.10.0/24 — Enterprise Users / Initial Lab
+
+10.20.20.0/24 — Server Zone
+
+10.20.30.0/24 — Security Management
+
+10.20.40.0/24 — Medical / IoT Simulation
+
+These are design reservations and are not considered implemented
+until corresponding network controls have actually been configured
+and tested.
+
+---
+
+# 7. Network Security Validation
+
+Future tests may validate:
+
+- permitted connectivity;
+- denied connectivity;
+- DNS operation;
+- domain communication;
+- security-monitoring communication;
+- vulnerability-scanner reachability;
+- segmentation controls.
+
+Evidence will distinguish network design from technically validated
+network enforcement.

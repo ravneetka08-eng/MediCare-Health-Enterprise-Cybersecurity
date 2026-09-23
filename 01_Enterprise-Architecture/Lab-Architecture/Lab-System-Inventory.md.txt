@@ -1,0 +1,198 @@
+# Laboratory System Inventory
+
+## 1. Purpose
+
+This inventory defines the representative systems planned for the
+cybersecurity laboratory.
+
+Resource allocations may be adjusted according to host-computer
+capacity.
+
+---
+
+# 2. Core Systems
+
+| Hostname | Role | OS / Platform | Initial RAM Target | Primary Purpose |
+|---|---|---|---:|---|
+| DC01 | Domain Controller | Windows Server | 4 GB | AD DS / DNS / GPO |
+| WIN-REC01 | Reception Endpoint | Windows Client | 4 GB | Reception role simulation |
+| WIN-CLIN01 | Clinical Endpoint | Windows Client | 4 GB | Clinical role simulation |
+| SEC-MON01 | Security Monitoring | Linux | 6–8 GB where available | Wazuh |
+| VULN01 | Vulnerability Management | Linux / selected platform | 4 GB+ | Vulnerability assessment |
+
+Resource allocation is a lab starting point rather than a production
+sizing recommendation.
+
+---
+
+# 3. DC01
+
+## Function
+
+Representative enterprise identity infrastructure.
+
+## Planned Services
+
+- Active Directory Domain Services;
+- DNS;
+- Group Policy.
+
+## Representative Controls
+
+- account policy;
+- identity lifecycle;
+- security groups;
+- RBAC;
+- privileged-account separation;
+- audit policy.
+
+## Important Limitation
+
+A real enterprise would not normally rely on one domain controller.
+
+The lab uses one initially because the purpose is to demonstrate
+identity and security-control implementation rather than production
+high availability.
+
+---
+
+# 4. WIN-REC01
+
+## Persona
+
+Reception / Patient Administration workstation.
+
+## Representative User
+
+reception.user
+
+## Business Function
+
+Representative patient-administration activities using synthetic
+information.
+
+## Security Purpose
+
+Used to test:
+
+- RBAC;
+- least privilege;
+- GPO;
+- endpoint security;
+- authentication logging;
+- Wazuh telemetry;
+- controlled incident scenarios.
+
+---
+
+# 5. WIN-CLIN01
+
+## Persona
+
+Clinical workforce endpoint.
+
+## Representative User
+
+clinician.user
+
+## Business Function
+
+Representative access to synthetic clinical information.
+
+## Security Purpose
+
+Provides a second security context allowing access-control boundaries
+between Reception and Clinical roles to be demonstrated.
+
+---
+
+# 6. SEC-MON01
+
+## Function
+
+Security monitoring platform.
+
+## Planned Technology
+
+Wazuh
+
+## Purpose
+
+Receive representative telemetry from laboratory systems and support:
+
+- monitoring;
+- detection;
+- alerting;
+- investigation;
+- incident exercises.
+
+---
+
+# 7. VULN01
+
+## Function
+
+Authorised vulnerability-management platform.
+
+## Purpose
+
+Assess project-owned systems for selected vulnerabilities and
+configuration weaknesses.
+
+Workflow:
+
+Scan
+  |
+  v
+Finding
+  |
+  v
+Risk
+  |
+  v
+Remediation
+  |
+  v
+Rescan
+  |
+  v
+Evidence
+
+The scanner must only target systems authorised within the project
+laboratory.
+
+---
+
+# 8. AWS Environment
+
+AWS provides a separate cloud-security component of the project.
+
+Representative services may include:
+
+- IAM;
+- EC2 where appropriate;
+- Security Groups;
+- S3 where appropriate;
+- CloudTrail;
+- selected logging/security functionality available within the
+  educational environment.
+
+AWS resources will be selected according to educational-account
+availability, cost and project requirements.
+
+---
+
+# 9. Synthetic Data
+
+No real patient information will be used.
+
+Representative synthetic information may contain fields such as:
+
+- synthetic patient ID;
+- fictional name;
+- fictional date of birth;
+- fictional appointment;
+- fictional clinical classification;
+- fictional contact information.
+
+All records must be clearly artificial.

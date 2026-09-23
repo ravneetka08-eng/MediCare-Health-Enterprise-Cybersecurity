@@ -1,0 +1,479 @@
+# Enterprise Cybersecurity Control Framework
+
+## Document Control
+
+| Field | Value |
+|---|---|
+| Organisation | MediCare Health Australia (Fictional) |
+| Document Owner | Cybersecurity Governance / GRC |
+| Executive Sponsor | Chief Information Security Officer |
+| Classification | Internal |
+| Version | 1.0 |
+| Status | Project Baseline |
+| Review Frequency | At least annually and following material change |
+| Related Process | Enterprise Cybersecurity Risk Management |
+
+---
+
+# 1. Purpose
+
+This framework defines the cybersecurity controls used to manage
+cybersecurity risk across the fictional healthcare enterprise.
+
+The framework establishes traceability between:
+
+- business services;
+- enterprise assets;
+- cybersecurity risks;
+- control objectives;
+- security controls;
+- control owners;
+- technical implementation;
+- control testing;
+- evidence;
+- findings;
+- remediation;
+- residual risk.
+
+A security product is not automatically a security control.
+
+For example:
+
+"Wazuh" is a technology.
+
+"Centralised collection and monitoring of security-relevant endpoint
+events" is a security control.
+
+Wazuh may be one technology used to implement that control.
+
+---
+
+# 2. Control Governance Principles
+
+Enterprise cybersecurity controls should be:
+
+## Risk-Based
+
+Controls should address identified risks and business requirements.
+
+## Owned
+
+Every material control should have an accountable Control Owner.
+
+## Implementable
+
+The control should describe an achievable security outcome.
+
+## Testable
+
+There should be a method for determining whether the control is
+implemented and operating as intended.
+
+## Evidenced
+
+Control-effectiveness claims should be supported by appropriate
+evidence.
+
+## Maintainable
+
+Controls must remain effective as systems and threats change.
+
+## Proportionate
+
+Control implementation should consider:
+
+- business criticality;
+- clinical requirements;
+- information sensitivity;
+- threat exposure;
+- technical feasibility;
+- operational impact.
+
+---
+
+# 3. Control Hierarchy
+
+The project uses the following hierarchy:
+
+Control Domain
+      |
+      v
+Control Objective
+      |
+      v
+Enterprise Control
+      |
+      v
+Implementation Requirement
+      |
+      v
+Technical Configuration
+      |
+      v
+Control Test
+      |
+      v
+Evidence
+
+Example:
+
+Domain:
+Identity and Access Management
+
+Objective:
+Prevent inappropriate privileged access
+
+Control:
+CTRL-IAM-004 Privileged Account Separation
+
+Requirement:
+Administrative activity must use designated privileged identities.
+
+Implementation:
+Separate Active Directory administrator account.
+
+Technical Configuration:
+abby.user
+abby.admin
+
+Test:
+Verify standard identity cannot perform administrative action.
+
+Evidence:
+EV-XXX
+
+---
+
+# 4. Control Types
+
+## Preventive Controls
+
+Designed to prevent an undesirable event.
+
+Examples:
+
+- MFA;
+- least privilege;
+- firewall restrictions;
+- secure configuration;
+- application control.
+
+## Detective Controls
+
+Designed to identify undesirable activity.
+
+Examples:
+
+- SIEM alerts;
+- authentication monitoring;
+- endpoint telemetry;
+- vulnerability scanning.
+
+## Corrective Controls
+
+Designed to correct identified weaknesses.
+
+Examples:
+
+- patch deployment;
+- configuration remediation;
+- account disablement.
+
+## Recovery Controls
+
+Designed to restore services or information.
+
+Examples:
+
+- backups;
+- restoration procedures;
+- disaster recovery.
+
+## Directive Controls
+
+Define required behaviour.
+
+Examples:
+
+- policies;
+- standards;
+- procedures.
+
+## Compensating Controls
+
+Alternative controls used when the preferred requirement cannot
+currently be implemented.
+
+Example:
+
+Network isolation for a legacy clinical system that cannot safely
+receive the standard security update.
+
+---
+
+# 5. Control Lifecycle
+
+Requirement Identified
+        |
+        v
+Control Designed
+        |
+        v
+Owner Assigned
+        |
+        v
+Implementation Planned
+        |
+        v
+Technical Implementation
+        |
+        v
+Evidence Collected
+        |
+        v
+Control Tested
+        |
+       / \
+      /   \
+   PASS   FAIL
+    |       |
+    v       v
+Effective Finding
+    |       |
+    |       v
+    |   Remediation
+    |       |
+    |       v
+    |     Retest
+    |       |
+    +---+---+
+        |
+        v
+Ongoing Monitoring
+        |
+        v
+Periodic Reassessment
+
+---
+
+# 6. Control Status
+
+Controls may use:
+
+- Proposed
+- Approved
+- Planned
+- Implementation In Progress
+- Implemented — Not Tested
+- Implemented — Testing Required
+- Operating
+- Partially Effective
+- Ineffective
+- Exception Approved
+- Retired
+
+"Implemented" must not automatically be interpreted as "Effective."
+
+---
+
+# 7. Control Effectiveness
+
+Control effectiveness has two major components.
+
+## Design Effectiveness
+
+Question:
+
+> If this control operates exactly as designed, is it capable of
+> materially addressing the relevant risk?
+
+Ratings:
+
+- Effective Design
+- Partially Effective Design
+- Ineffective Design
+- Not Assessed
+
+## Operating Effectiveness
+
+Question:
+
+> Is the control actually operating as intended?
+
+Ratings:
+
+- Effective
+- Partially Effective
+- Ineffective
+- Not Tested
+- Insufficient Evidence
+
+---
+
+# 8. Control Ownership
+
+Control Owners are responsible for:
+
+- control design;
+- implementation oversight;
+- maintenance;
+- operational performance;
+- evidence availability;
+- remediation of identified control weaknesses.
+
+Cybersecurity may own some controls but should not automatically own
+every cybersecurity-related control.
+
+Examples:
+
+Identity lifecycle control:
+IAM / Identity Team
+
+Windows patching:
+Infrastructure / Endpoint Team
+
+Clinical application access:
+Clinical Application Owner
+
+SIEM monitoring:
+Cybersecurity Operations
+
+Backup control:
+Infrastructure / Service Owner
+
+---
+
+# 9. Healthcare Context
+
+Security controls must account for the operational characteristics of
+healthcare environments.
+
+These may include:
+
+- 24x7 service delivery;
+- critical clinical workflows;
+- patient-information sensitivity;
+- medical-device dependencies;
+- legacy technology;
+- vendor-supported configurations;
+- restricted maintenance windows;
+- availability requirements;
+- clinical change-management requirements.
+
+Security controls should reduce cyber risk without introducing
+unmanaged operational or clinical risk.
+
+---
+
+# 10. Project Control Domains
+
+The project uses the following control domains:
+
+| Code | Domain |
+|---|---|
+| GOV | Security Governance |
+| IAM | Identity and Access Management |
+| PAM | Privileged Access |
+| END | Endpoint Security |
+| SRV | Server Security |
+| NET | Network Security |
+| VUL | Vulnerability Management |
+| LOG | Logging and Monitoring |
+| DET | Detection Engineering |
+| IR | Incident Response |
+| DAT | Data Protection |
+| BAK | Backup and Recovery |
+| CLD | Cloud Security |
+| MED | Medical / IoT Security |
+| TPR | Third-Party Security |
+| BCM | Business Continuity / Resilience |
+
+---
+
+# 11. Framework Alignment
+
+Enterprise controls may be mapped to external frameworks or guidance
+where appropriate.
+
+The project will maintain mappings to selected relevant sources such
+as:
+
+- Australian Signals Directorate Essential Eight;
+- ISO/IEC 27001 / ISO/IEC 27002 concepts;
+- NIST Cybersecurity Framework concepts.
+
+Framework mappings provide traceability and learning value.
+
+They do not imply that this student project is certified, formally
+audited or compliant with an entire external framework.
+
+---
+
+# 12. Exceptions
+
+Where a required control cannot be implemented:
+
+Control Requirement
+        |
+        v
+Implementation Constraint
+        |
+        v
+Risk Assessment
+        |
+        v
+Compensating Control
+        |
+        v
+Security Exception
+        |
+        v
+Residual Risk
+        |
+        v
+Authorised Acceptance
+        |
+        v
+Review / Expiry
+
+Exceptions must follow the project's Security Exception Management
+Procedure.
+
+---
+
+# 13. Evidence
+
+Representative evidence may include:
+
+- configuration screenshots;
+- configuration exports;
+- command output;
+- Windows Event Logs;
+- Wazuh events;
+- vulnerability scan reports;
+- authentication tests;
+- access-control tests;
+- firewall tests;
+- AWS configuration evidence;
+- recovery-test results;
+- incident-response records.
+
+Sensitive values, passwords, secrets and inappropriate system
+information must not be published to the public repository.
+
+---
+
+# 14. Assurance Limitation
+
+Control testing conducted in this project is performed within an
+authorised student laboratory.
+
+It demonstrates representative control implementation and testing.
+
+It does not constitute:
+
+- independent internal audit;
+- external audit;
+- penetration testing of a real healthcare organisation;
+- certification;
+- proof that a real healthcare enterprise operates the same controls.

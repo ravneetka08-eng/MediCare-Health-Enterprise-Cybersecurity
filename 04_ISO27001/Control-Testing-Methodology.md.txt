@@ -1,0 +1,204 @@
+# Cybersecurity Control Testing Methodology
+
+## 1. Purpose
+
+This methodology defines how cybersecurity controls are tested within
+the project.
+
+The objective is to determine whether controls:
+
+1. are appropriately designed;
+2. are implemented;
+3. operate as intended;
+4. produce sufficient evidence;
+5. reduce the associated risk.
+
+---
+
+# 2. Testing Principles
+
+Control testing must be:
+
+- authorised;
+- repeatable where practical;
+- evidence-based;
+- linked to a Control ID;
+- linked to relevant Risk IDs;
+- documented;
+- performed safely;
+- limited to project-owned laboratory systems.
+
+---
+
+# 3. Test Record
+
+Each control test should record:
+
+| Field | Description |
+|---|---|
+| Test ID | Unique identifier |
+| Control ID | Control being tested |
+| Risk ID | Related risk |
+| Tester | Person / role performing test |
+| Test Date | Date performed |
+| Environment | System being tested |
+| Objective | What is being validated |
+| Preconditions | Required setup |
+| Procedure | Exact steps |
+| Expected Result | What should happen |
+| Actual Result | What happened |
+| Evidence IDs | Supporting proof |
+| Result | Pass / Fail / Partial |
+| Finding ID | Finding if control fails |
+| Limitations | Test limitations |
+| Retest Required | Yes / No |
+
+---
+
+# 4. Positive Testing
+
+Positive testing verifies authorised behaviour works.
+
+Example:
+
+CTRL-IAM-002
+
+Reception user accesses authorised Reception share.
+
+Expected:
+
+Access Granted.
+
+---
+
+# 5. Negative Testing
+
+Negative testing verifies prohibited behaviour is prevented.
+
+Example:
+
+Reception user attempts to access Clinical restricted share.
+
+Expected:
+
+Access Denied.
+
+Negative testing is particularly valuable for access controls.
+
+---
+
+# 6. Detection Testing
+
+Detection testing verifies that security-relevant activity creates
+appropriate telemetry and/or alerting.
+
+Example:
+
+Controlled failed authentication attempts
+        |
+        v
+Windows Event
+        |
+        v
+Wazuh
+        |
+        v
+Detection
+        |
+        v
+Analyst Visibility
+
+---
+
+# 7. Remediation Testing
+
+Where a control fails:
+
+TEST
+ |
+ v
+FAIL
+ |
+ v
+Finding
+ |
+ v
+Treatment
+ |
+ v
+Remediation
+ |
+ v
+RETEST
+
+The original failure must remain documented.
+
+---
+
+# 8. Test Results
+
+## PASS
+
+The tested control operated as expected for the defined test scope.
+
+PASS does not prove that the control can never fail.
+
+## FAIL
+
+The expected control outcome was not achieved.
+
+A finding should be considered.
+
+## PARTIAL
+
+Some requirements were met but material limitations remain.
+
+---
+
+# 9. Evidence Requirements
+
+Evidence should contain sufficient context to demonstrate the test.
+
+Examples:
+
+- screenshots;
+- command output;
+- event records;
+- Wazuh alerts;
+- configuration output;
+- scan results;
+- AWS audit records;
+- access denied messages;
+- recovery results.
+
+Credentials, secrets and sensitive values must be redacted before
+publication.
+
+---
+
+# 10. Test Independence
+
+This portfolio is implemented and tested by one student.
+
+Therefore, testing is:
+
+Self-Assessed Technical Control Assurance
+
+and not:
+
+Independent Audit.
+
+Where the project simulates separate enterprise roles, documentation
+will identify which role is being represented.
+
+---
+
+# 11. Test Limitation
+
+Testing demonstrates effectiveness only within the defined test scope,
+environment and point in time.
+
+Example:
+
+A successful RBAC test against WIN-REC01 does not prove that every
+application across a real enterprise has correct permissions.

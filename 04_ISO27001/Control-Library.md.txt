@@ -1,0 +1,622 @@
+# Enterprise Cybersecurity Control Library
+
+## Purpose
+
+This library defines the enterprise cybersecurity controls used
+throughout the project.
+
+Each control may be linked to:
+
+- Risk IDs;
+- Asset IDs;
+- Control Owner;
+- Implementation technology;
+- Control Tests;
+- Evidence;
+- Findings;
+- Framework mappings;
+- Exceptions.
+
+---
+
+# Control Record Fields
+
+Each material control should contain:
+
+| Field | Description |
+|---|---|
+| Control ID | Unique identifier |
+| Control Name | Short control title |
+| Domain | Security control domain |
+| Objective | Security outcome |
+| Requirement | What must occur |
+| Control Type | Preventive / Detective / Corrective / Recovery / Directive |
+| Risk IDs | Risks treated by the control |
+| Assets | Applicable assets |
+| Control Owner | Accountable function |
+| Operator | Function performing routine activity |
+| Frequency | Continuous / Daily / Monthly / etc. |
+| Technology | Technology supporting implementation |
+| Implementation Status | Current state |
+| Design Effectiveness | Assessment |
+| Operating Effectiveness | Assessment |
+| Test ID | Associated assurance test |
+| Evidence | Supporting evidence |
+| Exception | Approved deviation if applicable |
+
+---
+
+# IAM — Identity and Access Management
+
+## CTRL-IAM-001 — Unique Workforce Identities
+
+**Objective**
+
+Ensure workforce activity can be attributed to individual authorised
+identities.
+
+**Requirement**
+
+Each workforce user must receive an individually assigned identity.
+
+Shared interactive user accounts should not be used unless a
+documented operational requirement and approved exception exists.
+
+**Type**
+
+Preventive / Accountability
+
+**Related Risks**
+
+- R-001
+- R-002
+- R-005
+- R-006
+- R-010
+
+**Control Owner**
+
+Identity and Access Management
+
+**Technology**
+
+Active Directory / AWS IAM where applicable
+
+**Project Implementation**
+
+Representative users will receive separate Active Directory accounts.
+
+Examples:
+
+- reception.user
+- clinician.user
+- soc.analyst
+- it.user
+
+**Status**
+
+Planned
+
+**Operating Effectiveness**
+
+Not Tested
+
+---
+
+## CTRL-IAM-002 — Role-Based Access Control
+
+**Objective**
+
+Ensure users receive access appropriate to their organisational role.
+
+**Requirement**
+
+Access must be assigned through approved role-based security groups
+where technically appropriate.
+
+**Related Risks**
+
+- R-002
+- R-005
+
+**Control Owner**
+
+IAM with Business / Application Owners
+
+**Technology**
+
+Active Directory Security Groups
+
+**Project Implementation**
+
+Representative groups will include:
+
+- GG-Reception-Users
+- GG-Clinical-Users
+- GG-SOC-Analysts
+- GG-IT-Admins
+
+**Validation**
+
+Positive and negative access tests will be performed.
+
+**Status**
+
+Planned
+
+**Operating Effectiveness**
+
+Not Tested
+
+---
+
+## CTRL-IAM-003 — Least Privilege
+
+**Objective**
+
+Restrict user access to the minimum permissions required for their
+role.
+
+**Requirement**
+
+Standard workforce users must not receive unnecessary administrative
+or restricted-resource access.
+
+**Related Risks**
+
+- R-001
+- R-002
+- R-005
+- R-010
+
+**Validation**
+
+A Reception user will be tested against:
+
+1. authorised Reception resource;
+2. restricted Clinical resource;
+3. administrative operation.
+
+Expected:
+
+Authorised resource = Allowed
+
+Restricted resource = Denied
+
+Administrative operation = Denied
+
+**Status**
+
+Planned
+
+---
+
+## CTRL-IAM-004 — Account Lifecycle Management
+
+**Objective**
+
+Ensure identities are created, changed and disabled according to
+workforce status.
+
+**Requirement**
+
+Joiner, Mover and Leaver events must trigger appropriate identity
+changes.
+
+**Related Risks**
+
+- R-006
+- R-001
+
+**Project Test**
+
+A representative former workforce identity will be disabled and an
+authentication attempt performed.
+
+Expected result:
+
+Authentication rejected.
+
+**Status**
+
+Planned
+
+---
+
+# PAM — Privileged Access
+
+## CTRL-PAM-001 — Privileged Account Separation
+
+**Objective**
+
+Reduce exposure created by routine use of administrative credentials.
+
+**Requirement**
+
+Personnel requiring administrative access should use separate
+standard and privileged identities.
+
+Example:
+
+Standard:
+
+it.user
+
+Privileged:
+
+it.admin
+
+**Related Risks**
+
+- R-001
+- R-010
+
+**Technology**
+
+Active Directory
+
+**Project Validation**
+
+Verify the standard identity cannot perform the selected
+administrative operation while the authorised privileged identity can.
+
+**Status**
+
+Planned
+
+---
+
+# END — Endpoint Security
+
+## CTRL-END-001 — Endpoint Protection
+
+**Objective**
+
+Prevent, detect and respond to malicious endpoint activity.
+
+**Technology**
+
+Microsoft Defender Antivirus / supported Windows security capability.
+
+**Related Risks**
+
+- R-003
+- R-001
+
+**Project Validation**
+
+Confirm protection status and generate an authorised benign test
+where appropriate.
+
+**Status**
+
+Planned
+
+---
+
+## CTRL-END-002 — Endpoint Security Telemetry
+
+**Objective**
+
+Provide sufficient endpoint telemetry for security monitoring and
+investigation.
+
+**Technology**
+
+Sysmon + Windows Event Logging
+
+**Related Risks**
+
+- R-003
+- R-008
+- R-001
+
+**Status**
+
+Planned
+
+---
+
+# LOG — Logging and Monitoring
+
+## CTRL-LOG-001 — Security Event Logging
+
+**Objective**
+
+Record security-relevant system and authentication activity.
+
+**Technology**
+
+Windows Security Event Log
+
+**Related Risks**
+
+- R-001
+- R-003
+- R-008
+- R-010
+
+**Validation**
+
+Generate controlled authentication activity and verify the expected
+security event is recorded.
+
+**Status**
+
+Planned
+
+---
+
+## CTRL-LOG-002 — Centralised Security Monitoring
+
+**Objective**
+
+Centralise security telemetry to support detection and investigation.
+
+**Technology**
+
+Wazuh
+
+**Related Risks**
+
+- R-001
+- R-003
+- R-008
+- R-010
+
+**Project Validation**
+
+WIN-REC01 / WIN-CLIN01
+        |
+        v
+Wazuh Agent
+        |
+        v
+Wazuh Manager
+        |
+        v
+Event Visible
+        |
+        v
+Analyst Investigation
+
+**Status**
+
+Planned
+
+---
+
+# VUL — Vulnerability Management
+
+## CTRL-VUL-001 — Authenticated Vulnerability Assessment
+
+**Objective**
+
+Identify known vulnerabilities and security weaknesses affecting
+authorised systems.
+
+**Related Risks**
+
+- R-004
+- R-011
+
+**Requirement**
+
+Representative systems must be assessed using an authorised
+vulnerability-management process.
+
+**Validation**
+
+Initial Scan
+    |
+    v
+Finding
+    |
+    v
+Risk Assessment
+    |
+    v
+Remediation
+    |
+    v
+Rescan
+
+**Status**
+
+Planned
+
+---
+
+## CTRL-VUL-002 — Vulnerability Remediation Validation
+
+**Objective**
+
+Confirm that reported remediation actually removes or reduces the
+identified vulnerability.
+
+**Requirement**
+
+Material remediated vulnerabilities should be rescanned or otherwise
+validated.
+
+**Status**
+
+Planned
+
+---
+
+# BAK — Backup and Recovery
+
+## CTRL-BAK-001 — Protected Backup
+
+**Objective**
+
+Maintain recoverable copies of important information and
+configuration.
+
+**Related Risks**
+
+- R-003
+- R-009
+
+**Status**
+
+Planned
+
+---
+
+## CTRL-BAK-002 — Recovery Testing
+
+**Objective**
+
+Verify that backup information can actually be restored.
+
+**Requirement**
+
+Backup success alone is insufficient evidence of recoverability.
+
+**Project Validation**
+
+Create data
+    |
+    v
+Backup
+    |
+    v
+Remove / alter lab copy
+    |
+    v
+Restore
+    |
+    v
+Validate integrity
+
+**Status**
+
+Planned
+
+---
+
+# CLD — Cloud Security
+
+## CTRL-CLD-001 — Cloud Least Privilege
+
+**Objective**
+
+Restrict cloud identities to required permissions.
+
+**Technology**
+
+AWS IAM
+
+**Related Risks**
+
+- R-007
+- R-001
+
+**Status**
+
+Planned
+
+---
+
+## CTRL-CLD-002 — Cloud Audit Logging
+
+**Objective**
+
+Record security-relevant cloud administrative activity.
+
+**Technology**
+
+AWS CloudTrail where supported by the project environment.
+
+**Related Risks**
+
+- R-007
+- R-008
+
+**Status**
+
+Planned
+
+---
+
+## CTRL-CLD-003 — Cloud Network Access Restriction
+
+**Objective**
+
+Restrict unnecessary network exposure of cloud resources.
+
+**Technology**
+
+AWS Security Groups / applicable network controls
+
+**Related Risk**
+
+R-007
+
+**Status**
+
+Planned
+
+---
+
+# MED — Medical / IoT Security
+
+## CTRL-MED-001 — Medical Technology Segmentation
+
+**Objective**
+
+Reduce exposure and lateral-movement opportunities involving
+restricted or legacy medical technology.
+
+**Related Risk**
+
+R-011
+
+**Implementation Concept**
+
+Medical / IoT VLAN
+       |
+       v
+Firewall
+       |
+       +--> Explicit authorised systems
+       |
+       X--> Unnecessary enterprise access
+       |
+       X--> General Internet access where unnecessary
+
+**Status**
+
+Design / Future Lab Representation
+
+---
+
+## CTRL-MED-002 — Legacy Technology Compensating Controls
+
+**Objective**
+
+Reduce risk where standard endpoint controls cannot safely be
+implemented.
+
+**Related Risk**
+
+R-011
+
+**Related Exception**
+
+EX-001
+
+**Representative Controls**
+
+- segmentation;
+- firewall restrictions;
+- administrative restrictions;
+- monitoring;
+- vendor engagement;
+- replacement roadmap.
+
+**Status**
+
+Design

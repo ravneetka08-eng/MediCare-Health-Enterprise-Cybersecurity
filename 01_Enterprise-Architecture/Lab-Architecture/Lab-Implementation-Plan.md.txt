@@ -1,0 +1,364 @@
+# Enterprise Cybersecurity Lab Implementation Plan
+
+## Document Control
+
+| Field | Value |
+|---|---|
+| Organisation | MediCare Health Australia (Fictional) |
+| Environment | Authorised Student Cybersecurity Laboratory |
+| Document Owner | Security Engineering |
+| Version | 1.0 |
+| Status | Design Baseline |
+| Production Data | Prohibited |
+| Patient Data | Synthetic Only |
+
+---
+
+# 1. Purpose
+
+This document defines the technical laboratory used to implement,
+test and demonstrate representative cybersecurity controls for the
+fictional healthcare enterprise.
+
+The laboratory is not intended to reproduce the scale of a real
+healthcare organisation.
+
+Instead, it provides representative systems through which enterprise
+security architecture, controls, testing, monitoring, incident
+response and assurance activities can be practically demonstrated.
+
+---
+
+# 2. Design Philosophy
+
+The project uses:
+
+Representative Enterprise Architecture
+                |
+                v
+Reduced-Scale Technical Lab
+                |
+                v
+Real Configuration
+                |
+                v
+Real Control Testing
+                |
+                v
+Real Lab Evidence
+                |
+                v
+Enterprise Risk / Control Analysis
+
+The enterprise architecture represents organisational scale.
+
+The lab represents selected enterprise security patterns.
+
+---
+
+# 3. Primary Technical Objectives
+
+The lab will support practical demonstration of:
+
+- Windows Server administration;
+- Active Directory Domain Services;
+- enterprise DNS;
+- organisational-unit design;
+- workforce identity administration;
+- role-based access control;
+- least privilege;
+- privileged-account separation;
+- Group Policy;
+- Windows endpoint administration;
+- endpoint security;
+- Windows security logging;
+- Sysmon telemetry;
+- centralised security monitoring;
+- Wazuh SIEM/XDR concepts;
+- vulnerability management;
+- security hardening;
+- network security concepts;
+- AWS cloud security;
+- backup and restoration;
+- security detection;
+- incident response;
+- digital forensic investigation;
+- control testing;
+- evidence collection;
+- risk reassessment.
+
+---
+
+# 4. Enterprise-to-Lab Mapping
+
+| Enterprise Capability | Lab Representation |
+|---|---|
+| Enterprise Identity Platform | Windows Server Active Directory |
+| Enterprise DNS | AD-integrated DNS |
+| Workforce Endpoints | Representative Windows clients |
+| Reception Department | Reception workstation/user |
+| Clinical Department | Clinical workstation/user |
+| IT Administration | Privileged administration identity |
+| Security Operations | Wazuh monitoring environment |
+| Endpoint Telemetry | Windows Event Logging + Sysmon |
+| Endpoint Protection | Microsoft Defender |
+| Vulnerability Management | Authorised vulnerability scanner |
+| Cloud Platform | AWS student environment |
+| Patient Information | Synthetic patient dataset |
+| Backup Platform | Representative protected lab backup |
+| Medical / IoT Environment | Safe simulated network/security scenario |
+| SOC Investigation | Controlled detection and incident exercise |
+
+---
+
+# 5. Scope Boundary
+
+## In Scope
+
+Only systems owned and controlled within the project laboratory.
+
+This includes:
+
+- project virtual machines;
+- project-created AWS resources;
+- synthetic data;
+- project network segments;
+- authorised security testing.
+
+## Out of Scope
+
+The following are prohibited:
+
+- real healthcare systems;
+- real hospital infrastructure;
+- real patient information;
+- unauthorised systems;
+- public vulnerability scanning without permission;
+- real credential harvesting;
+- disruptive testing against third parties;
+- exploitation of real medical devices.
+
+---
+
+# 6. Lab Build Phases
+
+## Phase 1 — Core Infrastructure
+
+Build:
+
+- virtualisation environment;
+- virtual networks;
+- DC01;
+- Active Directory;
+- DNS.
+
+## Phase 2 — Enterprise Identity
+
+Build:
+
+- organisational units;
+- users;
+- security groups;
+- service identities where required;
+- administrative identities;
+- RBAC;
+- Group Policy.
+
+## Phase 3 — Enterprise Endpoints
+
+Build:
+
+- WIN-REC01;
+- WIN-CLIN01;
+- domain membership;
+- role-specific access;
+- endpoint security controls.
+
+## Phase 4 — Security Hardening
+
+Implement representative:
+
+- account policies;
+- host firewall;
+- Defender configuration;
+- Windows security settings;
+- selected hardening controls.
+
+## Phase 5 — Security Monitoring
+
+Implement:
+
+- Windows auditing;
+- Sysmon;
+- Wazuh;
+- endpoint log forwarding;
+- representative detection rules.
+
+## Phase 6 — Vulnerability Management
+
+Perform:
+
+- authorised scanning;
+- finding analysis;
+- prioritisation;
+- remediation;
+- rescanning;
+- evidence collection.
+
+## Phase 7 — Cloud Security
+
+Use the authorised AWS student environment to demonstrate selected:
+
+- IAM;
+- least privilege;
+- MFA where supported;
+- network security;
+- logging;
+- configuration review.
+
+## Phase 8 — Backup and Recovery
+
+Perform:
+
+- backup;
+- controlled loss/change scenario;
+- restoration;
+- integrity validation;
+- recovery evidence.
+
+## Phase 9 — Detection and Incident Exercise
+
+Generate controlled security events.
+
+Perform:
+
+- alert identification;
+- triage;
+- investigation;
+- containment;
+- recovery;
+- documentation.
+
+## Phase 10 — Forensic Investigation
+
+Perform representative:
+
+- evidence identification;
+- collection;
+- integrity verification where appropriate;
+- timeline analysis;
+- artefact examination;
+- reporting.
+
+## Phase 11 — Assurance
+
+Link:
+
+Control
+    |
+    v
+Test
+    |
+    v
+Evidence
+    |
+    v
+Finding
+    |
+    v
+Remediation
+    |
+    v
+Retest
+    |
+    v
+Residual Risk
+
+---
+
+# 7. Production-vs-Lab Limitation
+
+A real healthcare enterprise would normally contain substantially
+greater scale and complexity, including:
+
+- multiple domain controllers;
+- high availability;
+- multiple sites;
+- enterprise firewalls;
+- dedicated network infrastructure;
+- large endpoint fleets;
+- enterprise EDR;
+- enterprise SIEM infrastructure;
+- privileged-access platforms;
+- redundant infrastructure;
+- formal backup platforms;
+- production clinical applications;
+- medical devices;
+- vendor-managed systems;
+- dedicated SOC capability.
+
+These are represented conceptually where implementing them at real
+scale is impractical for a student-controlled laboratory.
+
+The project must clearly distinguish between:
+
+1. technically implemented controls;
+2. simulated controls;
+3. architecture-only controls.
+
+---
+
+# 8. Evidence Principle
+
+Every significant technical implementation should produce evidence.
+
+Example:
+
+Active Directory
+      |
+      v
+Configuration
+      |
+      v
+Control Test
+      |
+      v
+Screenshot / Output / Event
+      |
+      v
+Evidence ID
+      |
+      v
+Evidence Register
+
+Evidence must demonstrate an activity rather than exist solely for
+visual presentation.
+
+---
+
+# 9. Cost Principle
+
+The project should use free, open-source, trial, educational or
+student-access technologies where practical.
+
+AWS resources must remain within the user's available educational
+account limits wherever possible.
+
+Resources that may incur charges must not be created without
+understanding the associated cost implications.
+
+---
+
+# 10. Safety Principle
+
+The environment is a defensive cybersecurity learning laboratory.
+
+Deliberately vulnerable configurations must:
+
+- remain isolated where practical;
+- contain no real sensitive information;
+- be created only when required for an authorised test;
+- be restored or remediated following testing.
+
+Virtual-machine snapshots should be taken before significant
+configuration changes or controlled failure scenarios.
