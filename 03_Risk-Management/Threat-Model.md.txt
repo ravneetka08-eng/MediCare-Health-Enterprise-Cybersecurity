@@ -1,0 +1,525 @@
+# Enterprise Healthcare Cybersecurity Threat Model
+
+## Purpose
+
+This threat model identifies representative cyber threat scenarios
+that could affect MediCare Health Australia.
+
+The objective is to connect realistic threat scenarios with:
+
+- enterprise assets;
+- business impact;
+- security controls;
+- detection requirements;
+- incident response;
+- recovery requirements; and
+- practical security testing.
+
+The organisation and all technical scenarios are fictional.
+
+---
+
+# Threat Modelling Approach
+
+Threat scenarios are considered using the following structure:
+
+Threat Actor
+    ↓
+Attack Vector
+    ↓
+Affected Asset
+    ↓
+Security Weakness
+    ↓
+Potential Impact
+    ↓
+Preventive Control
+    ↓
+Detective Control
+    ↓
+Response / Recovery
+
+This project does not assume that preventive controls will always
+succeed.
+
+Detection, response and recovery capability are therefore included
+as part of the security architecture.
+
+---
+
+# Representative Threat Actors
+
+## TA-01 — Cybercriminal
+
+Motivations may include:
+
+- financial gain;
+- ransomware;
+- credential theft;
+- data theft;
+- extortion.
+
+---
+
+## TA-02 — Compromised Workforce Account
+
+A legitimate user account may be controlled by an external attacker
+following credential theft or another account-compromise event.
+
+Risks include:
+
+- legitimate credentials bypassing perimeter controls;
+- unauthorised data access;
+- privilege escalation;
+- lateral movement.
+
+---
+
+## TA-03 — Malicious Insider
+
+A workforce member or contractor may intentionally misuse legitimate
+access.
+
+Risks include:
+
+- inappropriate patient-record access;
+- information theft;
+- sabotage;
+- abuse of privilege.
+
+---
+
+## TA-04 — Accidental Insider
+
+A legitimate user may unintentionally create a security incident.
+
+Examples:
+
+- misdirected information;
+- weak password handling;
+- incorrect permissions;
+- unsafe cloud configuration;
+- accidental deletion.
+
+---
+
+## TA-05 — Compromised Third Party
+
+A supplier, technology provider or trusted partner may become an
+attack path into the organisation.
+
+---
+
+# TM-001 — Workforce Credential Compromise
+
+## Scenario
+
+A workforce member is targeted by a credential-theft technique.
+
+The attacker obtains valid credentials and attempts to authenticate
+to organisational resources.
+
+## Potentially Affected Assets
+
+- AST-005 Enterprise Identity Accounts
+- AST-007 WIN-REC01
+- AST-008 WIN-CLIN01
+- AST-016 Patient Clinical Records
+
+## Potential Impact
+
+- unauthorised authentication;
+- patient-information access;
+- lateral movement;
+- further credential theft.
+
+## Preventive Controls
+
+- MFA where applicable;
+- secure authentication;
+- least privilege;
+- password controls;
+- user awareness;
+- endpoint security.
+
+## Detective Controls
+
+- failed-login monitoring;
+- unusual authentication detection;
+- endpoint telemetry;
+- centralised logging;
+- account-activity investigation.
+
+## Project Validation
+
+LAB / SIMULATED
+
+This scenario will form part of the project's controlled incident
+exercise.
+
+---
+
+# TM-002 — Excessive Privilege
+
+## Scenario
+
+A standard workforce account receives permissions beyond those
+required for its business role.
+
+Example:
+
+A Reception user receives administrative or clinical-record access
+that is unnecessary for patient-registration duties.
+
+## Potential Impact
+
+- unauthorised information access;
+- security-control bypass;
+- privilege abuse;
+- increased impact of account compromise.
+
+## Preventive Controls
+
+- RBAC;
+- least privilege;
+- privileged account separation;
+- access approval;
+- Joiner, Mover and Leaver processes.
+
+## Detective Controls
+
+- access reviews;
+- privileged-group monitoring;
+- account-change logging;
+- security alerts.
+
+## Project Validation
+
+LAB
+
+The project will deliberately test representative access boundaries.
+
+---
+
+# TM-003 — Ransomware / Endpoint Compromise
+
+## Scenario
+
+A workforce endpoint becomes compromised and malicious activity
+attempts to affect organisational information or services.
+
+## Potential Impact
+
+- information encryption;
+- service disruption;
+- data loss;
+- lateral movement;
+- backup compromise.
+
+## Preventive Controls
+
+- patching;
+- endpoint protection;
+- application control concepts;
+- least privilege;
+- segmentation;
+- security hardening.
+
+## Detective Controls
+
+- endpoint telemetry;
+- Sysmon;
+- Wazuh;
+- Windows Event Logs;
+- behavioural detections.
+
+## Recovery Controls
+
+- protected backups;
+- tested restoration;
+- incident-response procedures.
+
+## Project Validation
+
+CONTROLLED SIMULATION
+
+No destructive ransomware or real malware will be deployed.
+
+---
+
+# TM-004 — Unpatched Vulnerability
+
+## Scenario
+
+A server or endpoint contains a known security vulnerability because
+patching or remediation has not occurred.
+
+## Potential Impact
+
+- system compromise;
+- privilege escalation;
+- service disruption;
+- lateral movement.
+
+## Controls
+
+- vulnerability scanning;
+- patch management;
+- risk-based remediation;
+- compensating controls;
+- rescanning and verification.
+
+## Project Validation
+
+LAB
+
+The project will perform authorised vulnerability assessment,
+remediation and rescanning.
+
+---
+
+# TM-005 — Inappropriate Patient Record Access
+
+## Scenario
+
+A user accesses synthetic patient information outside their
+authorised business role.
+
+Possible causes include:
+
+- excessive permissions;
+- compromised credentials;
+- insider misuse;
+- weak application access controls.
+
+## Potential Impact
+
+- privacy breach;
+- unauthorised disclosure;
+- loss of trust;
+- regulatory consequences.
+
+## Controls
+
+- RBAC;
+- least privilege;
+- access auditing;
+- security monitoring;
+- periodic access review.
+
+## Project Validation
+
+LAB / SIMULATED
+
+Synthetic patient information will be used.
+
+---
+
+# TM-006 — Former Employee Retains Access
+
+## Scenario
+
+An employee leaves the organisation but their account remains active.
+
+## Potential Impact
+
+- unauthorised authentication;
+- information access;
+- misuse of organisational resources.
+
+## Controls
+
+- Joiner, Mover and Leaver process;
+- HR-to-IT notification;
+- account disablement;
+- access review;
+- authentication monitoring.
+
+## Project Validation
+
+LAB
+
+A representative former-employee account will be tested.
+
+---
+
+# TM-007 — AWS Misconfiguration
+
+## Scenario
+
+A cloud resource is configured with excessive access or insufficient
+security controls.
+
+Potential examples:
+
+- excessive IAM permissions;
+- overly permissive Security Group;
+- inadequate logging;
+- inappropriate S3 permissions.
+
+## Potential Impact
+
+- cloud compromise;
+- information exposure;
+- unauthorised administrative activity.
+
+## Controls
+
+- IAM least privilege;
+- MFA where available;
+- restricted Security Groups;
+- CloudTrail;
+- CloudWatch;
+- encryption;
+- configuration review.
+
+## Project Validation
+
+AWS LAB
+
+Subject to student-account service availability and restrictions.
+
+---
+
+# TM-008 — Security Logging Failure
+
+## Scenario
+
+Security-relevant activity occurs but required telemetry is not
+collected, retained or monitored.
+
+## Potential Impact
+
+- delayed detection;
+- incomplete investigation;
+- inability to reconstruct incident activity;
+- reduced assurance.
+
+## Controls
+
+- centralised logging;
+- log-source monitoring;
+- time synchronisation;
+- protected logs;
+- alerting;
+- retention requirements.
+
+## Project Validation
+
+LAB
+
+---
+
+# TM-009 — Backup Compromise or Recovery Failure
+
+## Scenario
+
+Backups are deleted, modified, unavailable or cannot be restored
+during a cybersecurity incident.
+
+## Potential Impact
+
+- prolonged service disruption;
+- permanent data loss;
+- increased ransomware impact.
+
+## Controls
+
+- protected backup storage;
+- restricted administrative access;
+- integrity verification;
+- recovery testing;
+- separation from normal user access.
+
+## Project Validation
+
+LAB
+
+A controlled restore test will be performed.
+
+---
+
+# TM-010 — Privileged Account Compromise
+
+## Scenario
+
+An administrative identity is compromised or misused.
+
+## Potential Impact
+
+- Active Directory compromise;
+- security-control modification;
+- account creation;
+- lateral movement;
+- log tampering;
+- widespread system compromise.
+
+## Controls
+
+- separate privileged accounts;
+- least privilege;
+- enhanced monitoring;
+- restricted administrative logon;
+- strong authentication;
+- privileged activity logging.
+
+## Project Validation
+
+LAB
+
+---
+
+# TM-011 — Medical Device / Legacy System Risk
+
+## Scenario
+
+A clinical or biomedical device relies on legacy technology that
+cannot be patched or hardened using standard enterprise controls.
+
+## Potential Impact
+
+- device compromise;
+- lateral movement;
+- clinical service disruption.
+
+## Controls
+
+- segmentation;
+- restricted communication;
+- monitoring;
+- vendor coordination;
+- compensating controls;
+- formal security exception.
+
+## Project Validation
+
+DESIGN ONLY
+
+---
+
+# TM-012 — Third-Party Compromise
+
+## Scenario
+
+A trusted supplier or technology provider becomes compromised and
+creates a pathway into the healthcare environment.
+
+## Potential Impact
+
+- unauthorised access;
+- data exposure;
+- supply-chain compromise;
+- service disruption.
+
+## Controls
+
+- third-party risk assessment;
+- least-privilege integration;
+- contractual security requirements;
+- logging;
+- access review;
+- incident coordination.
+
+## Project Validation
+
+DESIGN / TABLETOP

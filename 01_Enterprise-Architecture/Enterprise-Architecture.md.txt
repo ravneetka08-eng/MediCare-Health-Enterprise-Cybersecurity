@@ -1,0 +1,387 @@
+# Enterprise Security Architecture
+
+## Purpose
+
+This document defines the representative enterprise technology
+architecture and major security trust zones used by MediCare Health
+Australia.
+
+The architecture is fictional and is designed to support security
+risk assessment, control implementation, incident simulation and
+security assurance activities.
+
+---
+
+# Architecture Principles
+
+The architecture follows the following security principles:
+
+1. Least privilege
+2. Defence in depth
+3. Network segmentation
+4. Centralised identity
+5. Centralised security monitoring
+6. Protected backup and recovery
+7. Separation of administrative functions
+8. Controlled access to sensitive clinical information
+9. Logging of security-relevant activity
+10. Explicit trust rather than unrestricted connectivity
+
+---
+
+# Enterprise Trust Zones
+
+## ZONE-01 — External / Internet
+
+Represents networks and services outside organisational control.
+
+Examples:
+
+- Internet
+- external SaaS services
+- external partners
+- remote users
+
+Trust Level: Untrusted
+
+Primary Controls:
+
+- firewalling;
+- secure remote access;
+- MFA;
+- web/email security;
+- network monitoring.
+
+Project Status: DESIGN ONLY
+
+---
+
+## ZONE-02 — Corporate User Zone
+
+Contains standard business endpoints used by:
+
+- reception;
+- finance;
+- HR;
+- administration;
+- general corporate staff.
+
+Representative Lab Asset:
+
+WIN-REC01
+
+Trust Level: Low to Medium
+
+Primary Risks:
+
+- phishing;
+- credential theft;
+- malware;
+- excessive privileges;
+- unauthorised access.
+
+Primary Controls:
+
+- endpoint protection;
+- least privilege;
+- Group Policy;
+- patching;
+- logging;
+- application controls;
+- identity controls.
+
+Project Status: LAB
+
+---
+
+## ZONE-03 — Clinical User Zone
+
+Contains endpoints used to access clinical services.
+
+Representative Lab Asset:
+
+WIN-CLIN01
+
+Trust Level: Medium
+
+Primary Risks:
+
+- credential compromise;
+- unauthorised patient-data access;
+- malware;
+- availability disruption;
+- inappropriate privilege.
+
+Primary Controls:
+
+- strong authentication;
+- RBAC;
+- endpoint hardening;
+- security monitoring;
+- restricted network access;
+- patch management.
+
+Project Status: LAB
+
+---
+
+## ZONE-04 — Identity and Infrastructure Zone
+
+Contains critical identity and infrastructure services.
+
+Representative Lab Asset:
+
+DC01
+
+Services:
+
+- Active Directory Domain Services;
+- DNS;
+- Group Policy.
+
+Trust Level: High
+
+Primary Risks:
+
+- privileged account compromise;
+- credential theft;
+- domain compromise;
+- unauthorised policy changes;
+- service disruption.
+
+Primary Controls:
+
+- privileged account separation;
+- restricted administrative access;
+- secure configuration;
+- logging;
+- patching;
+- backup;
+- monitoring.
+
+Project Status: LAB
+
+---
+
+## ZONE-05 — Clinical Application and Data Zone
+
+Contains systems responsible for clinical applications and sensitive
+patient information.
+
+Representative Systems:
+
+- Electronic Medical Record;
+- Patient Administration System;
+- clinical database;
+- pathology;
+- pharmacy;
+- imaging systems.
+
+Trust Level: High
+
+Primary Risks:
+
+- patient-data breach;
+- unauthorised modification;
+- ransomware;
+- excessive access;
+- service disruption.
+
+Primary Controls:
+
+- RBAC;
+- encryption;
+- segmentation;
+- database/application auditing;
+- backup;
+- monitoring;
+- vulnerability management.
+
+Project Status:
+
+SIMULATED / DESIGN ONLY
+
+---
+
+## ZONE-06 — Medical / IoT Zone
+
+Contains network-connected medical and biomedical devices.
+
+Trust Level: Restricted
+
+Primary Risks:
+
+- legacy operating systems;
+- unsupported software;
+- limited patching capability;
+- insecure protocols;
+- lateral movement;
+- operational disruption.
+
+Primary Controls:
+
+- network segmentation;
+- strict communication rules;
+- asset inventory;
+- monitoring;
+- vendor management;
+- compensating controls.
+
+Project Status: DESIGN ONLY
+
+---
+
+## ZONE-07 — Security Management Zone
+
+Contains cybersecurity monitoring and assessment infrastructure.
+
+Representative Systems:
+
+- Wazuh;
+- vulnerability scanner;
+- security administration tools.
+
+Trust Level: High
+
+Primary Controls:
+
+- restricted administrative access;
+- strong authentication;
+- secure configuration;
+- log protection;
+- controlled connectivity.
+
+Project Status: LAB
+
+---
+
+## ZONE-08 — Backup and Recovery Zone
+
+Contains protected backup copies and recovery infrastructure.
+
+Trust Level: Highly Restricted
+
+Primary Risks:
+
+- ransomware deleting backups;
+- privileged compromise;
+- backup corruption;
+- failed restoration.
+
+Primary Controls:
+
+- restricted access;
+- separate administrative permissions;
+- protected backup copies;
+- recovery testing;
+- monitoring;
+- integrity verification.
+
+Project Status: LAB
+
+---
+
+## ZONE-09 — Cloud / AWS Zone
+
+Contains the representative AWS cloud environment.
+
+Representative Services:
+
+- IAM;
+- VPC;
+- EC2;
+- S3;
+- CloudTrail;
+- CloudWatch.
+
+Trust Level:
+
+Controlled cloud trust boundary
+
+Primary Risks:
+
+- excessive IAM permissions;
+- exposed storage;
+- insecure Security Groups;
+- leaked credentials;
+- insufficient logging;
+- insecure cloud configuration.
+
+Primary Controls:
+
+- IAM least privilege;
+- MFA where supported;
+- network restrictions;
+- encryption;
+- CloudTrail;
+- monitoring;
+- configuration review.
+
+Project Status: AWS LAB
+
+---
+
+# High-Level Data and Security Flow
+
+External services do not receive unrestricted access to internal
+systems.
+
+Representative workflow:
+
+Internet / External Services
+        |
+        v
+Security Edge
+        |
+        +--------------------------+
+        |                          |
+        v                          v
+Corporate User Zone         Cloud Services
+        |
+        v
+Identity Services
+        |
+        +--------------------------+
+        |                          |
+        v                          v
+Clinical User Zone     Clinical Application Zone
+                                   |
+                                   v
+                           Patient Information
+                                   |
+                                   v
+                          Backup / Recovery
+
+Security-relevant events from representative systems are forwarded
+to the Security Management Zone for monitoring and investigation.
+
+---
+
+# Segmentation Principle
+
+A system being connected to the enterprise network does not imply
+that it should communicate with every other enterprise system.
+
+Communication between zones should be based on:
+
+- documented business need;
+- approved protocols;
+- minimum required ports;
+- authenticated access;
+- least privilege;
+- logging and monitoring;
+- risk assessment.
+
+---
+
+# Student Lab Limitation
+
+The physical and logical segmentation of a real healthcare enterprise
+cannot be reproduced at full scale within the student environment.
+
+Representative virtual networks and host controls will therefore be
+used to demonstrate selected segmentation and access-control
+principles.
+
+The project will clearly distinguish between implemented controls
+and enterprise design recommendations.

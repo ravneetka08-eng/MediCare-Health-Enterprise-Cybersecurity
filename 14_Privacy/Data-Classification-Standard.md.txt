@@ -1,0 +1,171 @@
+# Data Classification Standard
+
+## Purpose
+
+This standard defines the information-classification model used by
+MediCare Health Australia.
+
+Information classification helps determine the security controls
+required to protect information throughout its lifecycle.
+
+The organisation and all information used in the technical laboratory
+are fictional.
+
+---
+
+# Classification Levels
+
+## CLASS-01 — Public
+
+Information approved for public disclosure.
+
+Examples:
+
+- public website content;
+- published service information;
+- public contact details;
+- approved marketing material.
+
+### Security Requirements
+
+Confidentiality: Low
+
+Integrity: Medium
+
+Availability: Medium
+
+Access:
+Public access permitted.
+
+---
+
+## CLASS-02 — Internal
+
+Information intended for organisational use but where unauthorised
+disclosure would normally create limited harm.
+
+Examples:
+
+- internal procedures;
+- general internal communications;
+- training material;
+- non-sensitive operational documentation.
+
+### Security Requirements
+
+Confidentiality: Medium
+
+Integrity: Medium
+
+Availability: Medium
+
+Access:
+Authorised workforce members.
+
+---
+
+## CLASS-03 — Confidential
+
+Sensitive organisational information where unauthorised disclosure,
+modification or loss could materially affect the organisation or
+individuals.
+
+Examples:
+
+- employee records;
+- financial information;
+- security documentation;
+- vulnerability reports;
+- security logs;
+- internal architecture information.
+
+### Security Requirements
+
+Confidentiality: High
+
+Integrity: High
+
+Availability: Medium to High
+
+Access:
+Role-based and business-need access.
+
+---
+
+## CLASS-04 — Restricted
+
+Highly sensitive information requiring the strongest level of
+protection within this project.
+
+Examples:
+
+- patient clinical information;
+- patient identifying information;
+- authentication secrets;
+- privileged credentials;
+- selected backup information;
+- sensitive incident evidence.
+
+### Security Requirements
+
+Confidentiality: Critical
+
+Integrity: Critical
+
+Availability: High to Critical depending on the system.
+
+Access:
+Strictly limited according to authorised role and business need.
+
+---
+
+# General Handling Requirements
+
+## Public
+
+May be shared externally when approved.
+
+## Internal
+
+Must remain within approved organisational systems unless authorised.
+
+## Confidential
+
+Should use:
+
+- authenticated access;
+- least privilege;
+- appropriate encryption;
+- access logging;
+- approved storage;
+- controlled sharing.
+
+## Restricted
+
+Should use stronger protections including:
+
+- strict role-based access control;
+- least privilege;
+- strong authentication;
+- encryption where appropriate;
+- access monitoring;
+- restricted administrative access;
+- controlled backup;
+- security logging;
+- periodic access review;
+- incident-response procedures.
+
+---
+
+# Laboratory Data Requirement
+
+No real patient or employee information will be used.
+
+All healthcare and workforce information used during technical testing
+will be synthetically generated.
+
+Synthetic information will still be treated according to the
+classification assigned to the information it represents.
+
+This allows security controls to be tested realistically without
+processing real sensitive information.

@@ -1,0 +1,319 @@
+# Patient Information Data Flow
+
+## Purpose
+
+This document describes the representative lifecycle and movement of
+patient information through the fictional healthcare environment.
+
+Understanding data flow supports:
+
+- access-control design;
+- network segmentation;
+- privacy assessment;
+- security monitoring;
+- incident response;
+- backup and recovery;
+- threat modelling.
+
+---
+
+# Representative Patient Journey
+
+A simplified patient information workflow is:
+
+Patient
+   |
+   v
+Reception / Registration
+   |
+   v
+Patient Administration System
+   |
+   v
+Clinical Staff
+   |
+   v
+Electronic Medical Record
+   |
+   +-----------------------+
+   |                       |
+   v                       v
+Pathology                Pharmacy
+   |                       |
+   +-----------+-----------+
+               |
+               v
+       Clinical Information
+               |
+               v
+          Data Storage
+               |
+               v
+       Backup / Recovery
+
+Security-relevant activity is logged and forwarded to the
+security-monitoring environment.
+
+---
+
+# FLOW-001 — Patient Registration
+
+## Actor
+
+Reception / Patient Administration staff
+
+## Source
+
+Patient
+
+## Destination
+
+Patient Administration System
+
+## Information
+
+Representative information may include:
+
+- patient identifier;
+- name;
+- date of birth;
+- contact details;
+- appointment information.
+
+## Classification
+
+Restricted
+
+## Security Requirements
+
+- authenticated user;
+- authorised Reception role;
+- encrypted transport where applicable;
+- access logging;
+- minimum necessary access.
+
+---
+
+# FLOW-002 — Clinical Record Access
+
+## Actor
+
+Doctor / authorised clinician
+
+## Source
+
+Electronic Medical Record
+
+## Destination
+
+Clinical workstation
+
+## Information
+
+- patient identity;
+- clinical history;
+- diagnoses;
+- treatment information;
+- clinical notes.
+
+## Classification
+
+Restricted
+
+## Security Requirements
+
+- authenticated clinician;
+- role-based access;
+- least privilege;
+- access auditing;
+- secure endpoint;
+- appropriate session controls.
+
+---
+
+# FLOW-003 — Pathology Information
+
+## Actor
+
+Clinician / Pathology staff
+
+## Source
+
+Clinical / pathology system
+
+## Destination
+
+Electronic Medical Record
+
+## Information
+
+- pathology request;
+- patient identifier;
+- laboratory results.
+
+## Classification
+
+Restricted
+
+## Security Requirements
+
+- authenticated system/user;
+- integrity protection;
+- restricted access;
+- logging;
+- controlled system-to-system communication.
+
+---
+
+# FLOW-004 — Pharmacy Information
+
+## Actor
+
+Clinician / Pharmacist
+
+## Source
+
+Clinical system
+
+## Destination
+
+Pharmacy / medication system
+
+## Information
+
+- patient identifier;
+- medication order;
+- medication information.
+
+## Classification
+
+Restricted
+
+## Security Requirements
+
+- authorised access;
+- strong integrity protection;
+- logging;
+- restricted network communication;
+- availability controls.
+
+---
+
+# FLOW-005 — Security Logging
+
+## Source
+
+Representative enterprise systems
+
+Examples:
+
+- DC01;
+- WIN-REC01;
+- WIN-CLIN01;
+- security systems;
+- selected AWS services.
+
+## Destination
+
+Security Management Zone
+
+## Information
+
+Security telemetry may include:
+
+- authentication events;
+- account changes;
+- administrative activity;
+- endpoint security events;
+- selected file-access events;
+- PowerShell activity;
+- cloud API events.
+
+## Classification
+
+Confidential
+
+## Security Requirements
+
+- restricted access;
+- integrity protection;
+- centralised collection;
+- timestamping;
+- retention;
+- monitoring.
+
+---
+
+# FLOW-006 — Backup
+
+## Source
+
+Selected critical systems and data
+
+## Destination
+
+Backup and Recovery Zone
+
+## Information
+
+Protected copies of selected organisational information.
+
+## Classification
+
+Equivalent to or greater than the sensitivity of the source data.
+
+## Security Requirements
+
+- restricted backup administration;
+- protected storage;
+- integrity verification;
+- recovery testing;
+- separation from standard user access;
+- monitoring.
+
+---
+
+# FLOW-007 — Cloud Security Telemetry
+
+## Source
+
+AWS environment
+
+## Destination
+
+AWS logging and monitoring services
+
+Representative services may include:
+
+- AWS CloudTrail;
+- Amazon CloudWatch.
+
+## Information
+
+- authentication activity;
+- API calls;
+- administrative actions;
+- selected cloud security events.
+
+## Classification
+
+Confidential
+
+## Security Requirements
+
+- logging enabled;
+- restricted log access;
+- monitoring;
+- retention;
+- protection against unauthorised modification.
+
+---
+
+# Data Flow Security Principle
+
+Access to information is determined by business role and legitimate
+need rather than simply by network connectivity.
+
+A user being connected to the organisation's network does not imply
+that the user is authorised to access all information available on
+that network.

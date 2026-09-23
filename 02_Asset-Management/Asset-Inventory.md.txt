@@ -1,0 +1,155 @@
+# Enterprise Asset Inventory
+
+## Purpose
+
+This register identifies representative technology and information
+assets used by MediCare Health Australia.
+
+The asset inventory supports:
+
+- cybersecurity risk assessment;
+- system ownership;
+- data classification;
+- vulnerability management;
+- access control;
+- incident response;
+- business continuity;
+- security monitoring; and
+- control assurance.
+
+The enterprise environment described here is fictional.
+
+Only selected assets will be implemented within the student laboratory.
+
+---
+
+# Asset Status
+
+The following implementation classifications are used:
+
+- **LAB** — technically implemented in the student laboratory.
+- **AWS LAB** — implemented using the authorised AWS student environment.
+- **SIMULATED** — represented using synthetic data or a controlled simulation.
+- **DESIGN ONLY** — included in the enterprise architecture but not technically implemented.
+
+---
+
+# Identity and Core Infrastructure
+
+| Asset ID | Asset | Function | Owner | Criticality | Project Status |
+|---|---|---|---|---|---|
+| AST-001 | Active Directory Domain Services | Central identity and authentication | IT Infrastructure | Critical | LAB |
+| AST-002 | Domain Controller DC01 | AD DS, DNS and Group Policy | IT Infrastructure | Critical | LAB |
+| AST-003 | DNS Service | Internal name resolution | IT Infrastructure | High | LAB |
+| AST-004 | Group Policy | Central Windows security configuration | IT Infrastructure | High | LAB |
+| AST-005 | Enterprise Identity Accounts | Workforce authentication identities | IT / HR | Critical | LAB |
+| AST-006 | Privileged Administrator Accounts | Administrative access | IT / Security | Critical | LAB |
+
+---
+
+# User Endpoints
+
+| Asset ID | Asset | Function | Owner | Criticality | Project Status |
+|---|---|---|---|---|---|
+| AST-007 | Reception Workstation WIN-REC01 | Patient administration and reception duties | Patient Administration | High | LAB |
+| AST-008 | Clinical Workstation WIN-CLIN01 | Representative clinician workstation | Clinical Operations | Critical | LAB |
+| AST-009 | IT Administration Workstation WIN-ADM01 | Representative privileged administration workstation | IT Infrastructure | Critical | LAB |
+
+---
+
+# Clinical Systems
+
+| Asset ID | Asset | Function | Owner | Criticality | Project Status |
+|---|---|---|---|---|---|
+| AST-010 | Electronic Medical Record System | Clinical patient records | Clinical Systems | Critical | SIMULATED |
+| AST-011 | Patient Administration System | Registration, admission and patient administration | Patient Administration | Critical | SIMULATED |
+| AST-012 | Pathology / Laboratory System | Laboratory orders and results | Pathology | Critical | DESIGN ONLY |
+| AST-013 | Pharmacy / Medication System | Medication and pharmacy workflow | Pharmacy | Critical | DESIGN ONLY |
+| AST-014 | Medical Imaging / PACS | Medical imaging storage and retrieval | Radiology | Critical | DESIGN ONLY |
+| AST-015 | Medical / IoT Devices | Representative connected clinical devices | Biomedical Engineering | Critical | DESIGN ONLY |
+
+---
+
+# Data Assets
+
+| Asset ID | Asset | Description | Owner | Classification | Criticality |
+|---|---|---|---|---|---|
+| AST-016 | Patient Clinical Records | Diagnoses, treatment and clinical information | Clinical Operations | Restricted | Critical |
+| AST-017 | Patient Identity Information | Names, identifiers and demographic information | Patient Administration | Restricted | Critical |
+| AST-018 | Employee / HR Records | Workforce information | Human Resources | Confidential | High |
+| AST-019 | Financial Information | Billing and financial records | Finance | Confidential | High |
+| AST-020 | Security Logs | Authentication, endpoint and security telemetry | Cybersecurity | Confidential | High |
+| AST-021 | Backup Data | Protected copies of business and clinical information | IT Infrastructure | Restricted | Critical |
+
+All patient and employee information used within the practical
+laboratory will be synthetic.
+
+---
+
+# Security Infrastructure
+
+| Asset ID | Asset | Function | Owner | Criticality | Project Status |
+|---|---|---|---|---|---|
+| AST-022 | Wazuh Security Platform | Centralised logging, monitoring and detection | Cybersecurity | High | LAB |
+| AST-023 | Vulnerability Scanner | Vulnerability identification and verification | Cybersecurity | High | LAB |
+| AST-024 | Sysmon | Enhanced Windows endpoint telemetry | Cybersecurity | Medium | LAB |
+| AST-025 | Microsoft Defender | Endpoint security capability | Cybersecurity / IT | High | LAB |
+| AST-026 | Wireshark | Network traffic analysis | Cybersecurity | Medium | LAB |
+| AST-027 | Autopsy | Digital forensic analysis | Cybersecurity / Incident Response | Medium | LAB |
+
+---
+
+# Backup and Recovery
+
+| Asset ID | Asset | Function | Owner | Criticality | Project Status |
+|---|---|---|---|---|---|
+| AST-028 | Backup Repository | Stores representative protected backups | IT Infrastructure | Critical | LAB |
+| AST-029 | Recovery Procedure | Defines controlled restoration process | IT Infrastructure | Critical | LAB |
+
+---
+
+# Cloud Environment
+
+| Asset ID | Asset | Function | Owner | Criticality | Project Status |
+|---|---|---|---|---|---|
+| AST-030 | AWS Account | Representative cloud environment | Cloud / IT | High | AWS LAB |
+| AST-031 | AWS IAM | Cloud identity and access management | Cloud / Security | Critical | AWS LAB |
+| AST-032 | Amazon S3 | Representative cloud data storage | Cloud / Application Owner | High | AWS LAB |
+| AST-033 | Amazon EC2 | Representative cloud compute | Cloud / IT | High | AWS LAB |
+| AST-034 | Amazon VPC | Cloud network isolation | Cloud / Network | High | AWS LAB |
+| AST-035 | AWS CloudTrail | Cloud API activity logging | Cybersecurity / Cloud | High | AWS LAB |
+| AST-036 | Amazon CloudWatch | Representative cloud monitoring | Cybersecurity / Cloud | Medium | AWS LAB |
+
+AWS implementation is subject to student-account availability,
+service restrictions and available credits.
+
+---
+
+# Enterprise Services
+
+| Asset ID | Asset | Function | Owner | Criticality | Project Status |
+|---|---|---|---|---|---|
+| AST-037 | Microsoft 365 | Email and collaboration | IT / Business | High | DESIGN ONLY / OPTIONAL |
+| AST-038 | Microsoft Entra ID | Cloud identity services | IT / Security | Critical | DESIGN ONLY / OPTIONAL |
+| AST-039 | SharePoint | Business document collaboration | Business / IT | High | DESIGN ONLY / OPTIONAL |
+| AST-040 | Firewall / Secure Edge | Network boundary protection | Network / Security | Critical | DESIGN ONLY |
+
+---
+
+# Asset Inventory Limitation
+
+This inventory represents the assets required to support the project's
+enterprise scenario.
+
+It is not intended to represent every asset that would exist within
+a real healthcare organisation.
+
+Assets classified as LAB or AWS LAB will be implemented and tested
+where practical.
+
+Assets classified as SIMULATED will be represented using controlled
+synthetic workflows or data.
+
+Assets classified as DESIGN ONLY are included to demonstrate
+enterprise architectural dependencies but will not be claimed as
+technically implemented.

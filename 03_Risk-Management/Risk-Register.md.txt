@@ -1,0 +1,69 @@
+# Enterprise Cybersecurity Risk Register
+
+## Purpose
+
+This register records representative cybersecurity risks affecting
+the fictional healthcare enterprise.
+
+Risk treatment decisions will consider:
+
+- likelihood;
+- business impact;
+- clinical impact;
+- privacy impact;
+- existing controls;
+- required treatment;
+- residual risk.
+
+---
+
+# Risk Rating Model
+
+## Likelihood
+
+1 — Rare  
+2 — Unlikely  
+3 — Possible  
+4 — Likely  
+5 — Almost Certain
+
+## Impact
+
+1 — Insignificant  
+2 — Minor  
+3 — Moderate  
+4 — Major  
+5 — Severe
+
+## Risk Score
+
+Risk Score = Likelihood × Impact
+
+| Score | Rating |
+|---|---|
+| 1–4 | Low |
+| 5–9 | Medium |
+| 10–16 | High |
+| 17–25 | Critical |
+
+Risk scoring supports prioritisation but does not replace professional
+judgement or consideration of clinical and business context.
+
+---
+
+# Initial Risk Register
+
+| Risk ID | Risk | Primary Asset | Likelihood | Impact | Score | Initial Rating | Planned Treatment |
+|---|---|---|---:|---:|---:|---|---|
+| R-001 | Workforce credential compromise | Enterprise Identity | 4 | 5 | 20 | Critical | Reduce |
+| R-002 | Excessive user privileges | Identity / Clinical Data | 4 | 4 | 16 | High | Reduce |
+| R-003 | Endpoint ransomware or malicious activity | Endpoints / Clinical Services | 4 | 5 | 20 | Critical | Reduce |
+| R-004 | Exploitation of unpatched vulnerabilities | Servers / Endpoints | 4 | 5 | 20 | Critical | Reduce |
+| R-005 | Unauthorised patient-record access | Patient Clinical Records | 3 | 5 | 15 | High | Reduce |
+| R-006 | Former employee retains access | Enterprise Identity | 3 | 4 | 12 | High | Reduce |
+| R-007 | Cloud security misconfiguration | AWS Environment | 3 | 4 | 12 | High | Reduce |
+| R-008 | Security events not detected | Security Monitoring | 4 | 4 | 16 | High | Reduce |
+| R-009 | Backup unavailable during incident | Backup / Recovery | 3 | 5 | 15 | High | Reduce |
+| R-010 | Privileged administrator compromise | Active Directory | 3 | 5 | 15 | High | Reduce |
+| R-011 | Legacy medical technology cannot meet standard controls | Medical / IoT | 4 | 4 | 16 | High | Mitigate / Exception |
+| R-012 | Third-party compromise affects organisation | Enterprise Services | 3 | 5 | 15 | High | Reduce / Transfer |

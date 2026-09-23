@@ -1,0 +1,121 @@
+# Crown-Jewel Assets
+
+## Purpose
+
+This document identifies information and technology assets whose
+compromise could create significant operational, privacy, security
+or clinical consequences for the fictional healthcare organisation.
+
+---
+
+## CJ-001 — Patient Clinical Information
+
+Related assets:
+
+- AST-016 Patient Clinical Records
+- AST-017 Patient Identity Information
+
+Security priorities:
+
+- Confidentiality: Critical
+- Integrity: Critical
+- Availability: Critical
+
+Potential impact:
+
+- privacy harm;
+- unauthorised disclosure;
+- inappropriate modification of clinical information;
+- disruption to clinical decision-making;
+- regulatory consequences;
+- loss of organisational trust.
+
+---
+
+## CJ-002 — Enterprise Identity Infrastructure
+
+Related assets:
+
+- AST-001 Active Directory
+- AST-002 DC01
+- AST-005 Enterprise Identity Accounts
+- AST-006 Privileged Administrator Accounts
+
+Security priorities:
+
+- Confidentiality: High
+- Integrity: Critical
+- Availability: Critical
+
+Potential impact:
+
+Compromise of enterprise identity infrastructure could allow an
+attacker to gain elevated access, impersonate users, move between
+systems and interfere with security controls.
+
+---
+
+## CJ-003 — Critical Clinical Systems
+
+Related assets:
+
+- AST-010 Electronic Medical Record System
+- AST-011 Patient Administration System
+- AST-012 Pathology / Laboratory System
+- AST-013 Pharmacy / Medication System
+- AST-014 Medical Imaging / PACS
+
+Security priorities:
+
+- Confidentiality: Critical
+- Integrity: Critical
+- Availability: Critical
+
+Potential impact:
+
+Disruption or unauthorised modification could affect healthcare
+operations and access to clinical information.
+
+---
+
+## CJ-004 — Backup and Recovery Capability
+
+Related assets:
+
+- AST-021 Backup Data
+- AST-028 Backup Repository
+- AST-029 Recovery Procedure
+
+Security priorities:
+
+- Confidentiality: High
+- Integrity: Critical
+- Availability: Critical
+
+Potential impact:
+
+Loss or compromise of backup capability could prevent effective
+recovery following ransomware, system failure or destructive
+cybersecurity incidents.
+
+---
+
+## CJ-005 — Security Monitoring Evidence
+
+Related assets:
+
+- AST-020 Security Logs
+- AST-022 Wazuh Security Platform
+- AST-035 AWS CloudTrail
+
+Security priorities:
+
+- Confidentiality: Medium
+- Integrity: Critical
+- Availability: High
+
+Potential impact:
+
+An attacker who can delete or modify security evidence may reduce
+the organisation's ability to detect, investigate and reconstruct
+security incidents.

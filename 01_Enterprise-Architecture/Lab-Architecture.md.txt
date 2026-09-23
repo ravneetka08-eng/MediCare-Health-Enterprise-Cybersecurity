@@ -1,0 +1,165 @@
+# Representative Cybersecurity Lab Architecture
+
+## Purpose
+
+This document defines the systems that will be technically implemented
+to represent selected components of the fictional healthcare enterprise.
+
+---
+
+# Planned Systems
+
+## DC01
+
+Role:
+
+- Windows Server
+- Active Directory Domain Services
+- DNS
+- Group Policy
+
+Represents:
+
+Enterprise identity and infrastructure services.
+
+---
+
+## WIN-REC01
+
+Role:
+
+Representative reception workstation.
+
+Used for:
+
+- standard user access;
+- RBAC testing;
+- least-privilege testing;
+- Group Policy testing;
+- endpoint logging;
+- vulnerability management;
+- simulated incident activity.
+
+---
+
+## WIN-CLIN01
+
+Role:
+
+Representative clinical workstation.
+
+Used for:
+
+- clinical-user identity;
+- synthetic patient-data access;
+- access-control testing;
+- endpoint security;
+- security monitoring;
+- incident investigation.
+
+---
+
+## WIN-ADM01
+
+Role:
+
+Representative administrative workstation.
+
+Used for:
+
+- privileged administration;
+- administrative account separation;
+- security administration testing.
+
+Implementation may be combined or staged depending on available
+computer resources.
+
+---
+
+## SEC01
+
+Role:
+
+Security management server.
+
+Potential services:
+
+- Wazuh;
+- centralised security monitoring;
+- selected security administration tools.
+
+---
+
+## Vulnerability Scanner
+
+Role:
+
+Authorised vulnerability assessment.
+
+Potential implementation:
+
+- Greenbone / OpenVAS;
+- optional Nessus Essentials where appropriate.
+
+The scanner may run on SEC01 or a separate virtual machine depending
+on available system resources.
+
+---
+
+# Cloud Environment
+
+The AWS student account will represent selected cloud services.
+
+Potential services:
+
+- IAM
+- VPC
+- EC2
+- S3
+- CloudTrail
+- CloudWatch
+
+Cloud resources will remain separate from the local laboratory unless
+a specific controlled integration is required.
+
+---
+
+# Synthetic Clinical Data
+
+Only fictional patient information will be used.
+
+Synthetic clinical information will support:
+
+- RBAC testing;
+- file access testing;
+- monitoring;
+- incident simulation;
+- forensic investigation;
+- backup and recovery testing.
+
+---
+
+# Planned Security Telemetry
+
+Representative telemetry may include:
+
+- Windows Security Event Logs;
+- Sysmon;
+- Wazuh agent telemetry;
+- authentication events;
+- file-access auditing;
+- PowerShell logging;
+- vulnerability scan results;
+- AWS CloudTrail events;
+- selected network traffic.
+
+---
+
+# Safety
+
+The laboratory will use controlled virtual systems and synthetic data.
+
+Intentionally vulnerable configurations will not be exposed directly
+to the public Internet.
+
+Testing will remain within authorised project systems.
