@@ -1,127 +1,120 @@
 # Laboratory Architecture Diagram Specification
 
-## Purpose
+## Document Control
 
-This document defines the requirements for the technical lab
+| Field | Value |
+|---|---|
+| Environment | Enterprise Cybersecurity Student Laboratory |
+| Version | 1.1 |
+| Status | Diagram Specification |
+| Diagram Status | Not Yet Drawn |
+
+---
+
+# 1. Purpose
+
+This document defines the requirements for the technical laboratory
 architecture diagram.
 
-The final diagram will be created using a dedicated diagramming tool
-rather than treated as an ASCII diagram in project documentation.
+The final architecture diagram will be created manually using an
+appropriate diagramming tool.
+
+Creating the diagram manually is intentional because architecture
+diagramming is itself a project learning objective.
 
 ---
 
-# Required Components
+# 2. Architecture Layers
 
-The diagram should eventually show:
+The final diagram should show four major layers.
 
-## Host / Virtualisation Layer
+## Layer 1 — Physical Host
 
-Physical Student Workstation
+Student Workstation
 
-↓
+Attributes:
 
-Virtualisation Platform
-
----
-
-## Identity Infrastructure
-
-DC01
-
-- Active Directory
-- DNS
-- Group Policy
+- Windows 11 Home 25H2;
+- Intel Core Ultra 5 125H;
+- 16 GB RAM;
+- Oracle VirtualBox.
 
 ---
 
-## Enterprise Endpoints
+## Layer 2 — Local Virtual Laboratory
 
-WIN-REC01
+VirtualBox hosts the representative enterprise systems.
 
-- Reception persona
-- Windows endpoint
+Planned systems:
 
-WIN-CLIN01
-
-- Clinical persona
-- Windows endpoint
-
----
-
-## Security Infrastructure
-
-SEC-MON01
-
-- Wazuh
-
-VULN01
-
-- Vulnerability Management
+- DC01;
+- WIN-REC01;
+- WIN-CLIN01;
+- SEC-MON01;
+- VULN01.
 
 ---
 
-## Cloud Environment
+## Layer 3 — Security Services
 
-AWS
+Security capabilities include:
 
-- IAM
-- Security Groups
-- CloudTrail
-- selected project resources
-
----
-
-# Required Relationships
-
-Diagram should demonstrate:
-
-DC01
-   |
-   +---- WIN-REC01
-   |
-   +---- WIN-CLIN01
-
-WIN-REC01 --------+
-                  |
-WIN-CLIN01 -------+----> SEC-MON01 / Wazuh
-                  |
-DC01 -------------+
-
-VULN01
-   |
-   +---- authorised scanning ----> Lab Systems
-
-Local Lab
-   |
-   +---- controlled relationship ----> AWS
+- Active Directory;
+- DNS;
+- Group Policy;
+- Microsoft Defender;
+- Windows Event Logging;
+- Sysmon;
+- Wazuh;
+- vulnerability management;
+- backup/recovery.
 
 ---
 
-# Diagram Requirements
+## Layer 4 — Cloud Environment
 
-The final diagram should include:
+AWS educational environment.
 
-- security boundaries;
-- network/subnet labels;
-- system hostnames;
-- system roles;
-- major communication relationships;
-- local/cloud distinction;
-- legend;
-- title;
-- version/date.
+Potential components:
 
-The diagram must distinguish:
-
-- implemented components;
-- planned components;
-- cloud components.
+- IAM;
+- Security Groups;
+- CloudTrail;
+- selected project resources.
 
 ---
 
-# Evidence
+# 3. Core Local Architecture
 
-The final exported architecture diagram will be stored within the
-repository in an appropriate documentation/diagram format.
+The diagram should represent:
 
-The editable source should also be retained where practical.
+                     STUDENT WORKSTATION
+                    Windows 11 Home 25H2
+                     16 GB Physical RAM
+                              |
+                              v
+                     ORACLE VIRTUALBOX
+                              |
+          +-------------------+-------------------+
+          |                   |                   |
+          v                   v                   v
+        DC01              WIN-REC01          WIN-CLIN01
+   AD DS / DNS / GPO       Reception           Clinical
+          |                   |                   |
+          |                   |                   |
+          +-------------------+-------------------+
+                              |
+                              v
+                          SEC-MON01
+                             Wazuh
+
+
+                          VULN01
+                             |
+                             |
+                 Authorised Security Scanning
+                             |
+                 +-----------+-----------+
+                 |           |           |
+                 v           v           v
+               DC01      WIN-REC01   WIN-CLIN01

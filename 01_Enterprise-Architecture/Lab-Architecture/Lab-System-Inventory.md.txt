@@ -1,33 +1,110 @@
 # Laboratory System Inventory
 
-## 1. Purpose
+## Document Control
+
+| Field | Value |
+|---|---|
+| Environment | Authorised Student Cybersecurity Laboratory |
+| Virtualisation | Oracle VirtualBox |
+| Host RAM | 16 GB |
+| Host OS | Windows 11 Home 25H2 |
+| Version | 1.1 |
+| Status | Planned / Progressive Implementation |
+
+---
+
+# 1. Purpose
 
 This inventory defines the representative systems planned for the
 cybersecurity laboratory.
 
-Resource allocations may be adjusted according to host-computer
-capacity.
+Systems will be introduced progressively.
+
+Resource allocations are laboratory starting points and are not
+production sizing recommendations.
 
 ---
 
-# 2. Core Systems
+# 2. Host Computer
 
-| Hostname | Role | OS / Platform | Initial RAM Target | Primary Purpose |
+| Attribute | Value |
+|---|---|
+| Host Operating System | Windows 11 Home 25H2 |
+| Processor | Intel Core Ultra 5 125H |
+| Architecture | x64 |
+| Physical RAM | 16 GB |
+| Total Storage | Approximately 477 GB |
+| Free Storage at Design Time | Approximately 265 GB |
+| Hypervisor | Oracle VirtualBox |
+
+---
+
+# 3. Planned Core Systems
+
+| Hostname | Role | OS / Platform | Lab RAM Target | Primary Purpose |
 |---|---|---|---:|---|
-| DC01 | Domain Controller | Windows Server | 4 GB | AD DS / DNS / GPO |
-| WIN-REC01 | Reception Endpoint | Windows Client | 4 GB | Reception role simulation |
-| WIN-CLIN01 | Clinical Endpoint | Windows Client | 4 GB | Clinical role simulation |
-| SEC-MON01 | Security Monitoring | Linux | 6–8 GB where available | Wazuh |
-| VULN01 | Vulnerability Management | Linux / selected platform | 4 GB+ | Vulnerability assessment |
+| DC01 | Domain Controller | Windows Server | 2–3 GB | AD DS / DNS / GPO |
+| WIN-REC01 | Reception Endpoint | Windows Client | 3 GB | Reception role simulation |
+| WIN-CLIN01 | Clinical Endpoint | Windows Client | 3 GB | Clinical role simulation |
+| SEC-MON01 | Security Monitoring | Linux | 4–6 GB | Wazuh |
+| VULN01 | Vulnerability Management | Linux / selected platform | 3–4 GB | Vulnerability assessment |
 
-Resource allocation is a lab starting point rather than a production
-sizing recommendation.
+Exact resource allocation may be adjusted after observing actual
+system performance.
 
 ---
 
-# 3. DC01
+# 4. Resource Management Strategy
 
-## Function
+The host contains 16 GB physical memory.
+
+The architecture therefore uses staged VM operation instead of
+running every component simultaneously.
+
+## IAM / Active Directory Scenario
+
+Expected active systems:
+
+- DC01;
+- WIN-REC01;
+- WIN-CLIN01 where required.
+
+Expected inactive systems:
+
+- SEC-MON01;
+- VULN01.
+
+---
+
+## Detection Scenario
+
+Expected active systems:
+
+- DC01 where required;
+- WIN-REC01 or WIN-CLIN01;
+- SEC-MON01.
+
+Expected inactive system:
+
+- VULN01.
+
+---
+
+## Vulnerability Scenario
+
+Expected active systems:
+
+- VULN01;
+- selected target system;
+- DC01 only where required.
+
+Other systems should remain powered off where unnecessary.
+
+---
+
+# 5. DC01
+
+## Role
 
 Representative enterprise identity infrastructure.
 
@@ -37,61 +114,79 @@ Representative enterprise identity infrastructure.
 - DNS;
 - Group Policy.
 
-## Representative Controls
+## Security Functions
 
-- account policy;
-- identity lifecycle;
+DC01 will support testing of:
+
+- workforce identities;
+- authentication;
+- organisational units;
 - security groups;
 - RBAC;
-- privileged-account separation;
-- audit policy.
+- least privilege;
+- privileged identities;
+- account lifecycle;
+- password/account policies;
+- Windows auditing.
 
-## Important Limitation
+## Enterprise Limitation
 
 A real enterprise would not normally rely on one domain controller.
 
-The lab uses one initially because the purpose is to demonstrate
-identity and security-control implementation rather than production
+A production architecture would generally consider:
+
+- redundancy;
+- multiple domain controllers;
+- fault tolerance;
+- multiple sites;
+- backup/recovery;
+- monitoring;
+- privileged administration.
+
+The laboratory initially uses one domain controller because the
+objective is security-control implementation rather than production
 high availability.
 
 ---
 
-# 4. WIN-REC01
+# 6. WIN-REC01
 
-## Persona
+## Role
 
-Reception / Patient Administration workstation.
+Representative Reception / Patient Administration endpoint.
 
-## Representative User
+## Representative Identity
 
 reception.user
 
 ## Business Function
 
-Representative patient-administration activities using synthetic
-information.
+Representative patient-administration activity using synthetic data.
 
 ## Security Purpose
 
 Used to test:
 
+- domain authentication;
 - RBAC;
 - least privilege;
-- GPO;
-- endpoint security;
+- Group Policy;
+- endpoint hardening;
+- Microsoft Defender;
 - authentication logging;
+- Sysmon;
 - Wazuh telemetry;
-- controlled incident scenarios.
+- controlled security scenarios.
 
 ---
 
-# 5. WIN-CLIN01
+# 7. WIN-CLIN01
 
-## Persona
+## Role
 
-Clinical workforce endpoint.
+Representative Clinical endpoint.
 
-## Representative User
+## Representative Identity
 
 clinician.user
 
@@ -101,98 +196,172 @@ Representative access to synthetic clinical information.
 
 ## Security Purpose
 
-Provides a second security context allowing access-control boundaries
-between Reception and Clinical roles to be demonstrated.
+Provides a separate role/security context from Reception.
+
+It will support testing of:
+
+- clinical role permissions;
+- access boundaries;
+- Group Policy;
+- endpoint controls;
+- security logging;
+- monitoring.
 
 ---
 
-# 6. SEC-MON01
+# 8. SEC-MON01
 
-## Function
+## Role
 
-Security monitoring platform.
+Security monitoring server.
+
+## Planned Platform
+
+Linux.
 
 ## Planned Technology
 
-Wazuh
+Wazuh.
 
-## Purpose
+## Security Purpose
 
-Receive representative telemetry from laboratory systems and support:
+Receive security telemetry from representative laboratory systems.
 
-- monitoring;
+Capabilities demonstrated may include:
+
+- log collection;
+- endpoint monitoring;
 - detection;
 - alerting;
-- investigation;
-- incident exercises.
+- event investigation;
+- SOC-style triage.
+
+## Resource Note
+
+SEC-MON01 is expected to be one of the most memory-intensive systems
+in the local laboratory.
+
+It should normally be powered on only when required for monitoring
+and detection exercises.
 
 ---
 
-# 7. VULN01
+# 9. VULN01
 
-## Function
+## Role
 
-Authorised vulnerability-management platform.
+Authorised vulnerability-management system.
 
 ## Purpose
 
-Assess project-owned systems for selected vulnerabilities and
-configuration weaknesses.
+Assess selected project-owned systems for:
+
+- known vulnerabilities;
+- missing security updates;
+- selected configuration weaknesses.
 
 Workflow:
 
-Scan
-  |
-  v
+Authorised Scan
+      |
+      v
 Finding
-  |
-  v
+      |
+      v
+Analysis
+      |
+      v
 Risk
-  |
-  v
+      |
+      v
+Treatment
+      |
+      v
 Remediation
-  |
-  v
+      |
+      v
 Rescan
-  |
-  v
-Evidence
+      |
+      v
+Validation
 
-The scanner must only target systems authorised within the project
-laboratory.
+The scanner must only target authorised laboratory systems.
 
 ---
 
-# 8. AWS Environment
+# 10. AWS Environment
 
-AWS provides a separate cloud-security component of the project.
+AWS provides the project's cloud-security environment.
 
-Representative services may include:
+The user has access to an educational/student AWS environment for the
+project period.
+
+Potential services may include:
 
 - IAM;
 - EC2 where appropriate;
 - Security Groups;
 - S3 where appropriate;
 - CloudTrail;
-- selected logging/security functionality available within the
-  educational environment.
+- selected logging/security services.
 
-AWS resources will be selected according to educational-account
-availability, cost and project requirements.
+Services will be selected according to:
+
+- educational-account availability;
+- project requirements;
+- security;
+- cost.
+
+AWS credentials and secrets must never be committed to GitHub.
 
 ---
 
-# 9. Synthetic Data
+# 11. Synthetic Data
 
 No real patient information will be used.
 
-Representative synthetic information may contain fields such as:
+Representative synthetic information may contain:
 
 - synthetic patient ID;
-- fictional name;
+- fictional patient name;
 - fictional date of birth;
-- fictional appointment;
+- fictional appointment information;
 - fictional clinical classification;
 - fictional contact information.
 
-All records must be clearly artificial.
+All data must be clearly artificial.
+
+---
+
+# 12. System Lifecycle Status
+
+Each system may use the following lifecycle states:
+
+- Planned
+- VM Created
+- Operating System Installed
+- Base Configuration Complete
+- Security Configuration In Progress
+- Operational
+- Testing
+- Snapshot Available
+- Retired
+
+The project documentation will be updated as systems move through
+these stages.
+
+---
+
+# 13. Initial Status
+
+| System | Current Status |
+|---|---|
+| DC01 | Planned |
+| WIN-REC01 | Planned |
+| WIN-CLIN01 | Planned |
+| SEC-MON01 | Planned |
+| VULN01 | Planned |
+| AWS Environment | Available / Configuration Pending |
+
+A system must not be marked Operational until the relevant build and
+validation steps have been completed.

@@ -1,120 +1,368 @@
 # Enterprise Cybersecurity Laboratory Network Plan
 
-## 1. Purpose
+## Document Control
 
-This document defines the initial logical network design for the
-laboratory.
-
-The design uses private laboratory addressing and must not be
-interpreted as the network design of a real healthcare organisation.
+| Field | Value |
+|---|---|
+| Environment | Authorised Student Cybersecurity Laboratory |
+| Virtualisation Platform | Oracle VirtualBox |
+| Version | 1.1 |
+| Status | Design Baseline |
+| Addressing | RFC1918 Private Laboratory Addressing |
 
 ---
 
-# 2. Enterprise Concept
+# 1. Purpose
 
-The enterprise architecture includes logically separated security
-zones such as:
+This document defines the logical network architecture for the
+cybersecurity laboratory.
 
-- user networks;
+The network is designed to support:
+
+- Active Directory;
+- DNS;
+- Windows endpoints;
+- security monitoring;
+- vulnerability management;
+- controlled security testing;
+- future segmentation exercises.
+
+The design must not be interpreted as the network architecture of a
+real healthcare organisation.
+
+---
+
+# 2. Enterprise Network Concept
+
+The fictional enterprise architecture contains multiple security
+zones.
+
+Representative enterprise zones include:
+
+- workforce/user networks;
 - clinical systems;
 - server infrastructure;
 - security-management systems;
 - medical / IoT systems;
-- cloud services;
+- cloud environments;
 - external services.
 
-The student laboratory will initially implement only the network
-segments required to support practical testing.
+The student laboratory initially implements a simplified network.
 
-Additional segmentation may be introduced during later security
-engineering phases.
+Segmentation will be introduced progressively where required for
+technical testing.
 
 ---
 
-# 3. Initial Lab Network
+# 3. Initial Laboratory Network
 
 Initial representative subnet:
 
 10.20.10.0/24
 
-Example addressing plan:
+Subnet mask:
 
-| System | Address |
-|---|---|
-| DC01 | 10.20.10.10 |
-| SEC-MON01 | 10.20.10.20 |
-| VULN01 | 10.20.10.30 |
-| WIN-REC01 | 10.20.10.101 |
-| WIN-CLIN01 | 10.20.10.102 |
+255.255.255.0
 
-Addresses are reserved for the isolated/private project laboratory.
+CIDR:
 
-Final virtual-network configuration will be determined when the
-virtualisation platform is selected.
+/24
+
+This provides addresses:
+
+10.20.10.1 – 10.20.10.254
+
+for usable laboratory hosts, subject to reserved addresses and the
+final VirtualBox network configuration.
 
 ---
 
-# 4. DNS
+# 4. Initial Addressing Plan
 
-Domain-joined Windows clients should use:
+| System | Planned Address | Function |
+|---|---|---|
+| DC01 | 10.20.10.10 | AD DS / DNS |
+| SEC-MON01 | 10.20.10.20 | Wazuh |
+| VULN01 | 10.20.10.30 | Vulnerability Management |
+| WIN-REC01 | 10.20.10.101 | Reception Endpoint |
+| WIN-CLIN01 | 10.20.10.102 | Clinical Endpoint |
+
+These addresses are project reservations.
+
+They are not considered implemented until configured and validated.
+
+---
+
+# 5. VirtualBox Network Architecture
+
+Oracle VirtualBox will provide the initial virtual networking
+capability.
+
+The exact adapter configuration will be established during the
+hands-on build.
+
+The design objective is to provide:
+
+LAB SYSTEM
+     |
+     +---- Controlled Lab Communication
+     |
+     +---- Controlled Internet Access where required
+     |
+     X---- Unnecessary public exposure
+
+The environment must support communication between:
+
+- DC01;
+- Windows endpoints;
+- Wazuh;
+- vulnerability-management system.
+
+Internet connectivity may be enabled when required for legitimate
+software installation and updates.
+
+---
+
+# 6. DNS Architecture
+
+After Active Directory DNS is implemented, domain-joined Windows
+clients should use:
 
 DC01
+
 10.20.10.10
 
-as their lab DNS service after Active Directory DNS is implemented.
+as their primary lab DNS service.
 
-This is important because Active Directory relies heavily on DNS for
-service discovery.
+Conceptually:
+
+WIN-REC01
+     |
+     v
+   DC01 DNS
+     |
+     v
+Active Directory Service Discovery
+
+
+WIN-CLIN01
+     |
+     v
+   DC01 DNS
+     |
+     v
+Active Directory Service Discovery
+
+Active Directory depends heavily on DNS.
+
+Using inappropriate DNS configuration on domain clients may cause:
+
+- domain-join failures;
+- authentication problems;
+- Group Policy problems;
+- service-discovery failures.
+
+DNS configuration will therefore be explicitly validated during the
+Active Directory build.
 
 ---
 
-# 5. Internet Connectivity
+# 7. Internet Connectivity
 
-Some systems may temporarily require Internet connectivity for:
+Some laboratory systems may require Internet access for:
 
 - operating-system updates;
-- package installation;
+- security updates;
+- software installation;
+- Linux package installation;
 - Wazuh installation;
 - vulnerability-feed updates;
 - authorised software downloads.
 
-Internet connectivity should be controlled according to the
-requirements of each lab phase.
+Internet access will be provided only where required by the current
+lab activity.
 
-Deliberately vulnerable systems should not be directly exposed to the
-public Internet.
-
----
-
-# 6. Future Segmentation
-
-Later project phases may introduce representative zones such as:
-
-10.20.10.0/24 — Enterprise Users / Initial Lab
-
-10.20.20.0/24 — Server Zone
-
-10.20.30.0/24 — Security Management
-
-10.20.40.0/24 — Medical / IoT Simulation
-
-These are design reservations and are not considered implemented
-until corresponding network controls have actually been configured
-and tested.
+Deliberately vulnerable systems must not be intentionally exposed
+directly to the public Internet.
 
 ---
 
-# 7. Network Security Validation
+# 8. Future Network Segmentation
+
+The enterprise architecture will eventually be represented through
+additional logical security zones.
+
+Reserved design ranges include:
+
+| Zone | Reserved Subnet | Purpose |
+|---|---|---|
+| Initial Enterprise Lab | 10.20.10.0/24 | Initial systems |
+| Server Zone | 10.20.20.0/24 | Representative servers |
+| Security Management | 10.20.30.0/24 | Security tooling |
+| Medical / IoT Simulation | 10.20.40.0/24 | Legacy/medical scenario |
+
+These are currently:
+
+DESIGN ONLY
+
+They must not be described as implemented network segmentation until
+the corresponding virtual networks, routing and enforcement controls
+have actually been configured and tested.
+
+---
+
+# 9. Medical / IoT Segmentation Scenario
+
+A later project phase may represent the legacy clinical technology
+scenario defined under EX-001.
+
+Conceptual architecture:
+
+Enterprise Network
+       |
+       v
+Security Enforcement
+       |
+       v
+Medical / IoT Zone
+       |
+       v
+Representative Legacy System
+
+Desired security behaviour:
+
+Authorised Required Traffic
+          |
+          v
+        ALLOW
+
+Unnecessary Enterprise Traffic
+          |
+          v
+         DENY
+
+Unnecessary Internet Traffic
+          |
+          v
+         DENY
+
+This will demonstrate compensating controls for technology that
+cannot meet the standard security baseline.
+
+---
+
+# 10. Security Monitoring Communication
+
+Representative telemetry path:
+
+WIN-REC01 --------+
+                  |
+WIN-CLIN01 -------+
+                  |
+DC01 -------------+----> SEC-MON01
+                         Wazuh
+
+Security telemetry may include:
+
+- authentication events;
+- Windows security events;
+- Sysmon telemetry;
+- selected endpoint events.
+
+---
+
+# 11. Vulnerability-Management Communication
+
+Representative scanning path:
+
+VULN01
+   |
+   +------> DC01 where authorised
+   |
+   +------> WIN-REC01
+   |
+   +------> WIN-CLIN01
+   |
+   +------> other authorised lab targets
+
+Scanning must remain within the defined authorised project scope.
+
+---
+
+# 12. AWS Relationship
+
+AWS represents a separate cloud-security environment.
+
+Conceptually:
+
+LOCAL LAB
+    |
+    |
+ Internet / Management Access
+    |
+    v
+AWS EDUCATIONAL ENVIRONMENT
+    |
+    +---- IAM
+    |
+    +---- Security Groups
+    |
+    +---- CloudTrail
+    |
+    +---- Selected Project Resources
+
+The project does not initially require a permanent site-to-site
+connection between the local VirtualBox network and AWS.
+
+Cloud controls can be implemented and tested independently unless a
+later project requirement justifies integration.
+
+---
+
+# 13. Network Security Validation
 
 Future tests may validate:
 
+- IP connectivity;
+- DNS resolution;
+- domain communication;
 - permitted connectivity;
 - denied connectivity;
-- DNS operation;
-- domain communication;
-- security-monitoring communication;
-- vulnerability-scanner reachability;
-- segmentation controls.
+- endpoint-to-Wazuh communication;
+- scanner-to-target communication;
+- segmentation;
+- firewall behaviour.
 
-Evidence will distinguish network design from technically validated
-network enforcement.
+Each implemented network control should have:
+
+Expected Result
+       |
+       v
+Technical Test
+       |
+       v
+Actual Result
+       |
+       v
+Evidence
+       |
+       v
+Pass / Fail
+
+---
+
+# 14. Current Implementation Status
+
+| Component | Status |
+|---|---|
+| Addressing Plan | Designed |
+| VirtualBox Network | Pending |
+| DC01 Address | Reserved / Not Configured |
+| DNS | Pending |
+| Windows Clients | Pending |
+| Wazuh Communication | Pending |
+| Vulnerability Scanner Communication | Pending |
+| Security Segmentation | Design Only |
+| AWS Local Integration | Not Required Initially |
+
+This table will be updated as technical implementation proceeds.
