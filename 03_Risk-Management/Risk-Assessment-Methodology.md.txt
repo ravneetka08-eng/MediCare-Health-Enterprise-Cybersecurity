@@ -1,0 +1,1513 @@
+# Cybersecurity Risk Management Methodology
+
+## Document Control
+
+| Field | Value |
+|---|---|
+| Document Title | Cybersecurity Risk Management Methodology |
+| Organisation | MediCare Health Australia (Fictional) |
+| Document Owner | Cybersecurity / GRC Function |
+| Executive Sponsor | Chief Information Security Officer |
+| Classification | Internal |
+| Version | 1.0 |
+| Status | Draft / Project Implementation |
+| Review Frequency | At least annually or following material change |
+| Applies To | Enterprise cybersecurity and technology risk |
+| Project Context | Enterprise healthcare cybersecurity portfolio environment |
+
+---
+
+# 1. Purpose
+
+This methodology establishes the process used by MediCare Health
+Australia to identify, analyse, evaluate, treat, accept, monitor,
+review and report cybersecurity risks.
+
+The methodology is intended to ensure that cybersecurity risk
+decisions:
+
+- are based on documented business context;
+- consider clinical operations and patient safety;
+- consider information confidentiality, integrity and availability;
+- consider privacy and regulatory consequences;
+- identify accountable risk owners;
+- evaluate existing security controls;
+- distinguish inherent risk from residual risk;
+- define measurable treatment actions;
+- require evidence where control effectiveness is claimed;
+- identify security exceptions and compensating controls;
+- establish appropriate escalation and acceptance requirements; and
+- maintain traceability from risk identification through closure.
+
+Cybersecurity risk management is not treated as a one-time compliance
+exercise.
+
+Risks are expected to change as:
+
+- technology changes;
+- vulnerabilities are discovered;
+- threat activity changes;
+- business services change;
+- clinical systems change;
+- cloud services are introduced;
+- third parties change;
+- controls are implemented or fail;
+- incidents occur.
+
+---
+
+# 2. Objectives
+
+The cybersecurity risk-management process aims to:
+
+1. identify cyber risks before they result in unacceptable harm;
+2. prioritise security investment according to business risk;
+3. protect critical healthcare services and information;
+4. support informed decision-making by accountable risk owners;
+5. identify security-control weaknesses;
+6. track remediation through to completion;
+7. evaluate whether controls operate as intended;
+8. document residual risk after treatment;
+9. ensure accepted risks are explicitly owned and reviewed;
+10. provide management with meaningful risk reporting;
+11. support incident, vulnerability and security-exception processes;
+12. maintain evidence supporting material risk decisions.
+
+---
+
+# 3. Scope
+
+This methodology applies to cybersecurity risks affecting:
+
+- enterprise identities;
+- privileged identities;
+- endpoints;
+- servers;
+- networks;
+- clinical systems;
+- patient administration systems;
+- healthcare information;
+- corporate information;
+- medical and IoT technology;
+- cloud services;
+- security platforms;
+- backup and recovery systems;
+- third-party services;
+- externally hosted services;
+- software and applications;
+- authentication systems;
+- logging and monitoring;
+- administrative processes;
+- information-sharing arrangements.
+
+For the student project, enterprise risks are modelled against a
+fictional healthcare organisation.
+
+Technical validation is performed only against authorised laboratory
+systems and synthetic information.
+
+---
+
+# 4. Risk Governance Model
+
+Cybersecurity risks are not owned solely by the cybersecurity team.
+
+The business area that receives the benefit from an activity or
+service generally retains accountability for risks associated with
+that activity.
+
+Cybersecurity provides specialist risk advice, assessment,
+monitoring and control assurance.
+
+## 4.1 Board / Executive Management
+
+Responsibilities include:
+
+- oversight of significant enterprise cyber risk;
+- consideration of cyber risk in organisational strategy;
+- review of material risk exposure;
+- oversight of significant cyber incidents;
+- ensuring appropriate risk-management capability exists.
+
+---
+
+## 4.2 Chief Information Security Officer
+
+Responsibilities include:
+
+- maintaining the cybersecurity risk-management framework;
+- establishing security standards;
+- overseeing significant cyber-risk assessments;
+- escalating material risks;
+- advising executives and risk owners;
+- monitoring aggregate cyber-risk exposure;
+- overseeing cybersecurity treatment programs.
+
+---
+
+## 4.3 Cybersecurity / GRC Function
+
+Responsibilities include:
+
+- facilitating risk assessments;
+- maintaining the cyber risk register;
+- supporting risk scenario development;
+- assessing security controls;
+- challenging unsupported risk assumptions;
+- tracking treatment actions;
+- monitoring overdue actions;
+- coordinating security exceptions;
+- preparing risk reporting;
+- retaining risk evidence;
+- facilitating periodic risk review.
+
+---
+
+## 4.4 Cybersecurity Analyst
+
+Responsibilities may include:
+
+- identifying potential cybersecurity risks;
+- gathering technical evidence;
+- identifying vulnerabilities and threats;
+- assessing technical control gaps;
+- supporting likelihood and impact assessment;
+- recommending treatment options;
+- testing implemented controls;
+- validating remediation;
+- documenting findings.
+
+The analyst does not automatically have authority to accept material
+business risk.
+
+---
+
+## 4.5 Risk Owner
+
+The Risk Owner is accountable for managing a particular risk.
+
+The Risk Owner should have sufficient organisational authority to:
+
+- understand the affected business service;
+- approve treatment priorities;
+- allocate or request resources;
+- understand operational consequences;
+- accept residual risk where authorised;
+- escalate risks outside their authority.
+
+Risk ownership must be assigned to a role capable of making decisions
+about the affected business service.
+
+A cybersecurity analyst should not be assigned as the owner of every
+business risk merely because the risk is cyber-related.
+
+---
+
+## 4.6 Control Owner
+
+The Control Owner is accountable for ensuring a particular control is:
+
+- appropriately designed;
+- implemented;
+- operated;
+- maintained;
+- monitored;
+- evidenced.
+
+Example:
+
+Risk:
+Compromise of workforce credentials.
+
+Risk Owner:
+Business or technology service owner.
+
+Control:
+Active Directory account lifecycle management.
+
+Control Owner:
+Identity / IT Infrastructure function.
+
+---
+
+## 4.7 Treatment Action Owner
+
+The Treatment Action Owner is responsible for completing a specific
+risk-treatment action.
+
+Example:
+
+Risk:
+Unpatched critical server vulnerability.
+
+Risk Owner:
+Clinical Systems Owner.
+
+Treatment Action:
+Deploy approved security update.
+
+Action Owner:
+Windows Infrastructure Team.
+
+Cybersecurity may then independently rescan the system to verify the
+treatment.
+
+---
+
+# 5. Three Lines Concept
+
+The project recognises the principle of separating:
+
+## First Line
+
+Functions that own and operate systems and business processes.
+
+Examples:
+
+- IT Infrastructure;
+- Clinical Systems;
+- Cloud Operations;
+- application owners.
+
+They operate many of the controls.
+
+## Second Line
+
+Functions that provide specialist risk oversight.
+
+Examples:
+
+- Cybersecurity Governance;
+- Risk;
+- Compliance;
+- Privacy.
+
+They establish requirements, provide challenge and monitor risk.
+
+## Third Line
+
+Independent assurance.
+
+Example:
+
+Internal Audit.
+
+The student project cannot reproduce true organisational independence.
+
+Control testing performed by the student is therefore classified as
+self-assessed control assurance rather than independent audit.
+
+---
+
+# 6. Risk Taxonomy
+
+Cybersecurity risks may be categorised using one or more of the
+following categories.
+
+| Category | Description |
+|---|---|
+| Identity and Access | Authentication, authorisation, privilege and account lifecycle |
+| Endpoint Security | Workstations and endpoint protection |
+| Server Security | Server configuration, patching and protection |
+| Network Security | Segmentation, filtering and network exposure |
+| Cloud Security | Cloud identity, configuration, logging and data protection |
+| Application Security | Application vulnerabilities and insecure configuration |
+| Data Protection | Confidentiality, integrity and appropriate information handling |
+| Vulnerability Management | Identification and remediation of vulnerabilities |
+| Security Monitoring | Logging, detection and alerting |
+| Incident Response | Investigation, containment and recovery capability |
+| Backup and Recovery | Backup protection and restoration capability |
+| Third-Party Risk | Suppliers, vendors and external service providers |
+| Medical / IoT Security | Biomedical and connected device risks |
+| Security Governance | Policy, ownership, assurance and risk-management weaknesses |
+| Human Risk | Social engineering, errors and inappropriate user behaviour |
+| Privacy | Unauthorised access, use or disclosure of personal information |
+
+A risk may belong to multiple categories.
+
+---
+
+# 7. Risk Identification Sources
+
+Cybersecurity risks may be identified through:
+
+- vulnerability assessments;
+- penetration testing;
+- security incidents;
+- threat intelligence;
+- security monitoring;
+- architecture reviews;
+- access reviews;
+- configuration assessments;
+- audit findings;
+- privacy assessments;
+- control testing;
+- cloud-security assessments;
+- project security reviews;
+- third-party assessments;
+- backup recovery tests;
+- disaster recovery exercises;
+- policy exceptions;
+- staff reports;
+- technology changes;
+- regulatory changes;
+- new business services;
+- lessons learned from incidents.
+
+The source of each material risk should be recorded where practical.
+
+---
+
+# 8. Risk Scenario Structure
+
+Risks should be written as scenarios rather than vague technical
+statements.
+
+Preferred structure:
+
+There is a risk that [THREAT / EVENT]
+
+exploits or occurs because of [VULNERABILITY / CONTROL WEAKNESS]
+
+affecting [ASSET / BUSINESS SERVICE]
+
+resulting in [BUSINESS / CLINICAL / PRIVACY CONSEQUENCE].
+
+Example:
+
+There is a risk that an external threat actor obtains valid workforce
+credentials because of inadequate authentication protection and uses
+the compromised identity to access restricted clinical information,
+resulting in unauthorised disclosure, operational disruption and
+privacy consequences.
+
+Poor risk statement:
+
+"Phishing risk."
+
+The detailed scenario is preferred because it explains:
+
+- what might happen;
+- why it might happen;
+- what would be affected;
+- why the organisation should care.
+
+---
+
+# 9. Risk Components
+
+Each risk record should contain, where applicable:
+
+- Risk ID;
+- Risk Title;
+- Risk Category;
+- Date Identified;
+- Identified By;
+- Source;
+- Risk Scenario;
+- Threat Actor / Threat Source;
+- Attack Vector / Event;
+- Vulnerability or Control Weakness;
+- Affected Business Service;
+- Affected Asset IDs;
+- Crown-Jewel Association;
+- Information Classification;
+- Potential Consequences;
+- Clinical Impact;
+- Patient-Safety Consideration;
+- Privacy Impact;
+- Operational Impact;
+- Financial Impact;
+- Reputational Impact;
+- Regulatory / Compliance Impact;
+- Inherent Likelihood;
+- Inherent Impact;
+- Inherent Risk Rating;
+- Existing Controls;
+- Control Owner;
+- Control Design Assessment;
+- Control Operating Effectiveness;
+- Control Evidence;
+- Current / Residual Likelihood;
+- Current / Residual Impact;
+- Current / Residual Risk Rating;
+- Risk Appetite Position;
+- Treatment Decision;
+- Treatment Plan;
+- Treatment Action Owner;
+- Target Date;
+- Compensating Controls;
+- Exception Reference;
+- Risk Owner;
+- Acceptance Authority;
+- Review Date;
+- Status;
+- Comments;
+- Closure Evidence.
+
+Not every field will apply equally to every risk.
+
+Fields should not be populated with invented information merely to
+make the register appear complete.
+
+---
+
+# 10. Inherent Risk
+
+Inherent Risk represents the level of risk assuming relevant
+risk-reducing controls are absent or ineffective.
+
+It answers:
+
+"What would the exposure look like if we did not rely on our current
+controls?"
+
+Inherent risk helps management understand the underlying importance
+of the risk.
+
+Inherent Risk is assessed using:
+
+Inherent Likelihood × Inherent Impact
+
+---
+
+# 11. Likelihood Assessment
+
+Likelihood is assessed using available evidence and professional
+judgement.
+
+Factors may include:
+
+- threat capability;
+- threat intent;
+- frequency of similar events;
+- system exposure;
+- attack surface;
+- exploitability;
+- existing vulnerabilities;
+- accessibility;
+- complexity of attack;
+- historical incidents;
+- industry threat activity;
+- attractiveness of the target.
+
+## Likelihood Scale
+
+### 1 — Rare
+
+The event would require exceptional circumstances or is considered
+highly unusual in the defined context.
+
+### 2 — Unlikely
+
+The event is plausible but is not expected to occur under normal
+circumstances.
+
+### 3 — Possible
+
+The event could occur and credible circumstances exist that could
+produce the scenario.
+
+### 4 — Likely
+
+The event has a realistic and significant opportunity to occur.
+
+### 5 — Almost Certain
+
+The event is expected to occur repeatedly or circumstances make the
+scenario highly probable.
+
+Likelihood ratings must include documented rationale for material
+risks.
+
+---
+
+# 12. Impact Assessment
+
+Impact must not be determined only by technical severity.
+
+Healthcare cyber risk can create consequences across several
+dimensions.
+
+The following impact dimensions are considered:
+
+1. Clinical / Patient Care
+2. Information Confidentiality
+3. Information Integrity
+4. Service Availability
+5. Privacy
+6. Operational
+7. Financial
+8. Legal / Regulatory
+9. Reputation
+
+---
+
+# 13. Clinical / Patient-Care Impact
+
+## 1 — Insignificant
+
+No meaningful impact to clinical service delivery.
+
+## 2 — Minor
+
+Limited inconvenience or short disruption with established
+workarounds available.
+
+## 3 — Moderate
+
+Noticeable disruption to a clinical workflow requiring operational
+intervention.
+
+## 4 — Major
+
+Significant disruption to important clinical services or information
+availability requiring major operational response.
+
+## 5 — Severe
+
+Potential for widespread or sustained disruption to critical
+healthcare services or circumstances requiring urgent executive and
+clinical management attention.
+
+Cybersecurity personnel must not independently make clinical
+patient-safety determinations outside their expertise.
+
+Relevant clinical stakeholders should be consulted where a risk may
+affect patient care.
+
+---
+
+# 14. Confidentiality Impact
+
+## 1 — Insignificant
+
+No sensitive information exposed.
+
+## 2 — Minor
+
+Limited internal information exposure.
+
+## 3 — Moderate
+
+Unauthorised disclosure of confidential organisational information.
+
+## 4 — Major
+
+Significant exposure of sensitive information.
+
+## 5 — Severe
+
+Large-scale or highly sensitive restricted information exposure,
+including significant patient-information exposure.
+
+---
+
+# 15. Integrity Impact
+
+## 1 — Insignificant
+
+No meaningful information modification.
+
+## 2 — Minor
+
+Limited incorrect information with easy correction.
+
+## 3 — Moderate
+
+Material information integrity issue requiring investigation.
+
+## 4 — Major
+
+Significant modification of important operational or clinical data.
+
+## 5 — Severe
+
+Loss of trust in critical information or widespread unauthorised
+modification of critical data.
+
+---
+
+# 16. Availability Impact
+
+## 1 — Insignificant
+
+Negligible interruption.
+
+## 2 — Minor
+
+Short interruption with minimal business impact.
+
+## 3 — Moderate
+
+Material service degradation or outage affecting business processes.
+
+## 4 — Major
+
+Significant outage affecting important organisational or clinical
+services.
+
+## 5 — Severe
+
+Sustained or widespread loss of critical services requiring major
+business continuity or incident response.
+
+---
+
+# 17. Privacy Impact
+
+Privacy impact considers:
+
+- sensitivity of information;
+- volume of information;
+- number of individuals potentially affected;
+- nature of unauthorised access or disclosure;
+- potential harm;
+- ability to contain the event;
+- applicable privacy obligations.
+
+Privacy-impact assessment should involve the Privacy function where
+appropriate.
+
+---
+
+# 18. Overall Impact Determination
+
+The overall impact rating should reflect the most significant credible
+consequence while considering the complete business context.
+
+A risk must not be artificially averaged downward merely because some
+impact dimensions are low.
+
+Example:
+
+Financial Impact = Moderate
+
+Clinical Availability Impact = Severe
+
+The Severe clinical consequence should not disappear because the
+financial consequence is lower.
+
+The rationale for the selected impact rating must be documented for
+material risks.
+
+---
+
+# 19. Risk Matrix
+
+Risk Score:
+
+Likelihood × Impact
+
+| Likelihood \ Impact | 1 Insignificant | 2 Minor | 3 Moderate | 4 Major | 5 Severe |
+|---|---:|---:|---:|---:|---:|
+| 5 Almost Certain | 5 | 10 | 15 | 20 | 25 |
+| 4 Likely | 4 | 8 | 12 | 16 | 20 |
+| 3 Possible | 3 | 6 | 9 | 12 | 15 |
+| 2 Unlikely | 2 | 4 | 6 | 8 | 10 |
+| 1 Rare | 1 | 2 | 3 | 4 | 5 |
+
+## Rating Bands
+
+| Score | Rating |
+|---|---|
+| 1–4 | Low |
+| 5–9 | Medium |
+| 10–16 | High |
+| 17–25 | Critical |
+
+The numerical score supports prioritisation.
+
+It does not replace professional judgement.
+
+A risk may require escalation despite its calculated score where:
+
+- patient care may be materially affected;
+- significant privacy consequences are possible;
+- a critical regulatory obligation is affected;
+- a crown-jewel asset is exposed;
+- multiple control failures exist;
+- active exploitation is occurring;
+- executive management determines escalation is required.
+
+---
+
+# 20. Existing Control Identification
+
+Before residual risk is assessed, relevant existing controls must be
+identified.
+
+Controls may be:
+
+## Preventive
+
+Designed to stop an event.
+
+Examples:
+
+- MFA;
+- least privilege;
+- network segmentation;
+- secure configuration.
+
+## Detective
+
+Designed to identify an event.
+
+Examples:
+
+- SIEM detection;
+- authentication monitoring;
+- file-access auditing.
+
+## Corrective
+
+Designed to remediate an identified weakness.
+
+Examples:
+
+- patch deployment;
+- account disablement;
+- configuration correction.
+
+## Recovery
+
+Designed to restore capability.
+
+Examples:
+
+- backup restoration;
+- disaster recovery;
+- account recovery.
+
+## Compensating
+
+Alternative controls used where the preferred control cannot be
+implemented.
+
+Example:
+
+An unsupported clinical device cannot be patched.
+
+Compensating controls may include:
+
+- isolated network segment;
+- strict firewall rules;
+- restricted administration;
+- enhanced monitoring;
+- vendor-supported configuration;
+- replacement roadmap.
+
+---
+
+# 21. Control Design Assessment
+
+Control Design Effectiveness considers whether the control, if
+operated as intended, is capable of reducing the identified risk.
+
+Possible assessments:
+
+- Effective Design
+- Partially Effective Design
+- Ineffective Design
+- Not Assessed
+- Not Applicable
+
+Example:
+
+A password policy alone may be insufficiently designed to address a
+risk scenario involving stolen credentials if stronger authentication
+is required.
+
+---
+
+# 22. Control Operating Effectiveness
+
+Operating Effectiveness considers whether the control actually
+operates as intended.
+
+Possible assessments:
+
+- Effective
+- Partially Effective
+- Ineffective
+- Not Tested
+- Insufficient Evidence
+
+A control must not be marked Effective solely because:
+
+- a policy exists;
+- a setting appears enabled;
+- a product is installed.
+
+Where practical, operating effectiveness should be supported by
+evidence.
+
+Example:
+
+Control:
+Former employee accounts are disabled promptly.
+
+Weak evidence:
+"HR policy says accounts are disabled."
+
+Stronger project evidence:
+
+1. test former.employee account exists;
+2. termination workflow is executed;
+3. account is disabled;
+4. authentication is attempted;
+5. authentication fails;
+6. relevant event is logged;
+7. evidence is retained.
+
+---
+
+# 23. Control Evidence
+
+Control-effectiveness claims should reference evidence where practical.
+
+Examples:
+
+- configuration export;
+- command output;
+- event log;
+- SIEM event;
+- vulnerability scan;
+- access-control test;
+- screenshot;
+- policy;
+- approval record;
+- recovery-test result.
+
+Project evidence should reference:
+
+EV-XXX
+
+Example:
+
+Existing Control:
+Privileged accounts are separated from standard accounts.
+
+Evidence:
+
+EV-041 — Privileged account configuration
+
+EV-042 — Standard user privilege test
+
+EV-043 — Administrative authentication event
+
+---
+
+# 24. Residual Risk
+
+Residual Risk represents the risk remaining after existing or
+implemented controls are considered.
+
+Residual risk must not automatically be assumed to be Low merely
+because controls exist.
+
+Assessment should consider:
+
+- control design;
+- control operating effectiveness;
+- control coverage;
+- evidence quality;
+- known exceptions;
+- unresolved vulnerabilities;
+- remaining threat exposure.
+
+Residual Risk is recorded using:
+
+Residual Likelihood × Residual Impact
+
+The rationale must explain why the rating changed or did not change
+from inherent risk.
+
+---
+
+# 25. Risk Appetite
+
+Risk Appetite represents the type and amount of risk the organisation
+is prepared to pursue or retain while delivering its objectives.
+
+For this fictional healthcare scenario, the following principles are
+used:
+
+The organisation has very low appetite for risks that could result in:
+
+- material patient-safety consequences;
+- significant unauthorised patient-information disclosure;
+- compromise of privileged enterprise identities;
+- uncontrolled access to critical clinical systems;
+- inability to recover critical services;
+- deliberate non-compliance with material security obligations.
+
+Some operational cybersecurity risk may be tolerated where:
+
+- immediate remediation could create greater clinical risk;
+- a legacy clinical dependency prevents immediate remediation;
+- compensating controls materially reduce exposure;
+- a documented treatment plan exists;
+- an authorised Risk Owner accepts the residual exposure;
+- the exception is time-limited and reviewed.
+
+Risk appetite does not mean that all cyber risk can be eliminated.
+
+---
+
+# 26. Risk Treatment Options
+
+## Reduce / Mitigate
+
+Implement controls to reduce likelihood and/or impact.
+
+Example:
+
+Implement MFA to reduce account-compromise risk.
+
+## Avoid
+
+Stop the activity creating the unacceptable risk.
+
+Example:
+
+Decommission an unnecessary exposed service.
+
+## Transfer / Share
+
+Transfer or share elements of financial or operational exposure
+through contractual arrangements, insurance or service arrangements.
+
+Transfer does not automatically remove accountability for
+cybersecurity risk.
+
+## Accept
+
+Formally retain the residual risk.
+
+Acceptance requires:
+
+- documented rationale;
+- authorised Risk Owner;
+- residual risk rating;
+- supporting evidence;
+- review date;
+- expiry where appropriate.
+
+Acceptance must not be used simply because remediation is difficult.
+
+---
+
+# 27. Risk Treatment Plan
+
+Where treatment is required, the plan should record:
+
+- Risk ID;
+- treatment objective;
+- individual treatment actions;
+- action owner;
+- control owner;
+- priority;
+- target date;
+- dependencies;
+- resource requirements where relevant;
+- expected risk reduction;
+- validation method;
+- evidence requirement;
+- implementation status;
+- blockers;
+- revised target date where applicable.
+
+Treatment actions should be specific and testable.
+
+Poor treatment:
+
+"Improve security."
+
+Better treatment:
+
+"Remove Reception users from the local Administrators group on
+managed Reception workstations and verify membership through
+centralised configuration and control testing."
+
+---
+
+# 28. Compensating Controls
+
+Where the preferred control cannot be implemented, the Risk Owner and
+Cybersecurity function should consider whether alternative controls
+can sufficiently reduce the risk.
+
+A compensating control record should explain:
+
+1. required control;
+2. reason the control cannot be implemented;
+3. affected systems;
+4. resulting exposure;
+5. compensating control;
+6. control owner;
+7. evidence;
+8. residual risk;
+9. expiry/review date;
+10. long-term remediation plan.
+
+Compensating controls should not silently become permanent.
+
+---
+
+# 29. Security Exceptions
+
+A security exception is required where an approved deviation from a
+mandatory security requirement exists.
+
+Exceptions should link to:
+
+- affected Risk ID;
+- affected Control ID;
+- affected Asset ID;
+- business justification;
+- compensating controls;
+- Risk Owner;
+- approval;
+- residual risk;
+- expiry date;
+- remediation plan.
+
+Exceptions will be maintained within the project's
+Security Exception Register.
+
+---
+
+# 30. Risk Acceptance
+
+Risk acceptance represents a conscious decision to retain residual
+risk.
+
+Acceptance should occur only after:
+
+- the risk is understood;
+- treatment alternatives are considered;
+- residual exposure is documented;
+- relevant control limitations are understood;
+- an authorised person accepts accountability;
+- a review date is established.
+
+Cybersecurity provides advice but should not silently accept business
+risk on behalf of accountable business owners.
+
+---
+
+# 31. Representative Acceptance Authority
+
+For the fictional project, the following escalation model is used:
+
+| Residual Rating | Minimum Representative Authority |
+|---|---|
+| Low | Operational / System Owner |
+| Medium | Business or Technology Risk Owner |
+| High | Senior Risk Owner + CISO consultation |
+| Critical | Executive-level review and formal acceptance |
+
+These thresholds represent the project's governance model and do not
+claim to reproduce the delegations of any real healthcare
+organisation.
+
+Risks involving material clinical impact may require additional
+clinical leadership consultation regardless of numerical rating.
+
+---
+
+# 32. Risk Status
+
+Risks may use the following statuses:
+
+## Draft
+
+Risk is being assessed.
+
+## Open
+
+Risk has been validated and requires management.
+
+## Treatment Planned
+
+Treatment has been approved but implementation has not begun.
+
+## In Treatment
+
+Treatment actions are being implemented.
+
+## Pending Validation
+
+Treatment is reportedly complete and requires control validation.
+
+## Monitoring
+
+Residual risk is being actively monitored.
+
+## Accepted
+
+Residual risk has been formally accepted by authorised ownership.
+
+## Closed
+
+Risk has been reduced, removed or otherwise resolved according to
+defined closure criteria.
+
+## Reopened
+
+New evidence or changed circumstances require reassessment.
+
+---
+
+# 33. Risk Review Triggers
+
+A risk should be reviewed when:
+
+- its scheduled review date is reached;
+- a significant vulnerability is discovered;
+- a security incident occurs;
+- control testing fails;
+- a major architecture change occurs;
+- a new cloud service is introduced;
+- a critical supplier changes;
+- threat conditions materially change;
+- a treatment deadline is missed;
+- an exception expires;
+- a system is decommissioned;
+- new regulatory or contractual requirements apply;
+- evidence indicates the existing rating is no longer appropriate.
+
+---
+
+# 34. Risk Review Frequency
+
+Representative minimum review expectations:
+
+Critical:
+At least monthly while unresolved.
+
+High:
+At least quarterly or more frequently while significant treatment
+remains outstanding.
+
+Medium:
+At least six-monthly.
+
+Low:
+At least annually.
+
+Review frequency may be increased based on:
+
+- active exploitation;
+- incident activity;
+- clinical importance;
+- regulatory significance;
+- treatment delays;
+- control failures.
+
+---
+
+# 35. Risk Escalation
+
+Risks should be escalated where:
+
+- residual risk exceeds appetite;
+- treatment is materially overdue;
+- the Risk Owner lacks authority to accept the exposure;
+- a control failure materially increases exposure;
+- patient-care impact may be significant;
+- widespread restricted information exposure is possible;
+- active exploitation is detected;
+- multiple related risks create aggregate exposure;
+- management intervention is required.
+
+---
+
+# 36. Risk Aggregation
+
+Individual risks should not always be considered independently.
+
+Several moderate or high risks may combine into a more significant
+enterprise exposure.
+
+Example:
+
+R-001 Weak authentication
+
++
+
+R-002 Excessive privilege
+
++
+
+R-008 Insufficient monitoring
+
+may collectively create a significantly greater identity-compromise
+scenario than any single control weakness viewed alone.
+
+Risk reporting should therefore consider common:
+
+- assets;
+- threat actors;
+- control weaknesses;
+- business services;
+- technology dependencies.
+
+---
+
+# 37. Key Risk Indicators
+
+Representative KRIs may include:
+
+- number of Critical risks;
+- number of High risks;
+- risks exceeding appetite;
+- overdue risk-treatment actions;
+- expired security exceptions;
+- critical vulnerabilities beyond remediation SLA;
+- privileged accounts without required controls;
+- inactive accounts remaining enabled;
+- critical systems not reporting security telemetry;
+- backup recovery-test failures;
+- cloud resources with high-risk misconfiguration.
+
+Thresholds will be developed as project controls mature.
+
+---
+
+# 38. Key Performance Indicators
+
+Representative cybersecurity risk-management KPIs may include:
+
+- percentage of treatment actions completed by target date;
+- percentage of Critical/High risks reviewed on schedule;
+- percentage of control tests completed;
+- percentage of remediation actions successfully validated;
+- average age of unresolved High/Critical risks;
+- percentage of security exceptions reviewed before expiry.
+
+A KPI measures performance.
+
+A KRI indicates risk exposure.
+
+The two should not be treated as interchangeable.
+
+---
+
+# 39. Risk Closure Criteria
+
+A risk should not be closed merely because a remediation ticket was
+marked complete.
+
+Closure should require evidence that:
+
+1. approved treatment was implemented;
+2. relevant controls were validated where practical;
+3. evidence was retained;
+4. residual risk was reassessed;
+5. the Risk Owner agrees closure criteria are satisfied;
+6. outstanding exceptions are addressed;
+7. required documentation is updated.
+
+A risk may remain open at a lower residual rating if exposure still
+requires ongoing management.
+
+---
+
+# 40. Risk Reopening
+
+A previously closed or accepted risk may be reopened where:
+
+- the control fails;
+- new vulnerabilities appear;
+- threat conditions change;
+- an incident demonstrates greater exposure;
+- architecture changes invalidate previous assumptions;
+- treatment is reversed;
+- supporting evidence is no longer valid.
+
+---
+
+# 41. Risk Evidence and Audit Trail
+
+Material risk decisions should maintain traceability.
+
+Representative records include:
+
+- original risk assessment;
+- rating rationale;
+- evidence reviewed;
+- treatment decisions;
+- approvals;
+- exceptions;
+- changes in ownership;
+- target-date changes;
+- control-test results;
+- residual-risk assessment;
+- acceptance decisions;
+- closure evidence.
+
+Risk history should not be silently overwritten where maintaining the
+decision trail is important.
+
+---
+
+# 42. Relationship to Vulnerability Management
+
+A vulnerability is not automatically equivalent to a business risk.
+
+Example:
+
+Vulnerability:
+
+Critical CVSS vulnerability on a server.
+
+Risk assessment additionally considers:
+
+- what server is affected;
+- whether exploitation is possible;
+- network exposure;
+- available controls;
+- business function;
+- clinical dependency;
+- data sensitivity;
+- exploit evidence;
+- remediation feasibility.
+
+Vulnerability management provides important input into risk
+management, but risk decisions require business context.
+
+---
+
+# 43. Relationship to Incident Management
+
+An incident may:
+
+- create a new risk;
+- demonstrate that an existing risk was underestimated;
+- demonstrate control failure;
+- trigger urgent treatment;
+- change residual-risk ratings.
+
+Lessons learned from incidents should therefore feed back into the
+risk register.
+
+---
+
+# 44. Relationship to Change Management
+
+Risk treatments affecting production-like services should consider
+change-management requirements.
+
+Examples:
+
+- patching;
+- firewall changes;
+- authentication changes;
+- Group Policy;
+- service configuration;
+- network segmentation.
+
+In a real healthcare environment, technically correct remediation may
+still require:
+
+- change approval;
+- maintenance window;
+- rollback plan;
+- application testing;
+- clinical coordination;
+- post-change validation.
+
+The student laboratory will simulate relevant elements of this
+process where useful.
+
+---
+
+# 45. Relationship to Privacy
+
+Cybersecurity risks involving personal or health information should
+be evaluated for privacy implications.
+
+Cybersecurity and Privacy responsibilities overlap but are not
+identical.
+
+Cybersecurity may determine:
+
+- how access occurred;
+- which systems were affected;
+- what security controls failed.
+
+Privacy specialists may determine:
+
+- privacy impact;
+- notification considerations;
+- obligations affecting personal information.
+
+The project will document these functions separately where relevant.
+
+---
+
+# 46. Relationship to Business Continuity
+
+Cyber risks affecting availability must consider:
+
+- critical business services;
+- recovery priorities;
+- backup availability;
+- recovery capability;
+- operational workarounds;
+- service dependencies.
+
+Cybersecurity risk treatment should therefore integrate with backup,
+recovery and continuity planning.
+
+---
+
+# 47. Project Evidence Integration
+
+Risk records within this project may link to:
+
+AST-XXX — Asset
+
+CJ-XXX — Crown Jewel
+
+TM-XXX — Threat Scenario
+
+R-XXX — Risk
+
+CTRL-XXX — Security Control
+
+TEST-XXX — Control Test
+
+EV-XXX — Evidence
+
+F-XXX — Finding
+
+EX-XXX — Exception
+
+ACT-XXX — Treatment Action
+
+This enables traceability from enterprise risk through technical
+implementation and assurance.
+
+Example:
+
+R-002 Excessive Privilege
+        ↓
+AST-007 WIN-REC01
+        ↓
+CTRL-IAM-003 Least Privilege
+        ↓
+TEST-IAM-004 Reception Privilege Test
+        ↓
+EV-031 Test Output
+        ↓
+F-004 Excessive Local Privilege
+        ↓
+ACT-009 Remove Unnecessary Membership
+        ↓
+EV-032 Retest
+        ↓
+Residual Risk Reassessment

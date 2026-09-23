@@ -1,69 +1,634 @@
 # Enterprise Cybersecurity Risk Register
 
-## Purpose
+## Document Control
 
-This register records representative cybersecurity risks affecting
-the fictional healthcare enterprise.
-
-Risk treatment decisions will consider:
-
-- likelihood;
-- business impact;
-- clinical impact;
-- privacy impact;
-- existing controls;
-- required treatment;
-- residual risk.
-
----
-
-# Risk Rating Model
-
-## Likelihood
-
-1 — Rare  
-2 — Unlikely  
-3 — Possible  
-4 — Likely  
-5 — Almost Certain
-
-## Impact
-
-1 — Insignificant  
-2 — Minor  
-3 — Moderate  
-4 — Major  
-5 — Severe
-
-## Risk Score
-
-Risk Score = Likelihood × Impact
-
-| Score | Rating |
+| Field | Value |
 |---|---|
-| 1–4 | Low |
-| 5–9 | Medium |
-| 10–16 | High |
-| 17–25 | Critical |
-
-Risk scoring supports prioritisation but does not replace professional
-judgement or consideration of clinical and business context.
+| Organisation | MediCare Health Australia (Fictional) |
+| Register Owner | Cybersecurity / GRC |
+| Executive Sponsor | Chief Information Security Officer |
+| Classification | Confidential |
+| Version | 1.0 |
+| Status | Active |
+| Review Cycle | Continuous with scheduled formal review |
+| Risk Methodology | Cybersecurity Risk Management Methodology |
+| Last Formal Review | Project Baseline |
+| Next Formal Review | Following initial control implementation |
 
 ---
 
-# Initial Risk Register
+# 1. Purpose
 
-| Risk ID | Risk | Primary Asset | Likelihood | Impact | Score | Initial Rating | Planned Treatment |
-|---|---|---|---:|---:|---:|---|---|
-| R-001 | Workforce credential compromise | Enterprise Identity | 4 | 5 | 20 | Critical | Reduce |
-| R-002 | Excessive user privileges | Identity / Clinical Data | 4 | 4 | 16 | High | Reduce |
-| R-003 | Endpoint ransomware or malicious activity | Endpoints / Clinical Services | 4 | 5 | 20 | Critical | Reduce |
-| R-004 | Exploitation of unpatched vulnerabilities | Servers / Endpoints | 4 | 5 | 20 | Critical | Reduce |
-| R-005 | Unauthorised patient-record access | Patient Clinical Records | 3 | 5 | 15 | High | Reduce |
-| R-006 | Former employee retains access | Enterprise Identity | 3 | 4 | 12 | High | Reduce |
-| R-007 | Cloud security misconfiguration | AWS Environment | 3 | 4 | 12 | High | Reduce |
-| R-008 | Security events not detected | Security Monitoring | 4 | 4 | 16 | High | Reduce |
-| R-009 | Backup unavailable during incident | Backup / Recovery | 3 | 5 | 15 | High | Reduce |
-| R-010 | Privileged administrator compromise | Active Directory | 3 | 5 | 15 | High | Reduce |
-| R-011 | Legacy medical technology cannot meet standard controls | Medical / IoT | 4 | 4 | 16 | High | Mitigate / Exception |
-| R-012 | Third-party compromise affects organisation | Enterprise Services | 3 | 5 | 15 | High | Reduce / Transfer |
+This register records cybersecurity risks identified across the
+fictional healthcare enterprise and provides traceability between:
+
+- business services;
+- threats;
+- vulnerabilities and control weaknesses;
+- enterprise assets;
+- crown-jewel assets;
+- information classifications;
+- inherent risk;
+- existing controls;
+- control effectiveness;
+- treatment actions;
+- security exceptions;
+- residual risk;
+- risk ownership;
+- control testing;
+- supporting evidence.
+
+This is a living risk register.
+
+Risk ratings and control assessments may change as technical
+implementation, control testing, vulnerability assessment and
+incident exercises produce additional evidence.
+
+---
+
+# 2. Assessment Basis
+
+Risks are assessed in accordance with:
+
+`03_Risk-Management/Risk-Assessment-Methodology.md`
+
+Risk Score:
+
+Likelihood × Impact
+
+Ratings:
+
+- Low: 1–4
+- Medium: 5–9
+- High: 10–16
+- Critical: 17–25
+
+A numerical rating does not replace consideration of:
+
+- clinical consequences;
+- patient safety;
+- privacy;
+- critical business services;
+- crown-jewel assets;
+- control effectiveness;
+- current threat conditions.
+
+---
+
+# 3. Risk Register Summary
+
+| ID | Risk | Category | Inherent | Current / Residual | Treatment | Owner | Status |
+|---|---|---|---|---|---|---|---|
+| R-001 | Workforce Credential Compromise | Identity & Access | Critical (20) | To Be Assessed | Reduce | Identity / Business Service Owner | Open |
+| R-002 | Excessive User Privilege | Identity & Access | High (16) | To Be Assessed | Reduce | IT / Business Service Owner | Open |
+| R-003 | Endpoint Malware / Ransomware | Endpoint Security | Critical (20) | To Be Assessed | Reduce | End User Computing / Business Owner | Open |
+| R-004 | Exploitation of Unpatched Vulnerabilities | Vulnerability Management | Critical (20) | To Be Assessed | Reduce | Technology Service Owner | Open |
+| R-005 | Unauthorised Patient-Record Access | Data Protection / Privacy | High (15) | To Be Assessed | Reduce | Clinical Information Owner | Open |
+| R-006 | Former Workforce Account Remains Active | Identity & Access | High (12) | To Be Assessed | Reduce | Identity / HR Process Owner | Open |
+| R-007 | AWS Security Misconfiguration | Cloud Security | High (12) | To Be Assessed | Reduce | Cloud Service Owner | Open |
+| R-008 | Security-Relevant Activity Is Not Detected | Security Monitoring | High (16) | To Be Assessed | Reduce | Cybersecurity Operations | Open |
+| R-009 | Backup Compromise or Recovery Failure | Resilience | High (15) | To Be Assessed | Reduce | Infrastructure / Service Owner | Open |
+| R-010 | Privileged Identity Compromise | Privileged Access | High (15) | To Be Assessed | Reduce | Identity / Infrastructure Owner | Open |
+| R-011 | Legacy Medical Technology Cannot Meet Baseline Controls | Medical / IoT | High (16) | To Be Assessed | Mitigate / Exception | Clinical Technology Owner | Open |
+| R-012 | Third-Party Compromise | Third-Party Risk | High (15) | To Be Assessed | Reduce / Share | Service / Vendor Owner | Open |
+
+> **Important:** "To Be Assessed" is intentional. Residual risk will not
+> be invented before relevant controls have been implemented or evaluated.
+
+
+---
+
+# 4. Detailed Risk Records
+
+# R-001 — Workforce Credential Compromise
+
+## 4.1 Risk Administration
+
+| Field | Value |
+|---|---|
+| Risk ID | R-001 |
+| Risk Title | Workforce Credential Compromise |
+| Risk Category | Identity and Access |
+| Secondary Categories | Human Risk, Data Protection, Security Monitoring |
+| Risk Status | Open |
+| Date Identified | Project Baseline |
+| Identification Source | Threat modelling / enterprise architecture review |
+| Related Threat | TM-001 |
+| Risk Owner | Identity / affected Business Service Owner |
+| Control Owners | Identity & Access Management, Cybersecurity, End User Computing |
+| Treatment Strategy | Reduce |
+| Review Frequency | At least monthly while Critical |
+| Next Review | Following identity-control implementation |
+| Risk Appetite Position | Expected to exceed appetite until key controls are validated |
+
+---
+
+## 4.2 Risk Scenario
+
+There is a risk that an external threat actor obtains valid workforce
+authentication credentials through credential theft, social
+engineering, endpoint compromise, password reuse or another
+credential-compromise technique and uses the compromised identity to
+authenticate to organisational systems.
+
+If the compromised identity has access to clinical, administrative or
+technology resources, the attacker may perform activity using an
+apparently legitimate workforce identity.
+
+This could result in:
+
+- unauthorised patient-information access;
+- account impersonation;
+- additional credential theft;
+- lateral movement;
+- unauthorised changes;
+- privilege escalation;
+- security-control bypass;
+- persistence;
+- operational disruption.
+
+---
+
+## 4.3 Threat Profile
+
+| Attribute | Assessment |
+|---|---|
+| Primary Threat Actor | External cybercriminal |
+| Secondary Threat Source | Compromised third party or malicious actor controlling a legitimate account |
+| Initial Access Vector | Credential theft / social engineering / endpoint compromise |
+| Required Access | Valid workforce credentials |
+| Potential Progression | Authentication → resource access → discovery → lateral movement / data access |
+| Primary Security Domain | Identity |
+| Detection Dependency | Authentication, endpoint and centralised security telemetry |
+
+---
+
+## 4.4 Preconditions / Contributing Factors
+
+The scenario becomes more likely or more damaging where one or more
+of the following conditions exist:
+
+- MFA is absent or insufficient;
+- passwords are weak or reused;
+- users are vulnerable to credential phishing;
+- authentication events are not centrally monitored;
+- privileged access is granted to standard accounts;
+- excessive group memberships exist;
+- dormant accounts remain active;
+- endpoint compromise exposes credentials;
+- remote access is insufficiently restricted;
+- unusual authentication behaviour is not investigated;
+- compromised credentials provide broad access to multiple services.
+
+These conditions are contributing factors and are not assumed to be
+present until verified.
+
+---
+
+## 4.5 Assets and Business Services at Risk
+
+### Primary Assets
+
+- AST-005 — Enterprise Identity Accounts
+- AST-006 — Privileged Administrator Accounts
+- AST-007 — WIN-REC01
+- AST-008 — WIN-CLIN01
+- AST-016 — Patient Clinical Records
+- AST-017 — Patient Identity Information
+
+### Crown Jewels
+
+- CJ-001 — Patient Clinical Information
+- CJ-002 — Enterprise Identity Infrastructure
+- CJ-003 — Critical Clinical Systems
+
+### Business Services
+
+Potentially affected services include:
+
+- patient administration;
+- clinical information access;
+- workforce authentication;
+- enterprise technology services.
+
+### Information Classification
+
+Potentially affected information:
+
+**CLASS-04 — Restricted**
+
+---
+
+## 4.6 Potential Attack Path
+
+Representative attack path:
+
+External Threat Actor
+        |
+        v
+Credential Theft
+        |
+        v
+reception.user compromised
+        |
+        v
+Successful Authentication
+        |
+        +----------------------+
+        |                      |
+        v                      v
+Reception Resources      Identity Discovery
+        |                      |
+        v                      v
+Patient Administration   Additional Access
+        |                      |
+        +----------+-----------+
+                   |
+                   v
+          Unauthorised Activity
+                   |
+                   v
+            Security Telemetry
+                   |
+                   v
+                 Wazuh
+                   |
+                   v
+             SOC Investigation
+
+
+             ---
+
+## 4.7 Impact Assessment
+
+### Clinical / Patient-Care Impact
+
+**Rating: 4 — Major**
+
+Rationale:
+
+Compromise of an identity with access to clinical systems could
+interfere with access to clinical information or enable unauthorised
+activity within systems supporting healthcare delivery.
+
+The project does not independently assert that credential compromise
+would necessarily result in patient harm.
+
+Clinical consequences would require assessment by appropriate
+clinical stakeholders in a real organisation.
+
+### Confidentiality Impact
+
+**Rating: 5 — Severe**
+
+Rationale:
+
+A compromised authorised identity may enable unauthorised access to
+Restricted patient or workforce information.
+
+### Integrity Impact
+
+**Rating: 4 — Major**
+
+Rationale:
+
+Depending on assigned permissions, a compromised account may enable
+unauthorised modification of information or system configuration.
+
+### Availability Impact
+
+**Rating: 4 — Major**
+
+Rationale:
+
+Credential compromise may provide an initial access path for activity
+that disrupts systems or contributes to a larger cybersecurity
+incident.
+
+### Privacy Impact
+
+**Rating: 5 — Severe**
+
+Rationale:
+
+If the identity provides access to patient information, unauthorised
+access or disclosure may create significant privacy consequences.
+
+Actual notification or regulatory consequences would depend on the
+specific facts of an incident and would require appropriate privacy
+and legal assessment.
+
+### Operational Impact
+
+**Rating: 4 — Major**
+
+Potential consequences include:
+
+- account containment;
+- password resets;
+- access suspension;
+- endpoint isolation;
+- investigation;
+- service disruption;
+- broader identity review.
+
+### Financial Impact
+
+**Rating: 3 — Moderate**
+
+Potential costs may arise from:
+
+- incident response;
+- recovery activity;
+- specialist support;
+- service disruption.
+
+No monetary loss value is asserted within the student project.
+
+### Reputational Impact
+
+**Rating: 4 — Major**
+
+Material compromise involving patient information could reduce trust
+in the organisation.
+
+### Legal / Regulatory Impact
+
+**Rating: 4 — Major**
+
+Potential obligations may arise depending on the information affected
+and incident circumstances.
+
+Specific legal conclusions are outside the scope of this project.
+
+---
+
+## 4.8 Overall Inherent Impact
+
+**Impact: 5 — Severe**
+
+The overall rating is driven primarily by credible confidentiality
+and privacy consequences involving Restricted patient information and
+the potential role of compromised identity in broader system
+compromise.
+
+---
+
+## 4.9 Inherent Likelihood
+
+**Likelihood: 4 — Likely**
+
+### Rationale
+
+Credential compromise is considered a credible threat scenario for a
+large healthcare-style enterprise because:
+
+- the environment contains many workforce identities;
+- users require access to multiple digital services;
+- identity provides a pathway to sensitive systems;
+- social engineering and credential theft are realistic enterprise
+  threat vectors;
+- successful compromise may initially resemble legitimate user
+  activity.
+
+This rating represents the project's scenario assessment and does not
+claim to measure the actual incident likelihood of a real healthcare
+organisation.
+
+---
+
+## 4.10 Inherent Risk
+
+Likelihood:
+
+**4 — Likely**
+
+Impact:
+
+**5 — Severe**
+
+Calculation:
+
+**4 × 5 = 20**
+
+Inherent Rating:
+
+**CRITICAL**
+
+---
+
+## 4.11 Existing / Planned Control Environment
+
+| Control Area | Representative Control | State | Owner |
+|---|---|---|---|
+| Identity | Unique workforce accounts | Planned / To Validate | IAM |
+| Authentication | Password policy | Planned / To Validate | IAM |
+| Authentication | MFA where applicable | Planned / AWS Validation | IAM / Cloud |
+| Authorisation | Role-Based Access Control | Planned / To Validate | IAM / Application Owner |
+| Privilege | Separate privileged identities | Planned / To Validate | IAM / Infrastructure |
+| Endpoint | Microsoft Defender | Planned / To Validate | End User Computing |
+| Endpoint Telemetry | Sysmon | Planned / To Validate | Cybersecurity |
+| Logging | Windows Security Events | Planned / To Validate | Infrastructure / Cybersecurity |
+| SIEM | Wazuh centralised monitoring | Planned / To Validate | Cybersecurity |
+| Account Lifecycle | Joiner/Mover/Leaver controls | Planned / To Validate | IAM / HR |
+| Monitoring | Suspicious authentication detection | Planned / To Validate | Cybersecurity |
+| Response | Account containment procedure | Planned | Cybersecurity / IAM |
+
+No control is considered operationally effective solely because it is
+listed above.
+
+---
+
+## 4.12 Initial Control Gaps
+
+At project baseline, the following gaps require validation or
+treatment:
+
+### GAP-R001-01
+
+MFA coverage has not yet been validated.
+
+### GAP-R001-02
+
+Role-based permissions have not yet been technically tested.
+
+### GAP-R001-03
+
+Centralised authentication monitoring has not yet been implemented.
+
+### GAP-R001-04
+
+Detection logic for suspicious authentication has not yet been
+validated.
+
+### GAP-R001-05
+
+Privileged-account separation has not yet been tested.
+
+### GAP-R001-06
+
+Joiner/Mover/Leaver effectiveness has not yet been validated.
+
+### GAP-R001-07
+
+Incident containment procedures for compromised accounts have not yet
+been exercised.
+
+---
+
+## 4.13 Control Design Assessment
+
+**Current Assessment: Not Assessed**
+
+Reason:
+
+The control architecture has been defined but technical implementation
+and validation have not yet been completed.
+
+---
+
+## 4.14 Control Operating Effectiveness
+
+**Current Assessment: Not Tested**
+
+Reason:
+
+No sufficient project evidence currently exists to claim that the
+complete identity-control environment operates effectively.
+
+---
+
+## 4.15 Treatment Plan
+
+| Action ID | Treatment Action | Owner | Priority | Target Stage | Validation |
+|---|---|---|---|---|---|
+| ACT-R001-01 | Implement representative AD identity structure | IAM / Infrastructure | Critical | IAM Build | Configuration review |
+| ACT-R001-02 | Implement role-based security groups | IAM | Critical | IAM Build | Positive/negative access tests |
+| ACT-R001-03 | Separate standard and privileged accounts | IAM / Infrastructure | Critical | IAM Build | Privilege test |
+| ACT-R001-04 | Implement Windows security logging | Infrastructure | High | Logging Build | Event generation/test |
+| ACT-R001-05 | Deploy Sysmon telemetry | Cybersecurity | High | Detection Build | Event validation |
+| ACT-R001-06 | Integrate endpoints with Wazuh | Cybersecurity | Critical | SIEM Build | Telemetry verification |
+| ACT-R001-07 | Develop representative suspicious-authentication detection | Cybersecurity | High | Detection Engineering | Controlled event test |
+| ACT-R001-08 | Validate former-user account disablement | IAM / HR Process | High | JML Lab | Failed authentication test |
+| ACT-R001-09 | Configure AWS identity protections supported by student environment | Cloud / IAM | High | AWS Lab | Configuration evidence |
+| ACT-R001-10 | Exercise compromised-account containment workflow | Cybersecurity / IAM | High | Incident Exercise | Exercise evidence |
+
+---
+
+## 4.16 Expected Evidence
+
+Evidence IDs will be assigned as implementation occurs.
+
+Expected evidence includes:
+
+- Active Directory user structure;
+- security-group configuration;
+- standard-versus-privileged account configuration;
+- authentication logs;
+- failed authentication events;
+- Sysmon events;
+- Wazuh ingestion;
+- Wazuh alert;
+- access-control test results;
+- disabled-account test;
+- AWS IAM configuration;
+- incident-response records.
+
+Evidence Status:
+
+**Pending implementation**
+
+---
+
+## 4.17 Residual Risk Assessment
+
+Residual Likelihood:
+
+**To Be Assessed**
+
+Residual Impact:
+
+**To Be Assessed**
+
+Residual Risk:
+
+**To Be Assessed**
+
+Reason:
+
+Residual risk will be assessed only after relevant controls are
+implemented and sufficient evidence exists to evaluate design and
+operating effectiveness.
+
+---
+
+## 4.18 Risk Appetite Assessment
+
+Current Position:
+
+**Expected to exceed appetite at project baseline**
+
+Reason:
+
+The scenario potentially affects:
+
+- Restricted patient information;
+- enterprise identity;
+- critical clinical services;
+- crown-jewel assets.
+
+Risk appetite will be reassessed following control implementation and
+residual-risk assessment.
+
+---
+
+## 4.19 Treatment Decision
+
+Decision:
+
+**REDUCE**
+
+Rationale:
+
+Avoidance is not practical because workforce identity is necessary
+for enterprise operations.
+
+Acceptance without further treatment would not be appropriate at the
+project baseline given the potential impact and absence of validated
+controls.
+
+The project will therefore implement and validate representative
+preventive, detective and responsive controls.
+
+---
+
+## 4.20 Review History
+
+| Review | Trigger | Assessment | Decision |
+|---|---|---|---|
+| Baseline | Initial enterprise risk assessment | Critical inherent risk; controls not yet validated | Treat |
+| Review 2 | IAM implementation | Pending | Pending |
+| Review 3 | SIEM/detection implementation | Pending | Pending |
+| Review 4 | Incident exercise | Pending | Pending |
+| Final | Project control assurance | Pending | Pending |
+
+---
+
+## 4.21 Closure Criteria
+
+R-001 will not be considered eligible for closure or formal
+reclassification until:
+
+- identity architecture is implemented;
+- representative RBAC controls are tested;
+- privileged-account separation is tested;
+- security telemetry is operational;
+- representative authentication detection is tested;
+- account containment is exercised;
+- supporting evidence is retained;
+- residual risk is formally reassessed.
+
+The risk may remain open after project completion if residual exposure
+still requires ongoing management.
+
+

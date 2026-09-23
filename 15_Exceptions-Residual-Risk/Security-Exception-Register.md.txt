@@ -1,0 +1,273 @@
+# Security Exception Register
+
+## EX-001 — Legacy Clinical Imaging Workstation
+
+### Administrative Information
+
+| Field | Value |
+|---|---|
+| Exception ID | EX-001 |
+| Status | Proposed / Scenario |
+| Related Risk | R-011 |
+| Affected Asset | Representative Legacy Clinical Imaging Workstation |
+| Asset Zone | Medical / IoT Zone |
+| Business Service | Clinical Imaging |
+| Information Classification | Restricted where patient information is processed |
+| Exception Owner | Clinical Technology Owner |
+| Technical Owner | Biomedical Engineering / Clinical Systems |
+| Security Advisor | Cybersecurity |
+| Approval Authority | Senior Risk Owner |
+| Review Frequency | Monthly while material exposure remains |
+| Expiry | Time-limited; final date to be assigned within scenario |
+
+---
+
+## Security Requirement
+
+Enterprise security standards require supported systems to receive
+applicable security updates within defined vulnerability-remediation
+timeframes.
+
+---
+
+## Non-Compliance
+
+The representative clinical imaging workstation cannot currently
+receive the required operating-system security update.
+
+---
+
+## Technical Reason
+
+The workstation operates vendor-dependent clinical imaging software.
+
+The required operating-system update has not been certified within
+the fictional scenario by the medical-technology vendor.
+
+Applying an unsupported update may create:
+
+- application incompatibility;
+- device instability;
+- vendor-support implications;
+- clinical service interruption.
+
+---
+
+## Cybersecurity Exposure
+
+Leaving the vulnerability unresolved may increase the likelihood of:
+
+- system exploitation;
+- malicious code execution;
+- credential compromise;
+- lateral movement;
+- service disruption.
+
+---
+
+## Business / Clinical Constraint
+
+Immediate remediation through normal patching is not considered
+operationally acceptable until application compatibility and clinical
+service impact have been appropriately assessed.
+
+The existence of a clinical constraint does not eliminate the cyber
+risk.
+
+---
+
+## Inherent Risk
+
+Likelihood:
+
+4 — Likely
+
+Impact:
+
+4 — Major
+
+Score:
+
+16 — High
+
+---
+
+## Preferred Control
+
+Install the approved security update within the standard vulnerability
+remediation timeframe.
+
+Current State:
+
+Not currently achievable within the scenario.
+
+---
+
+## Compensating Controls
+
+Until permanent remediation is available, the following compensating
+controls are proposed.
+
+### CC-EX001-01 — Dedicated Network Segment
+
+Place the affected workstation within a restricted Medical / IoT
+network segment.
+
+Purpose:
+
+Reduce unnecessary connectivity and lateral-movement opportunities.
+
+---
+
+### CC-EX001-02 — Restrictive Firewall Policy
+
+Permit only explicitly required communication between the imaging
+workstation and authorised systems.
+
+Default behaviour:
+
+Deny unnecessary network communication.
+
+---
+
+### CC-EX001-03 — Internet Restriction
+
+Prevent direct general Internet access unless technically required
+and formally justified.
+
+---
+
+### CC-EX001-04 — Restricted Administrative Access
+
+Limit administrative access to authorised technical personnel.
+
+---
+
+### CC-EX001-05 — Enhanced Security Monitoring
+
+Monitor available network and host telemetry for suspicious activity.
+
+Where host-based monitoring cannot be installed because of vendor
+restrictions, network-based monitoring should be considered.
+
+---
+
+### CC-EX001-06 — Application Allowlisting / Execution Restriction
+
+Where technically supported and vendor-approved, restrict execution
+to authorised software.
+
+---
+
+### CC-EX001-07 — Backup / Recovery Capability
+
+Ensure required system configuration and supported data are included
+within appropriate recovery arrangements.
+
+---
+
+### CC-EX001-08 — Vendor Engagement
+
+Track vendor guidance concerning:
+
+- security updates;
+- supported software versions;
+- remediation availability;
+- upgrade path.
+
+---
+
+### CC-EX001-09 — Replacement Roadmap
+
+Develop a funded or approved plan to:
+
+- upgrade;
+- replace; or
+- decommission
+
+the unsupported technology.
+
+Compensating controls are not considered the permanent target state.
+
+---
+
+## Control Limitations
+
+The compensating controls reduce exposure but do not remove the
+underlying vulnerability.
+
+Residual exposure may remain because:
+
+- the vulnerable software remains present;
+- exploitation may still be possible through permitted communication;
+- monitoring may detect rather than prevent activity;
+- operational requirements may prevent complete isolation.
+
+---
+
+## Residual Risk
+
+Status:
+
+To Be Assessed following validation of compensating controls.
+
+Residual risk must not automatically be classified as Low merely
+because compensating controls have been documented.
+
+---
+
+## Evidence Required
+
+Representative evidence may include:
+
+- network architecture;
+- VLAN configuration;
+- firewall rule review;
+- connectivity test;
+- blocked connectivity test;
+- administrative access configuration;
+- monitoring events;
+- vendor correspondence simulation;
+- replacement plan;
+- risk approval.
+
+---
+
+## Long-Term Remediation
+
+Preferred long-term outcome:
+
+1. obtain vendor-supported remediation;
+2. validate compatibility;
+3. implement through controlled change;
+4. perform post-change testing;
+5. rescan/reassess;
+6. remove unnecessary compensating controls where appropriate;
+7. close the exception.
+
+Alternative:
+
+Replace or decommission the unsupported system.
+
+---
+
+## Approval Decision
+
+Current State:
+
+Pending.
+
+The exception remains a project scenario until the associated risk,
+controls and evidence are developed.
+
+---
+
+## Closure Criteria
+
+EX-001 may close when:
+
+- the vulnerability is permanently remediated; or
+- the affected technology is replaced/decommissioned;
+- technical validation confirms the target state;
+- R-011 is reassessed;
+- the Risk Owner approves closure.

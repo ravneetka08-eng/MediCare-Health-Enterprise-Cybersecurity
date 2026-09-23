@@ -1,0 +1,332 @@
+# Cybersecurity Risk and Control Traceability Model
+
+## Purpose
+
+This document defines how business context, cybersecurity risk,
+security controls, testing, evidence, findings and remediation are
+linked throughout the project.
+
+The objective is to maintain end-to-end traceability.
+
+---
+
+# 1. Traceability Chain
+
+Business Service
+      |
+      v
+Asset
+      |
+      v
+Information
+      |
+      v
+Threat Scenario
+      |
+      v
+Risk
+      |
+      v
+Security Control
+      |
+      v
+Control Implementation
+      |
+      v
+Control Test
+      |
+      v
+Evidence
+      |
+      +-----------------------+
+      |                       |
+      v                       v
+    PASS                    FAIL
+      |                       |
+      v                       v
+Control Effective           Finding
+      |                       |
+      |                       v
+      |                  Treatment Action
+      |                       |
+      |                       v
+      |                   Remediation
+      |                       |
+      |                       v
+      |                     Retest
+      |                       |
+      +-----------+-----------+
+                  |
+                  v
+          Residual Risk
+                  |
+                  v
+          Risk Owner Decision
+
+---
+
+# 2. Identifier Model
+
+The following identifiers are used.
+
+| Identifier | Record Type | Example |
+|---|---|---|
+| BS-XXX | Business Service | BS-001 Patient Administration |
+| AST-XXX | Asset | AST-002 DC01 |
+| CJ-XXX | Crown Jewel | CJ-001 Patient Clinical Information |
+| FLOW-XXX | Data Flow | FLOW-002 Clinical Record Access |
+| TM-XXX | Threat Scenario | TM-001 Workforce Credential Compromise |
+| R-XXX | Risk | R-001 Workforce Credential Compromise |
+| CTRL-XXX | Security Control | CTRL-IAM-001 |
+| TEST-XXX | Control Test | TEST-IAM-001 |
+| EV-XXX | Evidence | EV-001 |
+| F-XXX | Finding | F-001 |
+| ACT-XXX | Treatment Action | ACT-R001-01 |
+| EX-XXX | Security Exception | EX-001 |
+| IR-XXX | Incident Record | IR-001 |
+| CHG-XXX | Change Record | CHG-001 |
+
+Identifiers should remain stable after assignment.
+
+---
+
+# 3. Example Traceability — Credential Compromise
+
+Business Service:
+
+BS-001 — Patient Administration
+
+        |
+        v
+
+Asset:
+
+AST-007 — WIN-REC01
+
+        |
+        v
+
+Identity:
+
+reception.user
+
+        |
+        v
+
+Threat:
+
+TM-001 — Workforce Credential Compromise
+
+        |
+        v
+
+Risk:
+
+R-001 — Workforce Credential Compromise
+
+        |
+        v
+
+Controls:
+
+CTRL-IAM-001 — Unique Workforce Identity
+
+CTRL-IAM-002 — Role-Based Access
+
+CTRL-IAM-003 — Least Privilege
+
+CTRL-MON-001 — Authentication Logging
+
+CTRL-MON-002 — Centralised Security Monitoring
+
+        |
+        v
+
+Tests:
+
+TEST-IAM-001 — Reception RBAC Positive Test
+
+TEST-IAM-002 — Reception Restricted Access Negative Test
+
+TEST-IAM-003 — Standard User Privilege Test
+
+TEST-MON-001 — Authentication Event Generation
+
+TEST-MON-002 — Wazuh Event Ingestion
+
+        |
+        v
+
+Evidence:
+
+EV-XXX
+
+        |
+        v
+
+Result:
+
+PASS / FAIL
+
+        |
+        v
+
+Finding where applicable:
+
+F-XXX
+
+        |
+        v
+
+Treatment:
+
+ACT-XXX
+
+        |
+        v
+
+Retest:
+
+TEST-XXX-R1
+
+        |
+        v
+
+Residual Risk Reassessment:
+
+R-001
+
+---
+
+# 4. Evidence Rules
+
+Evidence should demonstrate what was actually performed.
+
+Evidence should not be created merely to populate a repository.
+
+Where practical, evidence records should capture:
+
+- Evidence ID;
+- date/time;
+- test performed;
+- system;
+- operator;
+- expected result;
+- actual result;
+- screenshot/output/log reference;
+- related Control ID;
+- related Test ID;
+- related Risk ID;
+- result;
+- limitations.
+
+Secrets, credentials and sensitive configuration must not be committed
+to the public repository.
+
+---
+
+# 5. Failed Controls
+
+A failed test must not be hidden.
+
+A failed test creates useful assurance information.
+
+Example:
+
+TEST-IAM-002
+
+Expected:
+
+Reception user cannot access restricted clinical directory.
+
+Actual:
+
+Access succeeds.
+
+Result:
+
+FAIL
+
+        |
+        v
+
+F-001 — Excessive Reception Access
+
+        |
+        v
+
+Risk:
+
+R-002 / R-005
+
+        |
+        v
+
+Treatment:
+
+Remove inappropriate group membership.
+
+        |
+        v
+
+Retest:
+
+TEST-IAM-002-R1
+
+Expected:
+
+Access denied.
+
+Actual:
+
+Access denied.
+
+Result:
+
+PASS
+
+This demonstrates:
+
+- detection of a control weakness;
+- risk assessment;
+- remediation;
+- validation.
+
+---
+
+# 6. Evidence Integrity
+
+Evidence should preserve sufficient context to allow another person to
+understand:
+
+- what was tested;
+- when it was tested;
+- against which system;
+- why the test existed;
+- what the expected result was;
+- what actually occurred.
+
+Where technically appropriate, hashes may be retained for forensic or
+evidence-integrity purposes.
+
+Not every ordinary configuration screenshot requires forensic hashing.
+
+Evidence controls should be proportionate to the purpose.
+
+---
+
+# 7. Traceability Maintenance
+
+Traceability references must be updated when:
+
+- new risks are created;
+- controls are implemented;
+- tests are performed;
+- findings are raised;
+- treatment actions are created;
+- exceptions are approved;
+- incidents identify control failures;
+- residual risk changes.
+
+Traceability should represent the current project state rather than
+becoming static documentation.

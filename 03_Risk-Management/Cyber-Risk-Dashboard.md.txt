@@ -1,0 +1,320 @@
+# Enterprise Cybersecurity Risk Dashboard
+
+## Document Control
+
+| Field | Value |
+|---|---|
+| Organisation | MediCare Health Australia (Fictional) |
+| Report Owner | Cybersecurity / GRC |
+| Audience | CISO, Technology Leadership, Risk Owners |
+| Classification | Confidential |
+| Reporting Period | Project Baseline |
+| Version | 1.0 |
+| Reporting Frequency | Monthly / On Material Change |
+| Source | Enterprise Cybersecurity Risk Register |
+
+---
+
+# 1. Purpose
+
+This dashboard provides management-level visibility of cybersecurity
+risk across the fictional healthcare enterprise.
+
+It is intended to support:
+
+- prioritisation;
+- risk escalation;
+- treatment oversight;
+- exception management;
+- identification of overdue actions;
+- monitoring of risk exposure;
+- management decision-making.
+
+This dashboard summarises the underlying risk register.
+
+It does not replace detailed risk records.
+
+---
+
+# 2. Executive Risk Position
+
+## Current Baseline
+
+The project currently contains:
+
+- 12 identified enterprise cybersecurity risks;
+- 3 Critical inherent risks;
+- 9 High inherent risks;
+- 0 Medium inherent risks;
+- 0 Low inherent risks.
+
+Residual risk ratings remain pending for risks where relevant control
+implementation and operating effectiveness have not yet been
+validated.
+
+This is intentional.
+
+The dashboard must not report artificial risk reduction before
+supporting evidence exists.
+
+---
+
+# 3. Risk Distribution
+
+| Rating | Inherent Risks | Residual Risks |
+|---|---:|---:|
+| Critical | 3 | Pending assessment |
+| High | 9 | Pending assessment |
+| Medium | 0 | Pending assessment |
+| Low | 0 | Pending assessment |
+
+The concentration of High and Critical inherent risk reflects the
+project's focus on material healthcare cybersecurity scenarios rather
+than a complete inventory of all organisational risks.
+
+---
+
+# 4. Critical Inherent Risks
+
+| Risk ID | Risk | Score | Treatment | Status |
+|---|---|---:|---|---|
+| R-001 | Workforce Credential Compromise | 20 | Reduce | Open |
+| R-003 | Endpoint Malware / Ransomware | 20 | Reduce | Open |
+| R-004 | Exploitation of Unpatched Vulnerabilities | 20 | Reduce | Open |
+
+---
+
+# 5. High Inherent Risks
+
+| Risk ID | Risk | Score | Treatment | Status |
+|---|---|---:|---|---|
+| R-002 | Excessive User Privilege | 16 | Reduce | Open |
+| R-005 | Unauthorised Patient-Record Access | 15 | Reduce | Open |
+| R-006 | Former Workforce Account Remains Active | 12 | Reduce | Open |
+| R-007 | AWS Security Misconfiguration | 12 | Reduce | Open |
+| R-008 | Security-Relevant Activity Is Not Detected | 16 | Reduce | Open |
+| R-009 | Backup Compromise or Recovery Failure | 15 | Reduce | Open |
+| R-010 | Privileged Identity Compromise | 15 | Reduce | Open |
+| R-011 | Legacy Medical Technology Cannot Meet Baseline Controls | 16 | Mitigate / Exception | Open |
+| R-012 | Third-Party Compromise | 15 | Reduce / Share | Open |
+
+---
+
+# 6. Risk Concentration
+
+Current material risk themes include:
+
+## Identity and Access
+
+Relevant risks:
+
+- R-001
+- R-002
+- R-006
+- R-010
+
+Management concern:
+
+Multiple risks depend on the effectiveness of enterprise identity,
+authentication, account lifecycle and privileged-access controls.
+
+---
+
+## Clinical Information Protection
+
+Relevant risks:
+
+- R-001
+- R-005
+- R-011
+
+Management concern:
+
+Unauthorised access, identity compromise or legacy technology may
+affect systems or information associated with clinical operations.
+
+---
+
+## Cyber Resilience
+
+Relevant risks:
+
+- R-003
+- R-004
+- R-009
+
+Management concern:
+
+Endpoint compromise, unresolved vulnerabilities and ineffective
+recovery capability could combine to increase the impact of a
+significant cyber incident.
+
+---
+
+## Detection and Response
+
+Relevant risk:
+
+- R-008
+
+Related risks:
+
+- R-001
+- R-003
+- R-010
+
+Management concern:
+
+Preventive controls cannot be assumed to stop every incident.
+Detection capability is therefore a dependency for several major
+risk scenarios.
+
+---
+
+## Cloud Security
+
+Relevant risk:
+
+- R-007
+
+Management concern:
+
+Cloud identity, network configuration, logging and storage controls
+must be validated as cloud services are introduced.
+
+---
+
+# 7. Risk Appetite Exceptions
+
+Current risks expected to exceed or potentially exceed the project's
+defined risk appetite include:
+
+- R-001 — Workforce Credential Compromise;
+- R-003 — Endpoint Malware / Ransomware;
+- R-004 — Exploitation of Unpatched Vulnerabilities;
+- R-011 — Legacy Medical Technology Control Limitation.
+
+Final appetite position will depend on residual-risk assessment.
+
+---
+
+# 8. Security Exception Position
+
+## Active / Proposed Exceptions
+
+| Exception | Related Risk | Issue | Status |
+|---|---|---|---|
+| EX-001 | R-011 | Legacy clinical imaging workstation cannot receive required patch | Proposed / Scenario |
+
+Management attention is required where:
+
+- exceptions approach expiry;
+- compensating controls fail;
+- remediation dates slip;
+- residual risk increases.
+
+---
+
+# 9. Treatment Position
+
+R-001 currently contains ten planned treatment actions.
+
+At baseline:
+
+| Status | Count |
+|---|---:|
+| Planned | 10 |
+| In Progress | 0 |
+| Pending Validation | 0 |
+| Validated | 0 |
+| Overdue | 0 |
+
+These values will change as practical implementation begins.
+
+---
+
+# 10. Key Risk Indicators
+
+The following KRIs will be monitored as project capability matures.
+
+| KRI | Purpose | Initial State |
+|---|---|---|
+| Number of Critical residual risks | Measures highest remaining exposure | Pending |
+| Number of High residual risks | Measures significant remaining exposure | Pending |
+| Risks above appetite | Identifies governance escalation requirement | Pending |
+| Overdue High/Critical treatment actions | Identifies remediation delay | 0 at baseline |
+| Expired security exceptions | Identifies unmanaged exceptions | 0 |
+| Critical vulnerabilities beyond target remediation period | Measures vulnerability exposure | Pending vulnerability lab |
+| Enabled leaver accounts | Measures identity lifecycle weakness | Pending IAM test |
+| Privileged accounts failing required controls | Measures privileged-access exposure | Pending IAM test |
+| Critical systems not forwarding security logs | Measures monitoring blind spots | Pending SIEM build |
+| Failed recovery tests | Measures resilience weakness | Pending recovery lab |
+| High-risk AWS configuration findings | Measures cloud exposure | Pending AWS assessment |
+
+---
+
+# 11. Key Performance Indicators
+
+| KPI | Purpose | Initial State |
+|---|---|---|
+| % High/Critical risks reviewed on schedule | Risk governance performance | Baseline |
+| % treatment actions completed by target date | Remediation performance | Baseline |
+| % implemented controls successfully validated | Control effectiveness | Pending |
+| % exceptions reviewed before expiry | Exception governance | Pending |
+| % remediation actions passing first retest | Remediation quality | Pending |
+
+---
+
+# 12. Risk Trend
+
+Risk trends use:
+
+- Increasing
+- Stable
+- Decreasing
+- New
+- Closed
+
+At project baseline, all risks are classified:
+
+**New**
+
+Trend will only change when supported by:
+
+- control implementation;
+- new findings;
+- treatment progress;
+- threat changes;
+- incidents;
+- control testing;
+- residual-risk reassessment.
+
+---
+
+# 13. Management Actions
+
+Current management priorities are:
+
+1. establish representative identity controls;
+2. implement RBAC;
+3. establish privileged-account separation;
+4. implement centralised security telemetry;
+5. implement vulnerability-management capability;
+6. establish recovery validation;
+7. assess representative AWS security controls;
+8. validate security-control effectiveness;
+9. reassess residual risk following implementation.
+
+---
+
+# 14. Reporting Limitations
+
+This dashboard represents a fictional healthcare cybersecurity
+environment.
+
+It does not represent the cybersecurity posture, risk profile or
+control maturity of any real healthcare organisation.
+
+Risk counts are intentionally scoped to material scenarios selected
+for this portfolio project and should not be interpreted as a
+complete enterprise risk inventory.

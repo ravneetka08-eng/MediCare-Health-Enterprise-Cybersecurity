@@ -1,0 +1,92 @@
+# Security Exception Management Procedure
+
+## Document Control
+
+| Field | Value |
+|---|---|
+| Organisation | MediCare Health Australia (Fictional) |
+| Process Owner | Cybersecurity / GRC |
+| Classification | Internal |
+| Version | 1.0 |
+| Status | Active |
+| Related Process | Cybersecurity Risk Management |
+
+---
+
+# 1. Purpose
+
+This procedure defines how deviations from approved cybersecurity
+requirements are identified, assessed, approved, monitored and
+closed.
+
+A security exception does not mean that a security requirement no
+longer matters.
+
+It means that the required control cannot currently be implemented
+as intended and the resulting exposure must be explicitly managed.
+
+---
+
+# 2. Example Exception Conditions
+
+Exceptions may arise because of:
+
+- unsupported legacy systems;
+- medical-device restrictions;
+- vendor limitations;
+- application compatibility;
+- operational dependencies;
+- clinical availability requirements;
+- technical constraints;
+- temporary project requirements;
+- delayed replacement programs.
+
+Cost or inconvenience alone does not automatically justify an
+exception.
+
+---
+
+# 3. Exception Lifecycle
+
+Control Requirement
+       |
+       v
+Unable to Comply
+       |
+       v
+Exception Request
+       |
+       v
+Technical Assessment
+       |
+       v
+Risk Assessment
+       |
+       v
+Compensating Controls
+       |
+       v
+Residual Risk
+       |
+       v
+Risk Owner Review
+       |
+       v
+Approval / Rejection
+       |
+       v
+Time-Limited Exception
+       |
+       v
+Monitoring
+       |
+       v
+Periodic Review
+       |
+       +----------------------+
+       |                      |
+       v                      v
+ Remediation             Extension Request
+       |                      |
+       v                      v
+     Close              Reassessment

@@ -1,0 +1,138 @@
+# Cybersecurity Risk Acceptance Procedure
+
+## 1. Purpose
+
+This procedure defines how residual cybersecurity risk may be
+formally accepted.
+
+Risk acceptance is a governance decision.
+
+It does not mean:
+
+- the risk disappeared;
+- the vulnerability was fixed;
+- cybersecurity approved the weakness;
+- no further monitoring is required.
+
+It means an authorised Risk Owner has consciously agreed to retain
+the documented residual exposure for a defined period or circumstance.
+
+---
+
+# 2. Preconditions
+
+Before material cybersecurity risk may be accepted:
+
+1. the risk scenario must be documented;
+2. affected assets and services must be identified;
+3. inherent risk must be assessed;
+4. relevant existing controls must be identified;
+5. control effectiveness should be assessed where practical;
+6. treatment alternatives must be considered;
+7. compensating controls should be considered;
+8. residual risk must be assessed;
+9. cybersecurity advice must be documented;
+10. the acceptance authority must have appropriate authority;
+11. a review date must be established.
+
+---
+
+# 3. Required Acceptance Record
+
+A material risk-acceptance record should contain:
+
+- Risk ID;
+- risk title;
+- Risk Owner;
+- affected service;
+- inherent risk;
+- controls relied upon;
+- known control weaknesses;
+- treatment performed;
+- treatment not performed;
+- reason further treatment is not currently pursued;
+- residual likelihood;
+- residual impact;
+- residual rating;
+- cybersecurity recommendation;
+- business justification;
+- acceptance authority;
+- acceptance date;
+- expiry/review date;
+- monitoring requirements;
+- conditions of acceptance.
+
+---
+
+# 4. Acceptance Authority
+
+Representative project model:
+
+| Residual Risk | Representative Authority |
+|---|---|
+| Low | Operational / System Owner |
+| Medium | Business or Technology Risk Owner |
+| High | Senior Risk Owner with CISO consultation |
+| Critical | Executive-level formal review |
+
+Risks involving material clinical consequences may require clinical
+leadership consultation regardless of numerical score.
+
+---
+
+# 5. Time-Limited Acceptance
+
+High and Critical residual risks should not be treated as permanently
+accepted without reassessment.
+
+Acceptance should define:
+
+- review date;
+- expiry where appropriate;
+- monitoring requirements;
+- conditions requiring early reassessment.
+
+---
+
+# 6. Early Reassessment Triggers
+
+Accepted risk must be reconsidered where:
+
+- active exploitation is identified;
+- a security incident occurs;
+- compensating controls fail;
+- new vulnerabilities are identified;
+- business usage changes;
+- clinical dependency changes;
+- vendor remediation becomes available;
+- architecture materially changes;
+- threat conditions increase.
+
+---
+
+# 7. Cybersecurity Disagreement
+
+Cybersecurity may recommend against accepting a risk.
+
+Where an authorised business Risk Owner accepts the risk despite that
+recommendation:
+
+- cybersecurity advice should remain documented;
+- the accountable acceptance decision should be recorded;
+- appropriate escalation should occur;
+- monitoring requirements should be established.
+
+The risk record should not be altered to imply that Cybersecurity
+considered the exposure acceptable if it did not.
+
+---
+
+# 8. Acceptance Closure
+
+Risk acceptance ends when:
+
+- the acceptance expires;
+- the risk is remediated;
+- the system is decommissioned;
+- circumstances materially change;
+- the risk is reassessed under a new decision.

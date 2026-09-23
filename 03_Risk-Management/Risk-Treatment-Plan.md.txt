@@ -1,0 +1,352 @@
+# Enterprise Cybersecurity Risk Treatment Plan
+
+## Document Control
+
+| Field | Value |
+|---|---|
+| Organisation | MediCare Health Australia (Fictional) |
+| Document Owner | Cybersecurity / GRC |
+| Executive Sponsor | Chief Information Security Officer |
+| Classification | Confidential |
+| Version | 1.0 |
+| Status | Active |
+| Related Document | Risk-Assessment-Methodology.md |
+| Review Frequency | Continuous / aligned with risk reviews |
+
+---
+
+# 1. Purpose
+
+This document defines how cybersecurity risks requiring treatment are
+converted into accountable, measurable and verifiable remediation
+activities.
+
+A risk treatment is not considered complete simply because:
+
+- a recommendation was made;
+- a ticket was created;
+- software was installed;
+- a configuration was changed;
+- an action owner reports completion.
+
+Treatment completion requires appropriate implementation evidence and,
+where practical, validation that the treatment has reduced the
+identified risk.
+
+---
+
+# 2. Treatment Lifecycle
+
+Risk Identified
+      |
+      v
+Risk Assessed
+      |
+      v
+Treatment Required
+      |
+      v
+Treatment Objective Defined
+      |
+      v
+Actions Created
+      |
+      v
+Action Owners Assigned
+      |
+      v
+Dependencies Identified
+      |
+      v
+Implementation
+      |
+      v
+Evidence Collected
+      |
+      v
+Independent / Security Validation
+      |
+      +----------------------+
+      |                      |
+      v                      v
+   Effective              Failed
+      |                      |
+      v                      v
+Residual Risk          Rework / Escalate
+Assessment
+      |
+      v
+Risk Owner Decision
+
+---
+
+# 3. Treatment Principles
+
+Risk treatments should be:
+
+## Specific
+
+The action must state exactly what will change.
+
+## Measurable
+
+Completion should be capable of verification.
+
+## Accountable
+
+A named role must own the action.
+
+## Risk-Based
+
+Priority should reflect risk rather than convenience alone.
+
+## Time-Bound
+
+Material actions should have target completion dates.
+
+## Evidence-Based
+
+Completion claims should be supported by evidence.
+
+## Operationally Safe
+
+Treatment must consider business and clinical consequences.
+
+---
+
+# 4. Treatment Action Record
+
+Each material treatment action should include:
+
+| Field | Purpose |
+|---|---|
+| Action ID | Unique treatment identifier |
+| Risk ID | Risk being treated |
+| Control ID | Security control being implemented/improved |
+| Action Description | Exact remediation required |
+| Action Owner | Team responsible for implementation |
+| Risk Owner | Accountable business/technology owner |
+| Priority | Treatment urgency |
+| Target Date | Expected completion |
+| Dependencies | Prerequisites or constraints |
+| Change Requirement | Whether formal change control is required |
+| Implementation Status | Current state |
+| Evidence Required | Proof of implementation |
+| Validation Method | How effectiveness will be tested |
+| Result | Validation outcome |
+| Residual Risk Effect | Expected/actual risk reduction |
+| Closure Approval | Authorised closure decision |
+
+---
+
+# 5. Treatment Status
+
+Treatment actions may be:
+
+- Proposed
+- Approved
+- Scheduled
+- In Progress
+- Blocked
+- Implemented — Pending Validation
+- Validation Failed
+- Remediation Required
+- Validated
+- Closed
+- Cancelled / Superseded
+
+"Implemented" and "Validated" are deliberately separate states.
+
+---
+
+# 6. Priority
+
+## Critical
+
+Urgent treatment required.
+
+May require:
+
+- immediate containment;
+- executive visibility;
+- emergency change;
+- accelerated remediation.
+
+## High
+
+Priority remediation required within the agreed treatment timeframe.
+
+## Medium
+
+Planned remediation within normal risk-management cycles.
+
+## Low
+
+Managed through routine improvement.
+
+Priority does not automatically determine implementation timing.
+
+Clinical safety, service availability and change risk must also be
+considered.
+
+---
+
+# 7. Change Management Integration
+
+Security remediation may require controlled change management.
+
+Representative workflow:
+
+Security Finding
+      |
+      v
+Treatment Approved
+      |
+      v
+Change Request
+      |
+      +--> Technical Plan
+      |
+      +--> Risk / Impact Assessment
+      |
+      +--> Testing
+      |
+      +--> Maintenance Window
+      |
+      +--> Rollback Plan
+      |
+      v
+Change Approval
+      |
+      v
+Implementation
+      |
+      v
+Post-Change Validation
+      |
+      v
+Security Retest
+
+For critical healthcare technology, implementation may additionally
+require coordination with:
+
+- clinical operations;
+- application owners;
+- infrastructure teams;
+- vendors;
+- biomedical engineering;
+- service continuity personnel.
+
+---
+
+# 8. Failed Treatment
+
+A treatment must not be closed if validation demonstrates that the
+control remains ineffective.
+
+Example:
+
+Action:
+
+Remove local administrator access from Reception users.
+
+Implementation team reports:
+
+Complete.
+
+Security validation finds:
+
+reception.user remains a member of a group indirectly granting local
+administrator privileges.
+
+Result:
+
+Validation Failed.
+
+Required response:
+
+- reopen treatment;
+- investigate permission inheritance;
+- correct configuration;
+- retest;
+- retain evidence.
+
+---
+
+# 9. Treatment Dependencies
+
+Cybersecurity remediation may depend on:
+
+- vendor support;
+- application compatibility;
+- procurement;
+- maintenance windows;
+- business approval;
+- clinical scheduling;
+- architecture changes;
+- licensing;
+- staff availability;
+- cloud-service capability.
+
+Dependencies should be documented rather than allowing treatment
+deadlines to fail without explanation.
+
+---
+
+# 10. Overdue Treatment
+
+Where a treatment action becomes overdue:
+
+1. Action Owner provides status and reason.
+2. Cybersecurity assesses change in exposure.
+3. Risk Owner is informed.
+4. Revised target date requires justification.
+5. Additional compensating controls are considered.
+6. Material delays are escalated.
+7. Risk rating is reassessed where appropriate.
+
+Repeatedly changing a target date without risk review is not an
+acceptable substitute for treatment.
+
+---
+
+# 11. Treatment Validation
+
+Validation methods may include:
+
+- configuration inspection;
+- command output;
+- authentication testing;
+- positive access testing;
+- negative access testing;
+- vulnerability rescanning;
+- SIEM event validation;
+- log review;
+- recovery testing;
+- firewall testing;
+- cloud configuration review;
+- evidence inspection.
+
+Validation should answer:
+
+"Did the treatment actually reduce the risk in the way we expected?"
+
+---
+
+# 12. Project Treatment Register
+
+| Action ID | Risk | Action | Owner | Priority | Status | Validation |
+|---|---|---|---|---|---|---|
+| ACT-R001-01 | R-001 | Implement representative AD identity structure | IAM / Infrastructure | Critical | Planned | Configuration review |
+| ACT-R001-02 | R-001 | Implement RBAC security groups | IAM | Critical | Planned | Positive and negative access testing |
+| ACT-R001-03 | R-001 | Separate privileged and standard identities | IAM / Infrastructure | Critical | Planned | Privilege validation |
+| ACT-R001-04 | R-001 | Implement Windows security logging | Infrastructure | High | Planned | Event validation |
+| ACT-R001-05 | R-001 | Deploy Sysmon telemetry | Cybersecurity | High | Planned | Telemetry validation |
+| ACT-R001-06 | R-001 | Integrate endpoints with Wazuh | Cybersecurity | Critical | Planned | SIEM ingestion test |
+| ACT-R001-07 | R-001 | Implement representative suspicious-authentication detection | Cybersecurity | High | Planned | Controlled detection test |
+| ACT-R001-08 | R-001/R-006 | Validate leaver account disablement | IAM / HR | High | Planned | Authentication rejection test |
+| ACT-R001-09 | R-001/R-007 | Implement supported AWS identity controls | Cloud / IAM | High | Planned | AWS configuration review |
+| ACT-R001-10 | R-001 | Exercise compromised-account containment | Cybersecurity / IAM | High | Planned | Incident exercise |
+
+This register will expand as additional project risks progress into
+treatment.

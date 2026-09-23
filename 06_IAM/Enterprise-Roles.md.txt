@@ -1,0 +1,204 @@
+# Enterprise Identity and Access Roles
+
+## Purpose
+
+This document defines representative workforce roles used to design
+and test Role-Based Access Control within the project.
+
+These identities are fictional.
+
+---
+
+# ROLE-001 — Reception Officer
+
+Representative User:
+
+reception.user
+
+Business Responsibilities:
+
+- patient registration;
+- appointment administration;
+- demographic updates.
+
+Permitted Access:
+
+- patient demographic information;
+- appointment information;
+- limited patient administration functions.
+
+Not Normally Required:
+
+- detailed clinical notes;
+- security systems;
+- domain administration;
+- backup administration;
+- AWS administration.
+
+---
+
+# ROLE-002 — Doctor
+
+Representative User:
+
+doctor.user
+
+Business Responsibilities:
+
+- patient assessment;
+- clinical decision-making;
+- clinical documentation.
+
+Permitted Access:
+
+- authorised patient clinical records;
+- clinical history;
+- pathology results;
+- relevant medication information.
+
+Not Normally Required:
+
+- domain administration;
+- security administration;
+- backup administration;
+- unrestricted HR records.
+
+---
+
+# ROLE-003 — Nurse
+
+Representative User:
+
+nurse.user
+
+Business Responsibilities:
+
+- patient care;
+- clinical documentation;
+- authorised clinical workflows.
+
+Permitted Access:
+
+- appropriate patient clinical information;
+- selected care documentation.
+
+Access may differ from the Doctor role according to business need.
+
+---
+
+# ROLE-004 — IT Support
+
+Representative User:
+
+it.support
+
+Business Responsibilities:
+
+- endpoint support;
+- approved account support;
+- infrastructure troubleshooting.
+
+Permitted Access:
+
+- approved IT administration functions.
+
+Important Principle:
+
+Technical administration of a system does not automatically imply
+a business requirement to view patient clinical content.
+
+---
+
+# ROLE-005 — Privileged Administrator
+
+Representative User:
+
+adm.admin
+
+Business Responsibilities:
+
+- Active Directory administration;
+- server administration;
+- approved privileged changes.
+
+Security Requirements:
+
+- separate privileged identity;
+- no routine email/web browsing using the privileged account;
+- enhanced monitoring;
+- least privilege;
+- restricted use.
+
+---
+
+# ROLE-006 — Security Analyst
+
+Representative User:
+
+sec.analyst
+
+Business Responsibilities:
+
+- security monitoring;
+- alert investigation;
+- vulnerability management;
+- incident-response support;
+- security-control testing.
+
+Permitted Access:
+
+- security telemetry;
+- approved security tools;
+- incident evidence according to business need.
+
+---
+
+# ROLE-007 — Former Employee
+
+Representative User:
+
+former.employee
+
+Purpose:
+
+This identity will support Joiner, Mover and Leaver testing.
+
+Expected State:
+
+Disabled.
+
+The account will be used to verify that terminated users cannot
+continue authenticating to organisational systems.
+
+---
+
+# Access-Control Principle
+
+Permissions should be assigned primarily according to business role
+rather than individually granting broad access to each user.
+
+Representative model:
+
+User
+  |
+  v
+Role / Security Group
+  |
+  v
+Permission
+  |
+  v
+Business Resource
+
+Example:
+
+doctor.user
+     |
+     v
+GG-Clinical-Doctors
+     |
+     v
+Clinical-Records-Access
+     |
+     v
+Synthetic Clinical Information
