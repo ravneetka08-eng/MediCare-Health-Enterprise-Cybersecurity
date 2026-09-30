@@ -1,0 +1,8 @@
+Evidence_ID,Date_Time,Source_System,Collected_By,Description,Related_Risk,Related_Control,Related_Test,Related_Finding,File_Name,Hash_SHA256,Classification,Storage_Location,Notes
+
+
+EV-001,2026-09-28,DC01,Project Owner,"DC01 static IPv4 and DNS network configuration",,IAM / Active Directory,"DC01 network configuration validation",,EV-001_IAM_DC01_NetworkConfiguration.png,,Public Portfolio,evidence/IAM/DC01-Core-Identity/,"Validates static 10.20.10.10/24 configuration and local DNS configuration"
+EV-002,2026-09-28,DC01,Project Owner,"Active Directory forest and domain configuration",,IAM / Active Directory,"AD forest and domain validation",,EV-002_IAM_ADForestDomain.png,,Public Portfolio,evidence/IAM/DC01-Core-Identity/,"Validates corp.medicarehealth.test forest and domain"
+EV-003,2026-09-28,DC01,Project Owner,"Active Directory DNS LDAP and Kerberos service discovery",,IAM / DNS,"AD DNS service discovery validation",,EV-003_IAM_DNSServiceDiscovery.png,,Public Portfolio,evidence/IAM/DC01-Core-Identity/,"Validates LDAP and Kerberos SRV resolution through DC01"
+EV-004,2026-09-28,DC01,Project Owner,"Domain Controller health validation",,IAM / Active Directory,"Domain Controller diagnostic validation",,EV-004_IAM_ADHealthValidation.png,,Public Portfolio,evidence/IAM/DC01-Core-Identity/,"DC01 diagnostic test evidence"
+EV-005,2026-09-28,DC01,Project Owner,"FSMO role ownership on initial Domain Controller",,IAM / Active Directory,"FSMO role validation",,EV-005_IAM_FSMORoles.png,,Public Portfolio,evidence/IAM/DC01-Core-Identity/,"Validates five FSMO roles on DC01 in the current single-DC laboratory"

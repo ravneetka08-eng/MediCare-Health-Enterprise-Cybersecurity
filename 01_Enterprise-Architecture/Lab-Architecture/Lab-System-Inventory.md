@@ -8,8 +8,8 @@
 | Virtualisation | Oracle VirtualBox |
 | Host RAM | 16 GB |
 | Host OS | Windows 11 Home 25H2 |
-| Version | 1.1 |
-| Status | Planned / Progressive Implementation |
+| Version | 1.2 |
+| Status | Progressive Implementation |
 
 ---
 
@@ -43,7 +43,7 @@ production sizing recommendations.
 
 | Hostname | Role | OS / Platform | Lab RAM Target | Primary Purpose |
 |---|---|---|---:|---|
-| DC01 | Domain Controller | Windows Server | 2–3 GB | AD DS / DNS / GPO |
+| DC01 | Domain Controller / DNS Server | Windows Server 2025 Standard Evaluation | 2–3 GB | AD DS / DNS / GPO |
 | WIN-REC01 | Reception Endpoint | Windows Client | 3 GB | Reception role simulation |
 | WIN-CLIN01 | Clinical Endpoint | Windows Client | 3 GB | Clinical role simulation |
 | SEC-MON01 | Security Monitoring | Linux | 4–6 GB | Wazuh |
@@ -106,13 +106,67 @@ Other systems should remain powered off where unnecessary.
 
 ## Role
 
-Representative enterprise identity infrastructure.
+DC01 is the first Domain Controller and DNS server deployed for the
+MediCare Health laboratory Active Directory environment.
 
-## Planned Services
+## Current Configuration
+
+| Attribute | Configuration |
+|---|---|
+| Hostname | DC01 |
+| Operating System | Windows Server 2025 Standard Evaluation |
+| IPv4 Address | 10.20.10.10/24 |
+| Addressing | Static |
+| AD Forest | corp.medicarehealth.test |
+| AD Domain | corp.medicarehealth.test |
+| NetBIOS Domain | MEDICARE |
+| AD DS | Installed and operational |
+| DNS | Installed and AD-integrated |
+| Global Catalog | DC01 |
+| FSMO Roles | All five roles currently hosted on DC01 |
+| Network | Isolated VirtualBox Host-Only network |
+
+## Implemented Services
 
 - Active Directory Domain Services;
-- DNS;
-- Group Policy.
+- AD-integrated DNS;
+- forward DNS resolution;
+- reverse DNS lookup zone;
+- LDAP and Kerberos service discovery;
+- SYSVOL;
+- NETLOGON;
+- Global Catalog.
+
+Group Policy infrastructure is provided by Active Directory and will
+be configured during the relevant project phase.
+
+## Validation Performed
+
+The DC01 deployment was validated using:
+
+- `ipconfig /all`;
+- `Get-ADDomain`;
+- `Get-ADForest`;
+- `Get-ADDomainController`;
+- `Get-DnsServerZone`;
+- `Resolve-DnsName`;
+- `nltest`;
+- `net share`;
+- `netdom query fsmo`;
+- `dcdiag`;
+- `dcdiag /test:DNS /v`;
+- `w32tm`.
+
+Validation confirmed:
+
+- static IPv4 configuration;
+- Active Directory domain and forest availability;
+- AD-integrated DNS zones;
+- LDAP and Kerberos SRV records;
+- Domain Controller discovery;
+- SYSVOL and NETLOGON shares;
+- FSMO role placement;
+- core Domain Controller and DNS functionality.
 
 ## Security Functions
 
@@ -127,26 +181,37 @@ DC01 will support testing of:
 - privileged identities;
 - account lifecycle;
 - password/account policies;
+- Group Policy;
 - Windows auditing.
+
+## Current Laboratory Constraint
+
+DC01 currently operates on an isolated VirtualBox Host-Only network.
+
+No normal upstream network path is currently configured. The
+forest-root PDC Emulator therefore currently reports the local clock
+as its time source.
+
+External time synchronisation will be addressed when appropriate
+network connectivity is intentionally introduced.
 
 ## Enterprise Limitation
 
-A real enterprise would not normally rely on one domain controller.
+The laboratory currently uses one Domain Controller.
 
-A production architecture would generally consider:
+A production enterprise architecture would normally consider:
 
-- redundancy;
-- multiple domain controllers;
+- multiple Domain Controllers;
+- DNS redundancy;
 - fault tolerance;
-- multiple sites;
-- backup/recovery;
-- monitoring;
-- privileged administration.
+- multiple sites where required;
+- reliable upstream time synchronisation;
+- backup and recovery;
+- centralised monitoring;
+- privileged administration controls.
 
-The laboratory initially uses one domain controller because the
-objective is security-control implementation rather than production
-high availability.
-
+The single-DC design is appropriate for the current laboratory stage
+but is not presented as a production high-availability architecture.
 ---
 
 # 6. WIN-REC01
@@ -356,7 +421,7 @@ these stages.
 
 | System | Current Status |
 |---|---|
-| DC01 | Planned |
+| DC01 | Base Configuration Complete / Operational |
 | WIN-REC01 | Planned |
 | WIN-CLIN01 | Planned |
 | SEC-MON01 | Planned |

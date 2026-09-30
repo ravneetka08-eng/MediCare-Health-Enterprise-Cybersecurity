@@ -6,8 +6,8 @@
 |---|---|
 | Environment | Authorised Student Cybersecurity Laboratory |
 | Virtualisation Platform | Oracle VirtualBox |
-| Version | 1.1 |
-| Status | Design Baseline |
+| Version | 1.2 |
+| Status | Progressive Implementation |
 | Addressing | RFC1918 Private Laboratory Addressing |
 
 ---
@@ -79,13 +79,12 @@ final VirtualBox network configuration.
 
 # 4. Initial Addressing Plan
 
-| System | Planned Address | Function |
-|---|---|---|
-| DC01 | 10.20.10.10 | AD DS / DNS |
-| SEC-MON01 | 10.20.10.20 | Wazuh |
-| VULN01 | 10.20.10.30 | Vulnerability Management |
-| WIN-REC01 | 10.20.10.101 | Reception Endpoint |
-| WIN-CLIN01 | 10.20.10.102 | Clinical Endpoint |
+DC01 is the first address from this plan to be implemented and
+validated.
+
+The remaining addresses are project reservations and must not be
+described as implemented until their corresponding systems have been
+configured and tested.
 
 These addresses are project reservations.
 
@@ -95,31 +94,44 @@ They are not considered implemented until configured and validated.
 
 # 5. VirtualBox Network Architecture
 
-Oracle VirtualBox will provide the initial virtual networking
-capability.
+Oracle VirtualBox provides the current virtual networking capability.
 
-The exact adapter configuration will be established during the
-hands-on build.
+DC01 is connected to an isolated VirtualBox Host-Only network.
 
-The design objective is to provide:
+## Current DC01 Network Configuration
 
-LAB SYSTEM
-     |
-     +---- Controlled Lab Communication
-     |
-     +---- Controlled Internet Access where required
-     |
-     X---- Unnecessary public exposure
+| Attribute | Configuration |
+|---|---|
+| Virtual Network Type | Host-Only Adapter |
+| Server | DC01 |
+| IPv4 Address | 10.20.10.10 |
+| Prefix Length | /24 |
+| Subnet Mask | 255.255.255.0 |
+| Address Assignment | Static |
+| DHCP on DC01 | Disabled |
+| Default Gateway | None |
+| DNS Service | DC01 |
+| Internet Access | Not currently provided |
 
-The environment must support communication between:
+Current architecture:
 
-- DC01;
-- Windows endpoints;
-- Wazuh;
-- vulnerability-management system.
+DC01
+  |
+  | 10.20.10.10/24
+  |
+VirtualBox Host-Only Network
+  |
+  +---- Future Windows Clients
+  |
+  +---- Future Security Systems
 
-Internet connectivity may be enabled when required for legitimate
-software installation and updates.
+The Host-Only design provides an isolated environment for building
+and testing the initial Active Directory infrastructure without
+unnecessary exposure to external networks.
+
+Internet connectivity may be introduced separately when required for
+legitimate updates, package installation or other authorised project
+activities.
 
 ---
 
@@ -155,6 +167,20 @@ Active Directory Service Discovery
 
 Active Directory depends heavily on DNS.
 
+DC01 now provides the laboratory Active Directory DNS service.
+
+The deployment has been validated for:
+
+- the `corp.medicarehealth.test` DNS namespace;
+- Active Directory-integrated DNS zones;
+- LDAP service-location records;
+- Kerberos service-location records;
+- forward name resolution;
+- reverse lookup capability.
+
+Future domain-joined clients will use DC01 at `10.20.10.10` as their
+Active Directory DNS server.
+
 Using inappropriate DNS configuration on domain clients may cause:
 
 - domain-join failures;
@@ -184,6 +210,19 @@ lab activity.
 
 Deliberately vulnerable systems must not be intentionally exposed
 directly to the public Internet.
+
+
+## Current State
+
+The initial DC01 network is intentionally isolated and does not
+currently have a normal upstream Internet route.
+
+As a consequence, services requiring external connectivity, including
+external NTP synchronisation, are not currently available through the
+Host-Only network.
+
+This is a documented laboratory constraint rather than a production
+network design.
 
 ---
 
@@ -321,48 +360,52 @@ later project requirement justifies integration.
 
 # 13. Network Security Validation
 
-Future tests may validate:
+Initial validation has been performed for the DC01 infrastructure.
 
-- IP connectivity;
-- DNS resolution;
-- domain communication;
-- permitted connectivity;
-- denied connectivity;
+Validation performed includes:
+
+- static IPv4 configuration;
+- DNS zone availability;
+- forward DNS resolution;
+- reverse DNS configuration;
+- Active Directory service discovery;
+- LDAP SRV record resolution;
+- Kerberos SRV record resolution;
+- Domain Controller discovery.
+
+Future testing will additionally validate:
+
+- Windows client domain communication;
+- permitted and denied connectivity;
 - endpoint-to-Wazuh communication;
 - scanner-to-target communication;
 - segmentation;
 - firewall behaviour.
-
-Each implemented network control should have:
-
-Expected Result
-       |
-       v
-Technical Test
-       |
-       v
-Actual Result
-       |
-       v
-Evidence
-       |
-       v
-Pass / Fail
-
 ---
 
 # 14. Current Implementation Status
 
 | Component | Status |
 |---|---|
-| Addressing Plan | Designed |
-| VirtualBox Network | Pending |
-| DC01 Address | Reserved / Not Configured |
-| DNS | Pending |
+| 10.20.10.0/24 Addressing Plan | Implemented / Progressive |
+| VirtualBox Host-Only Network | Implemented |
+| DC01 Static Address | Implemented — 10.20.10.10/24 |
+| DC01 Default Gateway | None — isolated lab |
+| Active Directory DNS | Implemented |
+| Forward DNS Resolution | Validated |
+| Reverse DNS | Implemented / Validated |
+| LDAP / Kerberos Service Discovery | Validated |
 | Windows Clients | Pending |
 | Wazuh Communication | Pending |
 | Vulnerability Scanner Communication | Pending |
 | Security Segmentation | Design Only |
+| Internet Connectivity | Not currently provided to DC01 |
+| External NTP | Pending appropriate upstream connectivity |
 | AWS Local Integration | Not Required Initially |
 
-This table will be updated as technical implementation proceeds.
+The current network provides the minimum infrastructure required for
+the initial Active Directory environment.
+
+Additional connectivity and segmentation will be introduced only
+when required by later project phases and will be documented after
+implementation and validation.

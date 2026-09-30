@@ -7,8 +7,8 @@
 | Organisation | MediCare Health Australia (Fictional) |
 | Environment | Authorised Student Cybersecurity Laboratory |
 | Document Owner | Security Engineering |
-| Version | 1.1 |
-| Status | Approved Lab Design Baseline |
+| Version | 1.2 |
+| Status | Progressive Implementation |
 | Virtualisation Platform | Oracle VirtualBox |
 | Host Operating System | Windows 11 Home 25H2 |
 | Cloud Environment | AWS Educational / Student Environment |
@@ -288,6 +288,7 @@ Systems will be introduced according to the implementation phase.
 # 9. Lab Build Phases
 
 ## Phase 1 — Virtualisation Foundation
+**Status: Implemented / Validated**
 
 Activities:
 
@@ -302,22 +303,61 @@ Activities:
 
 ## Phase 2 — Core Identity Infrastructure
 
-Build:
+## Phase 2 — Core Identity Infrastructure
+
+**Status: Implemented / Validated**
+
+### System
 
 DC01
 
-Configure:
+### Implemented
 
-- Windows Server;
-- static IP addressing;
-- server hostname;
+- Windows Server 2025 Standard Evaluation;
+- hostname `DC01`;
+- static IPv4 address `10.20.10.10/24`;
 - Active Directory Domain Services;
-- DNS;
-- initial domain structure.
+- Active Directory-integrated DNS;
+- forest `corp.medicarehealth.test`;
+- domain `corp.medicarehealth.test`;
+- NetBIOS domain `MEDICARE`;
+- forward DNS resolution;
+- reverse DNS capability;
+- LDAP and Kerberos service-location records;
+- SYSVOL and NETLOGON;
+- Global Catalog;
+- FSMO role placement.
 
+### Validation
+
+The core identity infrastructure was validated using:
+
+- Active Directory domain and forest queries;
+- DNS zone and resource-record inspection;
+- LDAP and Kerberos SRV resolution;
+- Domain Controller discovery;
+- AD DS and DNS service checks;
+- SYSVOL and NETLOGON verification;
+- FSMO role verification;
+- `dcdiag`;
+- DNS-specific `dcdiag` testing.
+
+### Current Lab Constraint
+
+DC01 currently operates on an isolated VirtualBox Host-Only network
+without a normal upstream Internet route.
+
+External NTP synchronisation for the forest-root PDC Emulator is
+therefore deferred until appropriate upstream connectivity is
+introduced.
+
+This limitation is specific to the current laboratory implementation
+and is not presented as the intended production design.
 ---
 
 ## Phase 3 — Enterprise Identity
+
+**Status: Next Phase / Not Yet Implemented**
 
 Implement:
 
